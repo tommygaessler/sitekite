@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
+const bcrypt = require('bcrypt');
 
 const init = require('./init');
 const knex = require('../db/knex');
@@ -9,7 +10,7 @@ passport.use(new GitHubStrategy({
   clientSecret: process.env.GITHUB_SECRET_KEY,
   callbackURL: process.env.GITHUB_CALLBACK_URL
 }, (accessToken, refreshToken, profile, done) => {
-  const githubAccessToken = accessToken;
+  var pass = bcrypt.hashSync(accessToken, 9);
   const login = profile._json.login;
   console.log(login);
   // does the user exist?
@@ -24,7 +25,7 @@ passport.use(new GitHubStrategy({
     // no
     return knex('users').insert({
       username: login,
-      github_token: githubAccessToken
+      github_token: pass
     })
     .returning('*')
     .then((user) => {
