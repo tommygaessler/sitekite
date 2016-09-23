@@ -17,15 +17,15 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:userName', function (req, res, next) {
-
+  res.render('admin_home_page.html')
 });
 
 router.get('/:userName/projects', function (req, res, next) {
-
+  res.render('admin_projects_page.html')
 });
 
 router.get('/:userName/contact', function (req, res, next) {
-
+  res.render('admin_contact_page.html')
 });
 
 router.post('/new', function (req, res, next) {
