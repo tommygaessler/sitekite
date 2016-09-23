@@ -12,7 +12,6 @@ passport.use(new GitHubStrategy({
 }, (accessToken, refreshToken, profile, done) => {
   var pass = bcrypt.hashSync(accessToken, 9);
   const login = profile._json.login;
-  console.log(login);
   // does the user exist?
   return knex('users').select('*').where({
     username: login

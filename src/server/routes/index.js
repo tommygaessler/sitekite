@@ -27,4 +27,8 @@ router.get('/:userName/contact', function (req, res, next) {
 
 });
 
+router.post('/new', function (req, res, next) {
+
+})
+
 module.exports = router;
