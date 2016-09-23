@@ -34,5 +34,4 @@ router.get('/github/callback',
     res.redirect('/auth/members');
   });
 
-
 module.exports = router;
