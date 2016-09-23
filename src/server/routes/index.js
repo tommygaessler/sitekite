@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {get, addUser, checkForms} = require('../queries/index');
 
 const indexController = require('../controllers/index');
 
@@ -28,7 +29,11 @@ router.get('/:userName/contact', function (req, res, next) {
 });
 
 router.post('/new', function (req, res, next) {
-
+  if (!checkForms(req.body)) {
+    res.send('fill in all the feilds')
+  }
+  addUser(req.body)
+  res.end()
 })
 
 module.exports = router;

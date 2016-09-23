@@ -31,7 +31,6 @@ router.get('/github',
 router.get('/github/callback',
   passportGithub.authenticate('github', { failureRedirect: '/' }), (req, res, next) => {
     // Successful authentication
-    console.log();
     res.render('new_user_form', req.user);
   });
 
