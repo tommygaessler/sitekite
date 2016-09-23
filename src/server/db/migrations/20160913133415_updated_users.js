@@ -7,7 +7,7 @@ exports.up = (knex, Promise) => {
     table.string('twitter');
     table.string('linkedin');
     table.string('profile_pic_url');
-    table.string('background_pic');
+    table.string('background_pic_url');
     table.text('bio_desc');
     table.text('contact_desc');
   });
