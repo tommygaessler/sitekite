@@ -30,4 +30,5 @@ module.exports = {
     seeds: {
       directory: __dirname + '/src/server/db/seeds'
     }
+  }
 };
