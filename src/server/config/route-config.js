@@ -9,8 +9,8 @@
     const authRoutes = require('../routes/auth');
 
     // *** register routes *** //
-    app.use('/', routes);
     app.use('/auth', authRoutes);
+    app.use('/', routes);
 
   };
 

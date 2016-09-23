@@ -15,8 +15,16 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.get('/ghauth', function (req, res, next) {
-  res.send('hi austin');
+router.get('/:userName', function (req, res, next) {
+
+});
+
+router.get('/:userName/projects', function (req, res, next) {
+
+});
+
+router.get('/:userName/contact', function (req, res, next) {
+
 });
 
 module.exports = router;
