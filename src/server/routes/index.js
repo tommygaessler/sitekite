@@ -15,4 +15,8 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/ghauth', function (req, res, next) {
+  res.send('hi austin')
+});
+
 module.exports = router;
