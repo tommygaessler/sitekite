@@ -1,5 +1,9 @@
 (function () {
 
-  console.log('sanity check!');
+  $(document).ready(function () {
+		$(".navbar-toggle").on("click", function () {
+			$(this).toggleClass("active");
+		});
+	});
 
 })();
