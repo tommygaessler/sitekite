@@ -11,7 +11,8 @@ router.get('/', (req, res, next) => {
 router.get('/members',
   authHelpers.authRequired,
   (req, res, next) => {
-  res.json('This be the members portal');
+    res.render('admin_home_page')
+  // res.json('This be the members portal');
 });
 
 router.get('/logout',
