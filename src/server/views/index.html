@@ -2,11 +2,35 @@
 
 {% block title %}{% endblock %}
 
+{% block css%}
+<link rel="stylesheet" href="/css/index.css">
+{% endblock %}
+
 {% block content %}
 
+<div class="jumbotron text-center vertical-center">
+  <h1>Making a Portfolio Sucks</h1>
+  <h2>Let us do it for you.</h2>
+  <br>
+  <br>
+  <a class="btn btn-social btn-lg btn-github" href="/auth/github">
+    <span class="fa fa-github"></span>Sign in with Github
+  </a>
+</div>
+
+<footer class="navbar navbar-default nav footer">
   <div class="container">
-    <h1>{{title}}</h1>
-    <h2>The sum is {{sum}}</h2>
+    <div class="navbar-header">
+      <a class="navbar-brand">Made in Denver by -></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="https://github.com/abglassford"><i class="fa fa-github" aria-hidden="true"></i> Alex</a></li>
+      <li><a href="https://github.com/AustinMahan"><i class="fa fa-github" aria-hidden="true"></i> Austin</a></li>
+      <li><a href="https://github.com/Isaacjcollier"><i class="fa fa-github" aria-hidden="true"></i> Isaac</a></li>
+      <li><a href="https://github.com/johnmberger"><i class="fa fa-github" aria-hidden="true"></i> John</a></li>
+      <li><a href="https://github.com/tommygaessler"><i class="fa fa-github" aria-hidden="true"></i> Tommy</a></li>
+    </ul>
   </div>
+</footer>
 
 {% endblock %}

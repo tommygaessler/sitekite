@@ -5,6 +5,10 @@ body {
 a {
   color: #00B7FF;
 }
+.navbar {
+  margin-bottom: 0;
+  width: 100%;
+}
 
 /*Navbar animation*/
 .navbar-toggle .icon-bar:nth-of-type(2) {
