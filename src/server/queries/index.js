@@ -6,7 +6,17 @@ function get(table) {
 }
 
 function addUser(body) {
-  // get('users').update({})
+  return get('users')
+  .where('username', body.username)
+  .update({
+    name: body.name,
+    email: body.email,
+    profile_pic_url: body.profile_pic_url,
+    background_pic_url: body.background_pic_url, twitter: body.twitter_username,
+    linkedin: body.linkedin_username,
+    bio_desc: body.bio_desc,
+    contact_desc: body.contact_desc
+  })
 }
 
 function checkForms(body) {

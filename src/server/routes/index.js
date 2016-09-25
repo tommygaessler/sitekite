@@ -33,7 +33,7 @@ router.post('/new', function (req, res, next) {
     res.send('fill in all the feilds')
   }
   addUser(req.body)
-  res.end()
+  .then(() => res.send('hello'))
 })
 
 module.exports = router;
