@@ -31,9 +31,10 @@ router.get('/:userName/contact', function (req, res, next) {
 router.post('/new', function (req, res, next) {
   if (!checkForms(req.body)) {
     res.send('fill in all the feilds')
-  }
+  }else {
   addUser(req.body)
-  .then(() => res.send('hello'))
+  .then(() => res.send('User Added'))
+  }
 })
 
 module.exports = router;
