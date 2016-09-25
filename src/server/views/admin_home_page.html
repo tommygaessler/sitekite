@@ -4,21 +4,14 @@
 
 {% block content %}
 
-  <div class="container">
-    <div class="col-md-5">
-      <h2>Example Name</h2>
-      <h4>Example.website@examp.com</h4>
-      <img style="border-radius: 50%"     src="https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png" alt="" />
-    </div>
+  {% include "_side.html" %}
 
-    <div class="col-md-7">
-      <h2>About Me</h2>
-      <div class="container" style="width:100%; height: 100%; border: 1px solid black; padding:25px;">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    </div>
+  <div class="main">
+    <h1>About Me</h1>
+    <p>{% if bio_desc %}{{ bio_desc }}{% else %}
+      Yr sartorial lomo, kombucha four loko truffaut kogi meggings whatever deep v before they sold out. Ennui pinterest chillwave, forage humblebrag retro jean shorts bitters cronut raw denim before they sold out tilde. Vegan pinterest 90's, stumptown man bun jianbing succulents. Intelligentsia locavore tumblr art party, etsy drinking vinegar fam iceland migas unicorn readymade salvia. 8-bit post-ironic fap banh mi. Selvage chillwave offal lo-fi crucifix squid master cleanse, meditation dreamcatcher. Gastropub skateboard meditation, pour-over jean shorts salvia church-key kale chips meh.
+      {% endif %}
+    </p>
   </div>
 
 {% endblock %}
