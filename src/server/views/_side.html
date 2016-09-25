@@ -1,0 +1,29 @@
+<div class="side">
+  <img class="profile-pic" src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" />
+
+  <div class="background-image" style="background-image: url({% if background_pic_url %}{{ background_pic_url }}{% else %}https://images.unsplash.com/photo-1473789810014-375ed569d0ed?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=839942611cc084b0cb950e21146ac772{% endif %})"></div>
+
+  <h3>{% if name %}{{ name }}{% else %}Name Here!{% endif %}</h3>
+  <hr>
+  <nav class="page-links">
+    <a href="/{{ username }}">Home</a>
+    <a href="/{{ username }}/projects">Projects</a>
+    <a href="/{{ username }}/contact">Contact</a>
+  </nav>
+  <hr>
+  <nav class="social-links">
+    {% if twitter %}
+    <a href="https://twitter.com/{{ twitter }}" target="_blank">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    <a href="https://github.com/{{ username }}" target="_blank">
+      <i class="fa fa-github" aria-hidden="true"></i>
+    </a>
+    {% if linkedin %}
+    <a href="https://linkedin.com/in/{{ linkedin }}" target="_blank">
+      <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+  </nav>
+</div>
