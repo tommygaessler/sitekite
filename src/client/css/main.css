@@ -114,6 +114,12 @@ img {
   text-decoration: none;
 }
 
+/*-------- header --------*/
+
+li.mobile-only {
+  display: none;
+}
+
 /*-------- main --------*/
 
 .main {
@@ -134,7 +140,11 @@ textarea {
 
 /*-------- media queries --------*/
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
+
+  li.mobile-only {
+    display: block;
+  }
 
   .social-links {
     display: none;

@@ -12,6 +12,17 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/auth/github">Log In</a></li>
+        {% if username %}
+          <li class="mobile-only">
+            <a href="/{{ username }}">Home</a>
+          </li>
+          <li class="mobile-only">
+            <a href="/{{ username }}/projects">Projects</a>
+          </li>
+          <li class="mobile-only">
+            <a href="/{{ username }}/contact">Contact</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>
