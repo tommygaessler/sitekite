@@ -80,6 +80,10 @@ img {
   text-shadow: 0px 0px 5px #333;
 }
 
+.side h3 a {
+  color: white;
+}
+
 .page-links a {
   display: block;
   color: white;
@@ -146,8 +150,8 @@ textarea {
     display: block;
   }
 
-  .social-links {
-    display: none;
+  h3 {
+    margin-top: 10px;
   }
 
   .page-links {
