@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data ? res.render('admin_home_page.html', data[0]) : res.send(data))
+  .then((data) => data.length ? res.render('admin_home_page.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
 
