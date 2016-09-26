@@ -4,22 +4,16 @@ const knex = require('../db/knex');
 const {get, addUser, checkForms} = require('../queries/index');
 
 const indexController = require('../controllers/index');
+const ghPinnedRepos = require('gh-pinned-repos')
 
 router.get('/', function (req, res, next) {
-  const renderObject = {};
-  renderObject.title = 'Welcome to Express!';
-  indexController.sum(1, 2, (error, results) => {
-    if (error) return next(error);
-    if (results) {
-      renderObject.sum = results;
-      res.render('index', renderObject);
-    }
-  });
+  res.render('index', {title: 'SiteKite | Make a Portfolio'});
 });
 
 router.get('/:userName', function (req, res, next) {
   const username = req.params.userName;
-  // console.log(req.params);
+  ghPinnedRepos(username)
+    .then(console.log);
   console.log(username);
   knex('users').where('username', username)
   .then((user) => {
