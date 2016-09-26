@@ -23,4 +23,18 @@ describe('routes : index', () => {
     });
   });
 
+  describe('GET /:username', () => {
+    it('should render admin_home_page.html', (done) => {
+      chai.request(server)
+      .get('/1')
+      .end((err, res) => {
+        res.redirects.length.should.equal(0);
+        res.status.should.equal(201);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>About Me</h1>');
+        done();
+      });
+    });
+  });
+
 });

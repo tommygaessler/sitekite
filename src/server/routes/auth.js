@@ -8,12 +8,6 @@ router.get('/', (req, res, next) => {
   res.render('github');
 });
 
-router.get('/members',
-  authHelpers.authRequired,
-  (req, res, next) => {
-  res.json('This be the members portal');
-});
-
 router.get('/logout',
   authHelpers.loginRedirect,
   (req, res, next) => {
@@ -32,7 +26,7 @@ router.get('/github/callback',
   passportGithub.authenticate('github', { failureRedirect: '/' }), (req, res, next) => {
     // Successful authentication
     userInDb(req.user)
-    .then((data) => res.redirect(`/${data[0].username}/dashboard`))
+    .then((data) => res.redirect(`/${data[0].username}/dashboard`));
   });
 
 module.exports = router;

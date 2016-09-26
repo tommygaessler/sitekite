@@ -4,7 +4,6 @@ const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
 const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
-const indexController = require('../controllers/index');
 const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
@@ -13,7 +12,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data.length ? res.render('admin_home_page.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
+  .then((data) => data.length ? res.status(202).render('admin_home_page.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
 
@@ -27,7 +26,7 @@ router.get('/:username/projects', function (req, res, next) {
 router.get('/:userName/contact', function (req, res, next) {
   const username = req.params.userName;
   knex('users').where('username', username)
-  .then((user) => res.render('admin_contact_page.html', user[0]))
+  .then((user) => res.render('contact.html', user[0]))
   .catch((error) => console.log(error));
 });
 
@@ -43,11 +42,22 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
 });
 
 router.post('/new', function (req, res, next) {
+  console.log(req.body);
   if (!checkForms(req.body)) {
-    res.send('fill in all the feilds');
+    res.send('fill in all the fields');
+  } else {
+    addUser(req.body)
+    .then(() => res.redirect(`/${req.body.username}`));
   }
-  addUser(req.body)
-  .then(() => res.redirect(`/${req.body.username}`));
 });
+
+router.delete('/:id', function (req, res, next) {
+  removeUser(req.params.id)
+  .then(data => {
+    res.redirect('/');
+  });
+})
+
+
 
 module.exports = router;
