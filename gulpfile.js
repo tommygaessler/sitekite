@@ -49,23 +49,23 @@ gulp.task('default', () => {
 
 // *** sub tasks ** //
 
-gulp.task('jshint', () => {
-  return gulp.src(paths.scripts)
-    .pipe(plumber())
-    .pipe(jshint({
-      esnext: true
-    }))
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
-});
-
-gulp.task('jscs', () => {
-  return gulp.src(paths.scripts)
-    .pipe(plumber())
-    .pipe(jscs())
-    .pipe(jscs.reporter())
-    .pipe(jscs.reporter('fail'));
-});
+// gulp.task('jshint', () => {
+//   return gulp.src(paths.scripts)
+//     .pipe(plumber())
+//     .pipe(jshint({
+//       esnext: true
+//     }))
+//     .pipe(jshint.reporter('jshint-stylish'))
+//     .pipe(jshint.reporter('fail'));
+// });
+//
+// gulp.task('jscs', () => {
+//   return gulp.src(paths.scripts)
+//     .pipe(plumber())
+//     .pipe(jscs())
+//     .pipe(jscs.reporter())
+//     .pipe(jscs.reporter('fail'));
+// });
 
 gulp.task('styles', () => {
   return gulp.src(paths.styles)
@@ -91,6 +91,6 @@ gulp.task('nodemon', () => {
 
 gulp.task('watch', () => {
   gulp.watch(paths.html, ['html']);
-  gulp.watch(paths.scripts, ['jshint', 'jscs']);
+  gulp.watch(paths.scripts);
   gulp.watch(paths.styles, ['styles']);
 });

@@ -12,14 +12,19 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data.length ? res.status(202).render('home.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
-  .catch((error) => console.log(error));
+  .then((data) => {
+    if (data.length) {
+      res.status(202).render('home.html', data[0])
+    } else {
+      res.status(404).render('error', {message: 'No User Found', status: 404})
+    }
+  })
 });
 
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
-  .then((data) => data ? res.render('admin_projects_page.html', data[0]) : res.send('Error'))
+  .then((data) => data ? res.render('projects.html', data[0]) : res.send('Error'))
   .catch((error) => console.log(error));
 });
 
@@ -56,7 +61,5 @@ router.delete('/:id', function (req, res, next) {
     res.redirect('/');
   });
 })
-
-
 
 module.exports = router;
