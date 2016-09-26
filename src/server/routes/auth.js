@@ -27,7 +27,7 @@ router.get('/github/callback',
     // Successful authentication
     userInDb(req.user)
     .then(checkNewUser)
-    .then((data) => data ? res.redirect(`/${data[0].username}`) : res.render('new_user_form', req.user))
+    .then((data) => console.log(data))
   });
 
 module.exports = router;
