@@ -1,0 +1,37 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block css%}
+<link rel="stylesheet" href="/css/dashboard.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="col-md-6">
+    <h1>About Me</h1>
+    <form method="post">
+      <label for="name">Full Name</label>
+      <input type="text" class="form-control" name="name" id="name" value="">
+      <label for="email">Email Address</label>
+      <input type="email" class="form-control" name="email" id="email" value="">
+      <label for="twitter">Twitter</label>
+      <div class="input-group">
+        <div class="input-group-addon">twitter.com/</div>
+        <input type="text" class="form-control" name="twitter" id="twitter" value="">
+      </div>
+      <label for="linkedin">LinkedIn</label>
+      <div class="input-group">
+        <div class="input-group-addon">linkedin.com/in/</div>
+        <input type="text" class="form-control" name="linkedin" id="linkedin" value="">
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h1>Portfolio Styling</h1>
+  </div>
+</div>
+
+
+{% endblock %}
