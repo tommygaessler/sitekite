@@ -19,8 +19,11 @@ router.get('/', function (req, res, next) {
 
 router.get('/:userName', function (req, res, next) {
   const username = req.params.userName;
+  // console.log(req.params);
+  console.log(username);
   knex('users').where('username', username)
   .then((user) => {
+    console.log(user);
     const renderObject = user[0];
     console.log(renderObject);
     res.render('home.html', renderObject)
@@ -61,7 +64,7 @@ router.post('/new', function (req, res, next) {
     res.send('fill in all the feilds')
   }
   addUser(req.body)
-  .then(() => res.send('hello'))
+  .then(() => res.redirect(`/${req.body.username}`))
 })
 
 module.exports = router;
