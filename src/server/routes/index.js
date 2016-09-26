@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects} = require('../queries/index');
-
+const passportGithub = require('../auth/github');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser} = require('../queries/index');
+const authHelpers = require('../auth/helpers');
 const indexController = require('../controllers/index');
-const ghPinnedRepos = require('gh-pinned-repos')
+const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
   res.render('index', {title: 'SiteKite | Make a Portfolio'});
@@ -12,37 +13,40 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data ? res.render('admin_home_page.html', data[0]) : res.send(user))
-  .catch((error) => {
-    console.log(error);
-  });
+  .then((data) => data.length ? res.render('admin_home_page.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
+  .catch((error) => console.log(error));
 });
 
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
   .then((data) => data ? res.render('admin_projects_page.html', data[0]) : res.send('Error'))
+  .catch((error) => console.log(error));
 });
 
 router.get('/:userName/contact', function (req, res, next) {
   const username = req.params.userName;
   knex('users').where('username', username)
-  .then((user) => {
-    const renderObject = user[0];
-    console.log(renderObject);
-    res.render('contact.html', renderObject)
+  .then((user) => res.render('contact.html', user[0]))
+  .catch((error) => console.log(error));
+});
+
+router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
+  ghPinnedRepos(req.params.userName)
+  .then((pinnedProjects) => {
+    var user1 = req.params.userName
+    var user2 = req.user.username
+    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects}) : res.render('error');
   })
-  .catch((error) => {
-    console.log(error);
-  });
+  .catch((err) => console.log(err));
 });
 
 router.post('/new', function (req, res, next) {
   if (!checkForms(req.body)) {
-    res.send('fill in all the feilds')
+    res.send('fill in all the feilds');
   }
   addUser(req.body)
-  .then(() => res.redirect(`/${req.body.username}`))
-})
+  .then(() => res.redirect(`/${req.body.username}`));
+});
 
 module.exports = router;
