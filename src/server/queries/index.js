@@ -49,6 +49,7 @@ function projectsApiCalls(arr) {
         if (error) {
           console.log('error', error);
         }
+        var body = JSON.parse(body)
         resolve({pinnedProjects: project, data:body})
         return body;
       }
