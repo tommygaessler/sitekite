@@ -8,7 +8,7 @@ module.exports = () => {
   });
 
   passport.deserializeUser((id, done) => {
-    return knex('users')
+    return knex('updated_users')
     .select('*')
     .where({
       id: id
