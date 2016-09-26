@@ -4,9 +4,10 @@ const knex = require('../db/knex');
 const {get, addUser, checkForms, userInDb, checkNewUser, getProjects} = require('../queries/index');
 
 const indexController = require('../controllers/index');
+const ghPinnedRepos = require('gh-pinned-repos')
 
 router.get('/', function (req, res, next) {
-  res.render('index');
+  res.render('index', {title: 'SiteKite | Make a Portfolio'});
 });
 
 router.get('/:username', function (req, res, next) {
