@@ -43,7 +43,7 @@
     <select name="project" class="form-control">
       <option disabled selected> - Select one of your pinned projects - </option>
       {% for project in pinnedProjects %}
-      <option value="{{pinnedProjects[loop.index]}}">{{pinnedProjects[loop.index0]}}</option>
+      <option value="{{project.pinnedProjects}}">{{project.pinnedProjects}}</option>
       {% endfor %}
     </select>
     <label for="github_url">Project Repository URL</label>
