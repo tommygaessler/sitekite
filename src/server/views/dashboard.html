@@ -13,23 +13,39 @@
     <h1>About Me</h1>
     <form method="post">
       <label for="name">Full Name</label>
-      <input type="text" class="form-control" name="name" id="name" value="">
+      <input type="text" class="form-control" name="name" id="name" value="" placeholder="John Doe">
       <label for="email">Email Address</label>
-      <input type="email" class="form-control" name="email" id="email" value="">
+      <input type="email" class="form-control" name="email" id="email" value="" placeholder="name@mail.com">
       <label for="twitter">Twitter</label>
       <div class="input-group">
         <div class="input-group-addon">twitter.com/</div>
-        <input type="text" class="form-control" name="twitter" id="twitter" value="">
+        <input type="text" class="form-control" name="twitter" id="twitter" value="" placeholder="johndoe13">
+        <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
       </div>
       <label for="linkedin">LinkedIn</label>
       <div class="input-group">
         <div class="input-group-addon">linkedin.com/in/</div>
-        <input type="text" class="form-control" name="linkedin" id="linkedin" value="">
+        <input type="text" class="form-control" name="linkedin" id="linkedin" value="" placeholder="john-doe">
+        <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
       </div>
+      <label for="bio_desc">Bio</label>
+      <textarea name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page"></textarea>
+      <label for="contact_desc">Contact Me Message</label>
+      <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
     </form>
   </div>
   <div class="col-md-6">
     <h1>Portfolio Styling</h1>
+    <h1>Background Picture</h1>
+  </div>
+  <div class="col-md-6">
+    <h1>Projects</h1>
+    <select name="project" class="form-control">
+      <option disabled selected> - Select one of your pinned projects - </option>
+      {% for project in pinnedProjects %}
+      <option value="{{pinnedProjects[loop.index]}}">{{pinnedProjects[loop.index0]}}</option>
+      {% endfor %}
+    </select>
   </div>
 </div>
 
