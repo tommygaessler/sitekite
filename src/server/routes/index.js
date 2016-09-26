@@ -35,6 +35,7 @@ router.post('/new', function (req, res, next) {
     addUser(req.body)
     .then(() => res.send('User Added'))
   }
+  
 })
 
 module.exports = router;
