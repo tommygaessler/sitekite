@@ -7,7 +7,7 @@ exports.up = (knex, Promise) => {
     table.string('twitter');
     table.string('linkedin');
     table.string('profile_pic_url');
-    table.string('background_pic_url');
+    table.string('theme_name');
     table.text('bio_desc');
     table.text('contact_desc');
   });
@@ -22,6 +22,7 @@ exports.down = (knex, Promise) => {
     table.dropColumn('twitter');
     table.dropColumn('linkedin');
     table.dropColumn('profile_pic_url');
+    table.dropColumn('theme_name');
     table.dropColumn('background_pic');
     table.dropColumn('bio_desc');
     table.dropColumn('contact_desc');

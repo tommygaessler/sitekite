@@ -11,10 +11,8 @@ function addUser(body) {
   .update({
     name: body.name,
     email: body.email,
-    profile_pic_url: body.profile_pic_url,
-    background_pic_url: body.background_pic_url,
-    twitter: body.twitter_username,
-    linkedin: body.linkedin_username,
+    twitter: body.twitter,
+    linkedin: body.linkedin,
     bio_desc: body.bio_desc,
     contact_desc: body.contact_desc
   });
