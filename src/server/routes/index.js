@@ -19,10 +19,12 @@ router.get('/', function (req, res, next) {
 
 router.get('/:userName', function (req, res, next) {
   const username = req.params.userName;
+  // console.log(req.params);
+  console.log(username);
   knex('users').where('username', username)
   .then((user) => {
+    console.log(user);
     const renderObject = user[0];
-    console.log(renderObject);
     res.render('admin_home_page.html', renderObject)
   })
   .catch((error) => {
@@ -35,7 +37,6 @@ router.get('/:userName/projects', function (req, res, next) {
   knex('users').where('username', username)
   .then((user) => {
     const renderObject = user[0];
-    console.log(renderObject);
     res.render('admin_projects_page.html', renderObject)
   })
   .catch((error) => {
@@ -48,7 +49,6 @@ router.get('/:userName/contact', function (req, res, next) {
   knex('users').where('username', username)
   .then((user) => {
     const renderObject = user[0];
-    console.log(renderObject);
     res.render('admin_contact_page.html', renderObject)
   })
   .catch((error) => {
@@ -61,7 +61,7 @@ router.post('/new', function (req, res, next) {
     res.send('fill in all the feilds')
   }
   addUser(req.body)
-  .then(() => res.send('hello'))
+  .then(() => res.redirect(`/${req.body.username}`))
 })
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const knex = require('../db/knex');
-module.exports = {get, addUser, checkForms, userInDb}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser}
 
 function get(table) {
   return knex(table)
@@ -42,10 +42,14 @@ function userInDb(user) {
   })
 }
 
-// function getUser(data) {
-//   if (!data) {
-//     return false;
-//   } else {
-//     return
-//   }
-// }
+function checkNewUser(data) {
+  if (!data) {
+    return false;
+  } else {
+    if (data[0].email !== null) {
+      return data
+    } else {
+      return false
+    }
+  }
+}
