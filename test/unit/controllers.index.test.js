@@ -23,5 +23,4 @@ describe('controllers : index', () => {
       });
     });
   });
-
 });

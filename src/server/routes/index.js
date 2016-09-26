@@ -45,7 +45,6 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
 });
 
 router.post('/new', function (req, res, next) {
-  console.log(req.body);
   if (!checkForms(req.body)) {
     res.send('fill in all the fields');
   } else {
