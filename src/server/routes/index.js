@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
@@ -32,14 +32,11 @@ router.get('/:userName/contact', function (req, res, next) {
 
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
   ghPinnedRepos(req.params.userName)
-  .then((pinnedProjects) => {
-    var user1 = req.params.userName;
-    var user2 = req.user.username;
-    if (compareUser(user1, user2)) {
-      res.status(202).render('dashboard', {pinnedProjects});
-    } else {
-      res.status(404).render('error');
-    }
+  .then(projectsApiCalls)
+  .then((data) => {
+    var user1 = req.params.userName
+    var user2 = req.user.username
+    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects: data, username: req.params.userName}) : res.render('error');
   })
   .catch((err) => console.log(err));
 });
