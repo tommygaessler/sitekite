@@ -20,6 +20,12 @@ function addUser(body) {
   });
 }
 
+function removeUser (id) {
+  return get('users')
+  .where('id', id)
+  .del()
+}
+
 function checkForms(body) {
   var ok = true;
   for (var key in body) {
