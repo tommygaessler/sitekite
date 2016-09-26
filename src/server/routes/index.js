@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data ? res.render('admin_home_page.html', data[0]) : res.send(user))
+  .then((data) => data ? res.render('home.html', data[0]) : res.send(user))
   .catch((error) => {
     console.log(error);
   });
@@ -19,7 +19,7 @@ router.get('/:username', function (req, res, next) {
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
-  .then((data) => data ? res.render('admin_projects_page.html', data[0]) : res.send('Error'))
+  .then((data) => data ? res.render('projects.html', data[0]) : res.send('Error'))
 });
 
 router.get('/:userName/contact', function (req, res, next) {
@@ -27,7 +27,7 @@ router.get('/:userName/contact', function (req, res, next) {
   knex('users').where('username', username)
   .then((user) => {
     const renderObject = user[0];
-    res.render('admin_contact_page.html', renderObject)
+    res.render('contact.html', renderObject)
   })
   .catch((error) => {
     console.log(error);
