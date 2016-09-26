@@ -16,10 +16,11 @@ passport.use(new GitHubStrategy({
   return knex('users').select('*').where({
     username: login
   })
+  // .first()
   .then((user) => {
     // yes
     if (user.length) {
-      done(null, user[0]);
+      return done(null, user[0]);
     }
     // no
     return knex('users').insert({
