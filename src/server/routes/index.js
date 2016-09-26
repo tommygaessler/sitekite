@@ -4,7 +4,6 @@ const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
 const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
-const indexController = require('../controllers/index');
 const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
