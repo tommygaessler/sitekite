@@ -4,7 +4,6 @@ const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
 const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
-const indexController = require('../controllers/index');
 const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
@@ -14,7 +13,6 @@ router.get('/', function (req, res, next) {
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
   .then((data) => {
-    console.log(data.length);
     if (data.length) {
       res.status(202).render('home.html', data[0])
     } else {
@@ -52,11 +50,20 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
 });
 
 router.post('/new', function (req, res, next) {
+  console.log(req.body);
   if (!checkForms(req.body)) {
-    res.send('fill in all the feilds');
+    res.send('fill in all the fields');
+  } else {
+    addUser(req.body)
+    .then(() => res.redirect(`/${req.body.username}`));
   }
-  addUser(req.body)
-  .then(() => res.redirect(`/${req.body.username}`));
 });
+
+router.delete('/:id', function (req, res, next) {
+  removeUser(req.params.id)
+  .then(data => {
+    res.redirect('/');
+  });
+})
 
 module.exports = router;

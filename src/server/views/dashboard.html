@@ -9,6 +9,7 @@
 {% block content %}
 
 <div class="container">
+  <form method="post" action="/new">
   <div class="col-md-6">
     <h1>About Me</h1>
     <form method="post">
@@ -32,6 +33,8 @@
       <textarea name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page"></textarea>
       <label for="contact_desc">Contact Me Message</label>
       <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
+      <input type="text" name="username" value="{{username}}" hidden>
+      <button type="submit" name="button">Submit</button>
     </form>
   </div>
   <div class="col-md-6">
@@ -46,16 +49,24 @@
       <option value="{{pinnedProjects[loop.index]}}">{{pinnedProjects[loop.index0]}}</option>
       {% endfor %}
     </select>
-    <label for="github_url">Project Repository URL</label>
-    <input type="url" name="github_url" value="" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
-    <label for="deployed_url">Deployed URL</label>
-    <input type="text" name="deployed_url" value="" class="form-control" placeholder="http://www.deployed-project.com">
-    <label for="description">Project Description</label>
-    <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project"></textarea>
-    <label for="tools_languages">Tools and Languages Used</label>
-    <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc."></textarea>
+    {% for project in projects %}
+    <div class="pinned-project-info" id="project.full_name">
+      <label for="github_url">Project Repository URL</label>
+      <input type="url" name="github_url" value="{{project.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+      <label for="deployed_url">Deployed URL</label>
+      <input type="text" name="deployed_url" value="{{project.homepage}}" class="form-control" placeholder="http://www.deployed-project.com">
+      <label for="description">Project Description</label>
+      <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
+      <label for="tools_languages">Tools and Languages Used</label>
+      <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.language}}</textarea>
+    </div>
+    {% endfor %}
   </div>
+
 </div>
 
+{% endblock %}
 
+{% block scripts %}
+<script type="text/javascript" src="../js/dashboard.js"></script>
 {% endblock %}

@@ -10,7 +10,7 @@ const server = require('../../src/server/app.js');
 describe('routes : index', () => {
 
   describe('GET /', () => {
-    it('should render the index.html', (done) => {
+    it('should render the landing page: "index.html" ', (done) => {
       chai.request(server)
       .get('/')
       .end((err, res) => {
@@ -24,7 +24,7 @@ describe('routes : index', () => {
   });
 
   describe('GET /:username', () => {
-    it('should render home.html', (done) => {
+    it('should render the home.html if user exists in the Database', (done) => {
       chai.request(server)
       .get('/this_is_a_test')
       .end((err, res) => {
@@ -34,16 +34,15 @@ describe('routes : index', () => {
         done();
       });
     });
-    it('should render error.html', (done) => {
+    it('should render the error.html if user does not exists in the Database', (done) => {
       chai.request(server)
       .get('/t')
       .end((err, res) => {
         // res.status.should.equal(404);
         res.type.should.equal('text/html');
-        res.text.should.contain('<h1>Your Error Message:</h1>')
+        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>')
         done()
       })
-
     })
   });
 
