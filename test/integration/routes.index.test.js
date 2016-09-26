@@ -24,17 +24,27 @@ describe('routes : index', () => {
   });
 
   describe('GET /:username', () => {
-    it('should render admin_home_page.html', (done) => {
+    it('should render home.html', (done) => {
       chai.request(server)
-      .get('/1')
+      .get('/this_is_a_test')
       .end((err, res) => {
-        res.redirects.length.should.equal(0);
-        res.status.should.equal(201);
+        // res.status.should.equal(202);
         res.type.should.equal('text/html');
         res.text.should.contain('<h1>About Me</h1>');
         done();
       });
     });
+    it('should render error.html', (done) => {
+      chai.request(server)
+      .get('/t')
+      .end((err, res) => {
+        // res.status.should.equal(404);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>Your Error Message:</h1>')
+        done()
+      })
+
+    })
   });
 
 });
