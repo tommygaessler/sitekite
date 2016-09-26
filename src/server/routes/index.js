@@ -34,9 +34,13 @@ router.get('/:userName/contact', function (req, res, next) {
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
   ghPinnedRepos(req.params.userName)
   .then((pinnedProjects) => {
-    var user1 = req.params.userName
-    var user2 = req.user.username
-    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects}) : res.render('error');
+    var user1 = req.params.userName;
+    var user2 = req.user.username;
+    if (compareUser(user1, user2)) {
+      res.status(202).render('dashboard', {pinnedProjects});
+    } else {
+      res.status(404).render('error');
+    }
   })
   .catch((err) => console.log(err));
 });
