@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const {get, addUser, checkForms, userInDb} = require('../queries/index');
 const passportGithub = require('../auth/github');
 const authHelpers = require('../auth/helpers');
 
@@ -31,7 +31,17 @@ router.get('/github',
 router.get('/github/callback',
   passportGithub.authenticate('github', { failureRedirect: '/' }), (req, res, next) => {
     // Successful authentication
-    res.render('new_user_form', req.user);
+    userInDb(req.user)
+    .then((data) => {
+      console.log(data);
+      res.send(data)
+      // if (data) {
+      //   res.redirect(`/${data[0].username}`)
+      // } else {
+      //   res.render('new_user_form')
+      // }
+    })
+    // res.render('new_user_form', req.user);
   });
 
 module.exports = router;

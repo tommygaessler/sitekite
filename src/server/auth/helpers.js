@@ -1,6 +1,6 @@
 function loginRedirect(req, res, next) {
   if (req.user) {
-    return res.redirect('/auth/members');
+    return res.redirect('/');
   } else {
     return next();
   }
