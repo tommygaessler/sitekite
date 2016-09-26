@@ -23,7 +23,7 @@ router.get('/:userName', function (req, res, next) {
   .then((user) => {
     const renderObject = user[0];
     console.log(renderObject);
-    res.render('admin_home_page.html', renderObject)
+    res.render('home.html', renderObject)
   })
   .catch((error) => {
     console.log(error);
@@ -36,7 +36,7 @@ router.get('/:userName/projects', function (req, res, next) {
   .then((user) => {
     const renderObject = user[0];
     console.log(renderObject);
-    res.render('admin_projects_page.html', renderObject)
+    res.render('projects.html', renderObject)
   })
   .catch((error) => {
     console.log(error);
@@ -49,7 +49,7 @@ router.get('/:userName/contact', function (req, res, next) {
   .then((user) => {
     const renderObject = user[0];
     console.log(renderObject);
-    res.render('admin_contact_page.html', renderObject)
+    res.render('contact.html', renderObject)
   })
   .catch((error) => {
     console.log(error);
