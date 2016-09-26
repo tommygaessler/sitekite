@@ -33,7 +33,7 @@ router.get('/github/callback',
     // Successful authentication
     userInDb(req.user)
     .then(checkNewUser)
-    .then((data) => data ? res.redirect(`/${data[0].username}/dashboard`) : res.render('new_user_form', req.user))
+    .then((data) => data ? res.redirect(`/${data[0].username}/dashboard`) : res.render('new_user_form', req.user));
   });
 
 module.exports = router;

@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data ? res.render('admin_home_page.html', data[0]) : res.send(data))
+  .then((data) => data ? res.status(202).render('admin_home_page.html', data[0]) : res.send(data))
   .catch((error) => console.log(error));
 });
 
@@ -32,9 +32,14 @@ router.get('/:userName/contact', function (req, res, next) {
 });
 
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
-  var user1 = req.params.userName
-  var user2 = req.user.username
-  compareUser(user1, user2) ? res.render('dashboard', {title: 'dashboard'}) : res.render('error');
+  var user1 = req.params.userName;
+  var user2 = req.user.username;
+  if (compareUser(user1, user2)) {
+    res.render('dashboard', {title: 'dashboard'});
+  } else {
+    res.render('error');
+  }
+  // compareUser(user1, user2) ? res.render('dashboard', {title: 'dashboard'}) : res.render('error');
 });
 
 router.post('/new', function (req, res, next) {
