@@ -13,7 +13,7 @@ passport.use(new GitHubStrategy({
   // var pass = bcrypt.hashSync(accessToken, 9);
   const login = profile._json.login;
   // does the user exist?
-  return knex('updated_users').select('*').where({
+  return knex('users').select('*').where({
     username: login
   })
   .then((user) => {
