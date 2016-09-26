@@ -10,7 +10,7 @@ const server = require('../../src/server/app.js');
 describe('routes : index', () => {
 
   describe('GET /', () => {
-    it('should render the index.html', (done) => {
+    it('should render the landing page: "index.html" ', (done) => {
       chai.request(server)
       .get('/')
       .end((err, res) => {
@@ -24,17 +24,26 @@ describe('routes : index', () => {
   });
 
   describe('GET /:username', () => {
-    it('should render admin_home_page.html', (done) => {
+    it('should render the home.html if user exists in the Database', (done) => {
       chai.request(server)
-      .get('/1')
+      .get('/this_is_a_test')
       .end((err, res) => {
-        res.redirects.length.should.equal(0);
-        res.status.should.equal(201);
+        // res.status.should.equal(202);
         res.type.should.equal('text/html');
         res.text.should.contain('<h1>About Me</h1>');
         done();
       });
     });
+    it('should render the error.html if user does not exists in the Database', (done) => {
+      chai.request(server)
+      .get('/t')
+      .end((err, res) => {
+        // res.status.should.equal(404);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>')
+        done()
+      })
+    })
   });
 
 });

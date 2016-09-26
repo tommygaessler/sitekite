@@ -1,5 +1,7 @@
 const knex = require('../db/knex');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser};
+const request = require('request');
+var http = require('http');
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls}
 
 function get(table) {
   return knex(table);
@@ -11,10 +13,8 @@ function addUser(body) {
   .update({
     name: body.name,
     email: body.email,
-    profile_pic_url: body.profile_pic_url,
-    background_pic_url: body.background_pic_url,
-    twitter: body.twitter_username,
-    linkedin: body.linkedin_username,
+    twitter: body.twitter,
+    linkedin: body.linkedin,
     bio_desc: body.bio_desc,
     contact_desc: body.contact_desc
   });
@@ -34,6 +34,30 @@ function checkForms(body) {
     }
   }
   return ok;
+}
+
+function projectsApiCalls(arr) {
+  var promise = arr.map(function (project) {
+    return new Promise((resolve, reject) => {
+      var options = {
+        url: 'https://api.github.com/repos/' + project + `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_KEY}`,
+        headers: {
+          'User-Agent': 'request'
+        }
+      }
+      function wtf (error, response, body) {
+        if (error) {
+          console.log('error', error);
+        }
+        var body = JSON.parse(body)
+        resolve({pinnedProjects: project, data:body})
+        return body;
+      }
+      request(options, wtf)
+    })
+  })
+  // console.log(promise);
+  return Promise.all(promise)
 }
 
 function userInDb(user) {

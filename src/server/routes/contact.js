@@ -15,7 +15,7 @@ router.post('/:username/contact/send', (req, res, next) => {
   var request = sg.emptyRequest({
     method: 'POST',
     path: '/v3/mail/send',
-    body: mail.toJSON(),
+    body: mail.toJSON()
   });
 
   sg.API(request, function(error, response) {

@@ -9,9 +9,10 @@
 {% block content %}
 
 <div class="container">
-  <form method="post">
+  <form method="post" action="/new">
   <div class="col-md-6">
     <h1>About Me</h1>
+    <form method="post">
       <label for="name">Full Name</label>
       <input type="text" class="form-control" name="name" id="name" value="" placeholder="John Doe">
       <label for="email">Email Address</label>
@@ -32,6 +33,9 @@
       <textarea name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page"></textarea>
       <label for="contact_desc">Contact Me Message</label>
       <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
+      <input type="text" name="username" value="{{username}}" hidden>
+      <button type="submit" name="button">Submit</button>
+    </form>
   </div>
   <div class="col-md-6">
     <h1>Portfolio Styling</h1>
@@ -42,7 +46,7 @@
     <select name="project" class="form-control">
       <option disabled selected> - Select one of your pinned projects - </option>
       {% for project in pinnedProjects %}
-      <option value="{{pinnedProjects[loop.index]}}">{{pinnedProjects[loop.index0]}}</option>
+      <option value="{{project.pinnedProjects}}">{{project.pinnedProjects}}</option>
       {% endfor %}
     </select>
     {% for project in projects %}
@@ -58,7 +62,7 @@
     </div>
     {% endfor %}
   </div>
-  </form>
+
 </div>
 
 {% endblock %}
