@@ -27,7 +27,7 @@ router.get('/:username/projects', function (req, res, next) {
 router.get('/:userName/contact', function (req, res, next) {
   const username = req.params.userName;
   knex('users').where('username', username)
-  .then((user) => res.render('admin_contact_page.html', user[0]))
+  .then((user) => res.render('contact.html', user[0]))
   .catch((error) => console.log(error));
 });
 
