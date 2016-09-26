@@ -23,9 +23,12 @@ router.get('/:userName', function (req, res, next) {
   console.log(username);
   knex('users').where('username', username)
   .then((user) => {
-    console.log(user);
-    const renderObject = user[0];
-    res.render('admin_home_page.html', renderObject)
+    if (user.length > 0) {
+      const renderObject = user[0];
+      res.render('admin_home_page.html', renderObject)
+    } else {
+      res.send(user)
+    }
   })
   .catch((error) => {
     console.log(error);
