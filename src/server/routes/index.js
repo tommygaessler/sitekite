@@ -56,8 +56,8 @@ router.post('/new', function (req, res, next) {
 router.delete('/:id', function (req, res, next) {
   removeUser(req.params.id)
   .then(data => {
-    res.redirect
-  })
+    res.redirect('/');
+  });
 })
 
 
