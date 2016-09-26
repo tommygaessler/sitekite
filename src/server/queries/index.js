@@ -1,8 +1,8 @@
 const knex = require('../db/knex');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser};
 
 function get(table) {
-  return knex(table)
+  return knex(table);
 }
 
 function addUser(body) {
@@ -17,35 +17,32 @@ function addUser(body) {
     linkedin: body.linkedin_username,
     bio_desc: body.bio_desc,
     contact_desc: body.contact_desc
-  })
+  });
 }
 
 function checkForms(body) {
   var ok = true;
-  for (key in body) {
-    if (body[key].length == 0 && key !== 'button') {
-      ok = false
+  for (var key in body) {
+    if (body[key].length === 0 && key !== 'button') {
+      ok = false;
     }
   }
   return ok;
 }
 
 function userInDb(user) {
-  return get('users').where('username', user.username)
-  .then((data) => {
-    return data
-  })
+  return get('users').where('username', user.username);
 }
 
 function getProjects(data) {
   if (!data.length) {
-    return Promise.resolve(false)
+    return Promise.resolve(false);
   }
   return get('projects').where('user_id', data[0].id)
   .then((projects) => {
     data[0].projects = projects;
-    return data
-  })
+    return data;
+  });
 }
 
 function checkNewUser(data) {
@@ -53,9 +50,16 @@ function checkNewUser(data) {
     return false;
   } else {
     if (data[0].email !== null) {
-      return data
+      return data;
     } else {
-      return false
+      return false;
     }
   }
+}
+
+function compareUser(user1, user2) {
+  if (user1 === user2) {
+    return true;
+  }
+  return false;
 }

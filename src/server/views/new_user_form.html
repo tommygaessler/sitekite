@@ -4,7 +4,12 @@
 
 {% block content %}
 
-  <div class="container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+
+
+
     <h1>Welcome!</h1>
     <h2>Tell us a little about yourself...</h2>
     <form class="new_user" action="/new" method="post">
@@ -43,6 +48,9 @@
       <input type="text" name="username" value="{{username}}" hidden="true">
       <button type="submit" name="button">Submit</button>
     </form>
+
+  </div>
+      </div>
   </div>
 
 {% endblock %}
