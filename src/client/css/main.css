@@ -195,3 +195,7 @@ textarea {
     padding-right: 15px;
   }
 }
+.error-message h1 {
+  margin-top: 10%;
+  font-size: 5rem;
+}
