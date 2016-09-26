@@ -26,12 +26,7 @@ router.get('/github/callback',
   passportGithub.authenticate('github', { failureRedirect: '/' }), (req, res, next) => {
     // Successful authentication
     userInDb(req.user)
-    .then(checkNewUser)
-<<<<<<< HEAD
-    .then((data) => data ? res.redirect(`/${data[0].username}/dashboard`) : res.render('new_user_form', req.user));
-=======
     .then((data) => res.redirect(`/${data[0].username}/dashboard`))
->>>>>>> fa3fa84ccba8b8b6dc2137c194d27df7cea8d07f
   });
 
 module.exports = router;
