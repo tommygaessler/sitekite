@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => data.length ? res.status(202).render('admin_home_page.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
+  .then((data) => data.length ? res.status(202).render('home.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
 
@@ -42,7 +42,6 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
 });
 
 router.post('/new', function (req, res, next) {
-  console.log(req.body);
   if (!checkForms(req.body)) {
     res.send('fill in all the fields');
   } else {

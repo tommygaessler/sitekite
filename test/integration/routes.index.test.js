@@ -24,7 +24,7 @@ describe('routes : index', () => {
   });
 
   describe('GET /:username', () => {
-    it('should render admin_home_page.html', (done) => {
+    it('should render home.html', (done) => {
       chai.request(server)
       .get('/1')
       .end((err, res) => {
