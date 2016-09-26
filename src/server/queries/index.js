@@ -40,7 +40,7 @@ function projectsApiCalls(arr) {
   var promise = arr.map(function (project) {
     return new Promise((resolve, reject) => {
       var options = {
-        url: 'https://api.github.com/repos/' + project,
+        url: 'https://api.github.com/repos/' + project + `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_KEY}`,
         headers: {
           'User-Agent': 'request'
         }
