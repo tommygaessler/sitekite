@@ -8,12 +8,6 @@ router.get('/', (req, res, next) => {
   res.render('github');
 });
 
-router.get('/members',
-  authHelpers.authRequired,
-  (req, res, next) => {
-  res.json('This be the members portal');
-});
-
 router.get('/logout',
   authHelpers.loginRedirect,
   (req, res, next) => {
