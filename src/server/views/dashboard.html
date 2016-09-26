@@ -49,8 +49,8 @@
       <option value="{{project.pinnedProjects}}">{{project.pinnedProjects}}</option>
       {% endfor %}
     </select>
-    {% for project in projects %}
-    <div class="pinned-project-info" id="project.full_name">
+    {% for project in pinnedProjects %}
+    <div class="pinned-project-info" id="{{project.pinnedProjects}}">
       <label for="github_url">Project Repository URL</label>
       <input type="url" name="github_url" value="{{project.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
       <label for="deployed_url">Deployed URL</label>
