@@ -1,51 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const {get, addUser, checkForms} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects} = require('../queries/index');
 
 const indexController = require('../controllers/index');
+const ghPinnedRepos = require('gh-pinned-repos')
 
 router.get('/', function (req, res, next) {
-  const renderObject = {};
-  renderObject.title = 'Welcome to Express!';
-  indexController.sum(1, 2, (error, results) => {
-    if (error) return next(error);
-    if (results) {
-      renderObject.sum = results;
-      res.render('index', renderObject);
-    }
-  });
+  res.render('index', {title: 'SiteKite | Make a Portfolio'});
 });
 
-router.get('/:userName', function (req, res, next) {
-  const username = req.params.userName;
-  // console.log(req.params);
-  console.log(username);
-  knex('users').where('username', username)
-  .then((user) => {
-    if (user.length > 0) {
-      const renderObject = user[0];
-      res.render('admin_home_page.html', renderObject)
-    } else {
-      res.send(user)
-    }
-  })
+router.get('/:username', function (req, res, next) {
+  userInDb(req.params)
+  .then((data) => data ? res.render('admin_home_page.html', data[0]) : res.send(user))
   .catch((error) => {
     console.log(error);
   });
 });
 
-router.get('/:userName/projects', function (req, res, next) {
-  const username = req.params.userName;
-  knex('users').where('username', username)
-  .then((user) => {
-    const renderObject = user[0];
-    console.log(renderObject);
-    res.render('projects.html', renderObject)
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+router.get('/:username/projects', function (req, res, next) {
+  userInDb(req.params)
+  .then(getProjects)
+  .then((data) => data ? res.render('admin_projects_page.html', data[0]) : res.send('Error'))
 });
 
 router.get('/:userName/contact', function (req, res, next) {

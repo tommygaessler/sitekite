@@ -1,5 +1,5 @@
 const knex = require('../db/knex');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects}
 
 function get(table) {
   return knex(table)
@@ -33,17 +33,23 @@ function checkForms(body) {
 function userInDb(user) {
   return get('users').where('username', user.username)
   .then((data) => {
-    console.log(data);
-    if (data.length == 0) {
-      return false;
-    } else {
-      return data
-    }
+    return data
+  })
+}
+
+function getProjects(data) {
+  if (!data.length) {
+    return Promise.resolve(false)
+  }
+  return get('projects').where('user_id', data[0].id)
+  .then((projects) => {
+    data[0].projects = projects;
+    return data
   })
 }
 
 function checkNewUser(data) {
-  if (!data) {
+  if (data.length === 0) {
     return false;
   } else {
     if (data[0].email !== null) {
