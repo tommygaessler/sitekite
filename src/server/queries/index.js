@@ -1,5 +1,5 @@
 const knex = require('../db/knex');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser}
 
 function get(table) {
   return knex(table)
@@ -32,9 +32,6 @@ function checkForms(body) {
 
 function userInDb(user) {
   return get('users').where('username', user.username)
-  .then((data) => {
-    return data
-  })
 }
 
 function getProjects(data) {
@@ -58,4 +55,11 @@ function checkNewUser(data) {
       return false
     }
   }
+}
+
+function compareUser(user1, user2) {
+  if (user1 == user2) {
+    return true;
+  }
+  return false;
 }
