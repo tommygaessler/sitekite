@@ -5,42 +5,33 @@ const should = chai.should();
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-const server = require('../../src/server/app');
+const server = require('../../src/server/app.js');
 
 describe('routes : index', () => {
 
-  beforeEach((done) => {
-    done();
-  });
-
-  afterEach((done) => {
-    done();
-  });
-
   describe('GET /', () => {
-    it('should render the index', (done) => {
+    it('should render the index.html', (done) => {
       chai.request(server)
       .get('/')
       .end((err, res) => {
         res.redirects.length.should.equal(0);
         res.status.should.equal(200);
         res.type.should.equal('text/html');
-        res.text.should.contain('<h1>Welcome to Express!</h1>');
-        res.text.should.contain('<h2>The sum is 3</h2>');
+        res.text.should.contain('<h1>Making a Portfolio Sucks</h1>');
         done();
       });
     });
   });
 
-  describe('GET /404', () => {
-    it('should throw an error', (done) => {
+  describe('GET /:username', () => {
+    it('should render admin_home_page.html', (done) => {
       chai.request(server)
-      .get('/404')
+      .get('/1')
       .end((err, res) => {
         res.redirects.length.should.equal(0);
-        res.status.should.equal(404);
-        res.type.should.equal('application/json');
-        res.body.message.should.eql('Not Found');
+        res.status.should.equal(201);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>About Me</h1>');
         done();
       });
     });

@@ -1,0 +1,56 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+
+
+
+    <h1>Welcome!</h1>
+    <h2>Tell us a little about yourself...</h2>
+    <form class="new_user" action="/new" method="post">
+      <div class="form-group">
+        <label for="preferred_name">Name</label>
+        <input class="form-control" type="text" name="name" value="">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input class="form-control" type="email" name="email" value="">
+      </div>
+      <div class="form-group">
+        <label for="profile_pic_url">Profile Picture URL</label>
+        <input class="form-control" type="text" name="profile_pic_url" value="">
+      </div>
+      <div class="form-group">
+        <label for="background_pic_url">Background Picture URL</label>
+        <input class="form-control" type="text" name="background_pic_url" value="">
+      </div>
+      <div class="form-group">
+        <label for="twitter_username">Twitter Username</label>
+        <input class="form-control" type="text" name="twitter_username" value="">
+      </div>
+      <div class="form-group">
+        <label for="linkedin_username">Linkedin Username</label>
+        <input class="form-control" type="text" name="linkedin_username" value="">
+      </div>
+      <div class="form-group">
+        <label for="bio_desc">Short Bio</label>
+        <textarea class="form-control" name="bio_desc" rows="8" cols="40"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="contact_desc">Contact Description?</label>
+        <textarea class="form-control" name="contact_desc" rows="8" cols="40"></textarea>
+      </div>
+      <input type="text" name="username" value="{{username}}" hidden="true">
+      <button type="submit" name="button">Submit</button>
+    </form>
+
+  </div>
+      </div>
+  </div>
+
+{% endblock %}

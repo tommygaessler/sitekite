@@ -5,15 +5,18 @@
 
 {% block content %}
 
-  <div class="row">
-    <div class="col-md-12">
+  <div class="container">
+    <div class="col-md-12 text-center error-message">
       <div>
+        <h1>Whoops. Something is wonky here.</h1>
+        {% if status %}
+          <h2>Status: {{status}}</h2>
+        {% endif %}
         {% if message %}
-          <h1>{{message}}</h1>
+          <h2>{{message}}</h2>
         {% endif %}
-        {% if error.status %}
-          <h2>{{error.status}}</h2>
-        {% endif %}
+        <br>
+        <a href="/">« Back Home</a>
       </div>
     </div>
   </div>

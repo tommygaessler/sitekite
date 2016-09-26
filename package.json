@@ -22,7 +22,8 @@
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
     "pg": "6.1.0",
-    "sendgrid": "^4.3.0"
+    "sendgrid": "^4.3.0",
+    "request": "^2.75.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

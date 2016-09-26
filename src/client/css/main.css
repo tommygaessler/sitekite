@@ -55,3 +55,8 @@ body {
 	top: -6px;
 	transform: rotate(-45deg);
 }
+
+.error-message h1 {
+  margin-top: 10%;
+  font-size: 5rem;
+}
