@@ -10,7 +10,7 @@ passport.use(new GitHubStrategy({
   clientSecret: process.env.GITHUB_SECRET_KEY,
   callbackURL: process.env.GITHUB_CALLBACK_URL
 }, (accessToken, refreshToken, profile, done) => {
-  var pass = bcrypt.hashSync(accessToken, 9);
+  // var pass = bcrypt.hashSync(accessToken, 9);
   const login = profile._json.login;
   // does the user exist?
   return knex('users').select('*').where({
@@ -24,7 +24,7 @@ passport.use(new GitHubStrategy({
     // no
     return knex('users').insert({
       username: login,
-      github_token: pass
+      github_token: accessToken
     })
     .returning('*')
     .then((user) => {
