@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const {get, addUser, checkForms, userInDb, checkNewUser, getProjects} = require('../queries/index');
-
-const indexController = require('../controllers/index');
 const ghPinnedRepos = require('gh-pinned-repos')
 
 router.get('/', function (req, res, next) {
@@ -43,5 +41,7 @@ router.post('/new', function (req, res, next) {
   addUser(req.body)
   .then(() => res.redirect(`/${req.body.username}`))
 })
+
+
 
 module.exports = router;

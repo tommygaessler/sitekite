@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
 
 {% block title %}{% endblock %}
-
+{% block css %}<link rel="stylesheet" href="/css/tommy.css">{% endblock %}
 {% block content %}
 
   {% include "_side.html" %}
@@ -14,18 +14,20 @@
       {% endif %}
     </p>
 
-    <form>
+    <form action="/{{ username }}/contact/send" method="post">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="">
+        <label for="name">Your Name</label>
+        <input type="text" class="form-control" id="name" placeholder="" name="name">
       </div>
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="">
+        <label for="email">Your Email</label>
+        <input type="email" class="form-control" id="email" placeholder="" name="from_email">
       </div>
       <div class="form-group">
-        <textarea class="form-control" rows="5"></textarea>
+        <label for="message">Your Message</label>
+        <textarea class="form-control" rows="5" name="message" id="message"></textarea>
       </div>
+      <input type="hidden" name="to_email" value="{{ email }}">
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
   </div>
