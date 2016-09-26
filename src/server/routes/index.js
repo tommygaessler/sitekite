@@ -53,4 +53,11 @@ router.post('/new', function (req, res, next) {
   .then(() => res.redirect(`/${req.body.username}`));
 });
 
+router.delete('/:id', function (req, res, next) {
+  removeUser(req.params.id)
+  .then(data => {
+    res.redirect
+  })
+})
+
 module.exports = router;
