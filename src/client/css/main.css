@@ -7,27 +7,6 @@ body {
   width: 100%;
 }
 
-.github-signin {
-  color: white;
-  padding: 10px 20px;
-  background-color: #79ADDC;
-  font-size: 25px;
-  border-radius: 10px;
-  transition: all .2s ease-in;
-}
-
-.github-signin:hover {
-  text-decoration: none;
-  background-color: #FFC09F;
-  color: white;
-}
-
-.github-signin i {
-  padding: 0;
-  padding-right: 8px;
-  border-right: 1px solid white;
-}
-
 /*Navbar animation*/
 .navbar-toggle .icon-bar:nth-of-type(2) {
 	top: 1px;
@@ -54,6 +33,14 @@ body {
 .navbar-toggle.active .icon-bar:nth-of-type(3) {
 	top: -6px;
 	transform: rotate(-45deg);
+}
+
+.navbar-collapse {
+  border: none;
+}
+
+.navbar-default .navbar-collapse {
+  border: none;
 }
 
 .error-message h1 {
