@@ -31,11 +31,11 @@ router.get('/:userName/contact', function (req, res, next) {
 });
 
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
+  var user1 = req.params.userName
+  var user2 = req.user.username
   ghPinnedRepos(req.params.userName)
   .then(projectsApiCalls)
   .then((data) => {
-    var user1 = req.params.userName
-    var user2 = req.user.username
     compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects: data, username: req.params.userName}) : res.render('error');
   })
   .catch((err) => console.log(err));
