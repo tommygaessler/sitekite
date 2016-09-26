@@ -46,6 +46,14 @@
       <option value="{{pinnedProjects[loop.index]}}">{{pinnedProjects[loop.index0]}}</option>
       {% endfor %}
     </select>
+    <label for="github_url">Project Repository URL</label>
+    <input type="url" name="github_url" value="" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+    <label for="deployed_url">Deployed URL</label>
+    <input type="text" name="deployed_url" value="" class="form-control" placeholder="http://www.deployed-project.com">
+    <label for="description">Project Description</label>
+    <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project"></textarea>
+    <label for="tools_languages">Tools and Languages Used</label>
+    <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc."></textarea>
   </div>
 </div>
 
