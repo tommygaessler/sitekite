@@ -40,7 +40,7 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
   ghPinnedRepos(req.params.userName)
   .then(projectsApiCalls)
   .then((data) => {
-    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects: data, user: req.user}) : res.render('error');
+    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects: data, user: req.user, username: req.user.username}) : res.render('error');
   })
   .catch((err) => console.log(err));
 });
