@@ -1,13 +1,9 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-<<<<<<< HEAD
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser}
-// test - written : COMPLETE :
-=======
+
 module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects}
 
->>>>>>> d76731b63451cf59182beed7cb56640111debc18
 function get(table) {
   return knex(table);
 }
