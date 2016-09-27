@@ -86,7 +86,7 @@ function getProjects(data) {
   if (!data.length) {
     return Promise.resolve(false);
   }
-  return get('projects').where('user_id', data[0].id)
+  return get('projects').where('user_username', data[0].username)
   .then((projects) => {
     data[0].projects = projects;
     return data;
@@ -120,16 +120,18 @@ function loggedInUser(req, data) {
 }
 
 function addProjects(data, user) {
+  console.log(user);
   var promise = data.map(function (project) {
     return get('projects').insert({
       github_url: project.data.html_url,
       project_name: project.data.name,
       deployed_url: project.data.homepage,
       tools_languages: project.data.language,
-      user_id: user.id
-    })
+      user_username: user.username
+    }).then()
   })
   return Promise.all(promise).then(() => {
+    console.log('things2');
     return user;
   })
 }

@@ -44,6 +44,7 @@ passport.use(new GitHubStrategy({
             return addProjects(data, user[0])
           })
           .then((data) => {
+            console.log(data);
             done(null, data)
           })
         })

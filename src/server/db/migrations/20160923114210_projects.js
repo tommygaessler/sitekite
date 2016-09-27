@@ -7,8 +7,7 @@ exports.up = function(knex, Promise) {
     table.text('tools_languages');
     table.string('project_name');
     table.string('image_url');
-    table.integer('user_id').notNullable();
-    table.foreign('user_id').references('id').inTable('users');
+    table.string('user_username').notNullable();
   });
 };
 
