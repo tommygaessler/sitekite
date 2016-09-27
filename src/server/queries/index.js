@@ -1,7 +1,7 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser}
 
 function get(table) {
   return knex(table);
@@ -108,4 +108,11 @@ function compareUser(user1, user2) {
     return true;
   }
   return false;
+}
+
+function loggedInUser(req, data) {
+  if (req.user && data.length > 0) {
+    data[0].loggedInUser = req.user
+  }
+  return Promise.resolve(data)
 }
