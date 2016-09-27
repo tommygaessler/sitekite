@@ -126,7 +126,8 @@ function addProjects(data, user) {
       project_name: project.data.name,
       deployed_url: project.data.homepage,
       tools_languages: project.data.language,
-      user_username: user.username
+      user_username: user.username,
+      description: project.data.description
     }).then()
   })
   return Promise.all(promise).then(() => {
@@ -142,6 +143,7 @@ function updatePro(body) {
     github_url: body.github_url,
     deployed_url: body.deployed_url,
     description: body.description,
-    tools_languages: body.tools_languages
+    tools_languages: body.tools_languages,
+    image_url: body.image_url
   })
 }

@@ -41,6 +41,7 @@ passport.use(new GitHubStrategy({
           ghPinnedRepos(user[0].username)
           .then(projectsApiCalls)
           .then((data) => {
+            console.log(data);
             return addProjects(data, user[0])
           })
           .then((data) => {
