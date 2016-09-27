@@ -20,7 +20,7 @@ function addUser(body) {
   });
 }
 
-removeUser (username) {
+function removeUser (username) {
   return get('users')
   .where('username', username)
   .del()
