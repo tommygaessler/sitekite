@@ -28,9 +28,24 @@ h3 {
   transition: all .2s ease-in;
 }
 
+.github-signin:link {
+  text-decoration: none;
+  color: white;
+}
+
+.github-signin:visited {
+  text-decoration: none;
+  color: white;
+}
+
 .github-signin:hover {
   text-decoration: none;
   background-color: #FFC09F;
+  color: white;
+}
+
+.github-signin:active {
+  text-decoration: none;
   color: white;
 }
 
@@ -77,9 +92,14 @@ h3 {
   margin: 0;
 }
 
+.themes .col-md-12 p {
+  font-size: 17px;
+}
+
 .theme-row1 {
   background-color: #ADF7B6;
 }
+
 .theme-row2 {
   background-color: #FFEE93;
 }
@@ -89,6 +109,32 @@ h3 {
 
 .themes img {
   width: 100%;
+}
+
+.theme-row1 h2 {
+  font-size: 45px;
+}
+
+.theme-row2 h2 {
+  font-size: 45px;
+}
+
+.theme-row3 h2 {
+  font-size: 45px;
+  color: white;
+}
+
+.theme-row1 p {
+  font-size: 20px;
+}
+
+.theme-row2 p {
+  font-size: 20px;
+}
+
+.theme-row3 p {
+  color: white;
+  font-size: 20px;
 }
 
 .themes .row {
