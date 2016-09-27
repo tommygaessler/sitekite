@@ -49,16 +49,16 @@
       <option value="{{project.pinnedProjects}}">{{project.pinnedProjects}}</option>
       {% endfor %}
     </select>
-    {% for project in projects %}
-    <div class="pinned-project-info" id="project.full_name">
+    {% for project in pinnedProjects %}
+    <div class="pinned-project-info" id="{{project.data.full_name}}">
       <label for="github_url">Project Repository URL</label>
-      <input type="url" name="github_url" value="{{project.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+      <input type="url" name="github_url" value="{{project.data.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
       <label for="deployed_url">Deployed URL</label>
-      <input type="text" name="deployed_url" value="{{project.homepage}}" class="form-control" placeholder="http://www.deployed-project.com">
+      <input type="text" name="deployed_url" value="{{project.data.homepage}}" class="form-control" placeholder="http://www.deployed-project.com">
       <label for="description">Project Description</label>
-      <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
+      <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.data.description}}</textarea>
       <label for="tools_languages">Tools and Languages Used</label>
-      <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.language}}</textarea>
+      <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.data.language}}</textarea>
     </div>
     {% endfor %}
   </div>
