@@ -17,7 +17,24 @@
       $('.top-right-login-icon').addClass('fa-spin fa-fw');
       $('.top-right-login-icon').css({padding: 'none', margin: 'none' })
     });
-
+    // twitter styles
+    if ($('#twitter').val()) {
+      $('.fa-twitter-square').css('color', '#3cf', 'important');
+    }
+    $('#twitter').on('input', function() {
+      if ($('#twitter').val()) {
+        $('.fa-twitter-square').css('color', '#3cf', 'important');
+      }
+    });
+    // linkedin styles
+    if ($('#linkedin').val()) {
+      $('.fa-linkedin-square').css('color', '#0077b5', 'important');
+    }
+    $('#linkedin').on('input', function() {
+      if ($('#linkedin').val()) {
+        $('.fa-linkedin-square').css('color', '#0077b5', 'important');
+      }
+    });
   });
 
 })();
