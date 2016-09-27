@@ -2,11 +2,11 @@ const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
 module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser}
-
+// test - written
 function get(table) {
   return knex(table);
 }
-
+// test - complete (change name)
 function addUser(body) {
   return get('users')
   .where('username', body.username)
@@ -20,12 +20,12 @@ function addUser(body) {
   });
 }
 
-function removeUser (username) {
+removeUser (username) {
   return get('users')
   .where('username', username)
   .del()
 }
-
+// test - written not passing
 function checkForms(body) {
   var ok = true;
   if (!body.email || !body.name || !body.bio_desc) {
@@ -33,7 +33,7 @@ function checkForms(body) {
   }
   return ok;
 }
-//don't define function inside of function
+// test - Waiting for Alex & Austin
 function getGithubInfo (username) {
   return new Promise ((resolve, reject) => {
     var options = {
@@ -51,7 +51,7 @@ function getGithubInfo (username) {
     request(options, response)
   })
 }
-
+// test - waiting for Alex & Austin
 function projectsApiCalls(arr) {
   var promise = arr.map(function (project) {
     return new Promise((resolve, reject) => {
@@ -75,11 +75,11 @@ function projectsApiCalls(arr) {
   // console.log(promise);
   return Promise.all(promise)
 }
-
+// test -
 function userInDb(user) {
   return get('users').where('username', user.username);
 }
-
+// test -
 function getProjects(data) {
   if (!data.length) {
     return Promise.resolve(false);
@@ -90,7 +90,7 @@ function getProjects(data) {
     return data;
   });
 }
-
+// test -
 function checkNewUser(data) {
   if (data.length === 0) {
     return false;
@@ -102,7 +102,7 @@ function checkNewUser(data) {
     }
   }
 }
-
+// test -
 function compareUser(user1, user2) {
   if (user1 === user2) {
     return true;
