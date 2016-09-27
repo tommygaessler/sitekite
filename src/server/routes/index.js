@@ -7,30 +7,42 @@ const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
-  var username = false;
+  var loggedInUser = false;
   if (req.user) {
-    username = req.user.username;
+    loggedInUser = req.user.username;
   }
-  res.render('index', {title: 'SiteKite | Welcome!', username});
+  res.render('index', {title: 'SiteKite | Welcome!', loggedInUser});
 });
 
 router.get('/:username', function (req, res, next) {
+  var loggedInUser = false;
+  if (req.user) {
+    loggedInUser = req.user.username;
+  }
   userInDb(req.params)
-  .then((data) => data.length ? res.status(202).render('home.html', data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
+  .then((data) => data.length ? res.status(202).render('home.html', data[0], loggedInUser) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
 
 router.get('/:username/projects', function (req, res, next) {
+  var loggedInUser = false;
+  if (req.user) {
+    loggedInUser = req.user.username;
+  }
   userInDb(req.params)
   .then(getProjects)
-  .then((data) => data ? res.status(202).render('projects.html', data[0]) : res.status(404).render('error'))
+  .then((data) => data ? res.status(202).render('projects.html', data[0], loggedInUser) : res.status(404).render('error'))
   .catch((error) => console.log(error));
 });
 
 router.get('/:userName/contact', function (req, res, next) {
+  var loggedInUser = false;
+  if (req.user) {
+    loggedInUser = req.user.username;
+  }
   const username = req.params.userName;
   knex('users').where('username', username)
-  .then((user) => res.status(202).render('contact.html', user[0]))
+  .then((user) => res.status(202).render('contact.html', user[0], loggedInUser))
   .catch((error) => console.log(error));
 });
 
