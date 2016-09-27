@@ -96,6 +96,10 @@ h3 {
   font-size: 17px;
 }
 
+.themes .col-md-12 h1 {
+  margin-bottom: 30px;
+}
+
 .theme-row1 {
   background-color: #ADF7B6;
 }
