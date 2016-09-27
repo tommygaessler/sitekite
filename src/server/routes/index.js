@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, getGithubInfo} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
@@ -55,10 +55,9 @@ router.post('/new', function (req, res, next) {
 });
 
 router.delete('/:username', function (req, res, next) {
+  req.logout()
   removeUser(req.params.username)
-  .then(data => {
-    res.redirect('/');
-  });
+  .then(() => res.send('winning'))
 })
 
 module.exports = router;

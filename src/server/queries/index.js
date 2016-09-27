@@ -1,7 +1,7 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, getGithubInfo}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo}
 
 function get(table) {
   return knex(table);
@@ -20,9 +20,9 @@ function addUser(body) {
   });
 }
 
-function removeUser (id) {
+function removeUser (username) {
   return get('users')
-  .where('id', id)
+  .where('username', username)
   .del()
 }
 
@@ -33,7 +33,7 @@ function checkForms(body) {
   }
   return ok;
 }
-
+//don't define function inside of function
 function getGithubInfo (username) {
   return new Promise ((resolve, reject) => {
     var options = {

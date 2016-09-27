@@ -10,11 +10,13 @@ $(document).ready(function() {
   })
 
   $('.delete_account').click(function () {
-      var thespantag = $('.delete_account span')
-      console.log(thespantag);
-    // $.ajax({
-    //   method: DELETE,
-    //   url: '/'
-    // })
+  const username = $('.delete_account span')[0].textContent
+    $.ajax({
+      method: 'DELETE',
+      url: `/${username}`
+    })
+    .done(() => {
+      location.href = '/';
+    })
   })
 })
