@@ -1,7 +1,7 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, userPageApiCall}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, getGithubInfo}
 
 function get(table) {
   return knex(table);
@@ -36,7 +36,7 @@ function checkForms(body) {
   return ok;
 }
 
-function userPageApiCall (username) {
+function getGithubInfo (username) {
   return new Promise ((resolve, reject) => {
     var options = {
       url: `https://api.github.com/users/${username}`,
