@@ -45,7 +45,7 @@ function getGithubInfo (username) {
         console.log('error', error);
       }
       var newBody = JSON.parse(body)
-      resolve({data:newBody})
+      resolve({data: newBody})
       return newBody;
     }
     request(options, response)
@@ -66,7 +66,7 @@ function projectsApiCalls(arr) {
           console.log('error', error);
         }
         var body = JSON.parse(body)
-        resolve({pinnedProjects: project, data:body})
+        resolve({pinnedProjects: project, data: body})
         return body;
       }
       request(options, wtf)
