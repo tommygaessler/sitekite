@@ -30,7 +30,7 @@
         <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
       </div>
       <label for="bio_desc">Bio</label>
-      <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc"></textarea>
+      <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="">{{loggedInUser.bio_desc}}</textarea>
       <label for="contact_desc">Contact Me Message</label>
       <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
       <input type="text" name="username" value="{{loggedInUser.username}}" hidden>
