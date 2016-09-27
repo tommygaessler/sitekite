@@ -7,7 +7,11 @@ const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'SiteKite | Welcome!'});
+  var loggedInUser = false;
+  if (req.user) {
+    loggedInUser = req.user
+  }
+  res.render('index', {title: 'SiteKite | Welcome!', loggedInUser});
 });
 
 router.get('/:username', function (req, res, next) {
