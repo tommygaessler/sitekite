@@ -21,9 +21,11 @@ function addUser(body) {
 }
 
 function removeUser (username) {
-  return get('users')
-  .where('username', username)
-  .del()
+  var userPromiseArr = [
+    get('users')
+    .where('username', username)
+    .del(), get('projects').where('user_username', username).del()]
+  return Promise.all(userPromiseArr)
 }
 // test - written not passing
 function checkForms(body) {
