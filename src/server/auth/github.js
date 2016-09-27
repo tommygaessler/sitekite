@@ -1,9 +1,10 @@
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const bcrypt = require('bcrypt');
-const {getGithubInfo} = require('../queries/index');
+const {getGithubInfo, projectsApiCalls, addProjects} = require('../queries/index');
 const init = require('./init');
 const knex = require('../db/knex');
+const ghPinnedRepos = require('gh-pinned-repos');
 
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
@@ -36,7 +37,16 @@ passport.use(new GitHubStrategy({
           profile_pic_url: userData.data.avatar_url,
           name: userData.data.name,
           email: userData.data.email
-        }).then(() => done(null, user[0]))
+        }).then(() => {
+          ghPinnedRepos(user[0].username)
+          .then(projectsApiCalls)
+          .then((data) => {
+            return addProjects(data, user[0])
+          })
+          .then((data) => {
+            done(null, data)
+          })
+        })
       })
     });
   })
