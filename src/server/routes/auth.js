@@ -9,10 +9,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/logout',
-  authHelpers.loginRedirect,
   (req, res, next) => {
   req.logout();
-  res.redirect('/auth');
+  res.redirect('/');
 });
 
 router.get('/github',
