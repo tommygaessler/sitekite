@@ -37,7 +37,7 @@ function checkForms(body) {
 function getGithubInfo (username) {
   return new Promise ((resolve, reject) => {
     var options = {
-      url: `https://api.github.com/users/${username}`,
+      url: `https://api.github.com/users/${username}?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_KEY}`,
       headers: {'User-Agent': 'request'}
     }
     function response (error, response, body) {

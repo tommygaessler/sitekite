@@ -1,7 +1,7 @@
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const bcrypt = require('bcrypt');
-
+const {getGithubInfo} = require('../queries/index');
 const init = require('./init');
 const knex = require('../db/knex');
 
@@ -29,7 +29,15 @@ passport.use(new GitHubStrategy({
     })
     .returning('*')
     .then((user) => {
-      done(null, user[0]);
+      getGithubInfo(user[0].username)
+      .then((userData) => {
+        knex('users').where('id', user[0].id)
+        .update({
+          profile_pic_url: userData.data.avatar_url,
+          name: userData.data.name,
+          email: userData.data.email
+        }).then(() => done(null, user[0]))
+      })
     });
   })
   .catch((err) => {
