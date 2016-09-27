@@ -62,7 +62,35 @@
     </div>
     {% endfor %}
   </div>
+  <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
+    Delete Account
+  </button>
+</div>
 
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+        Delete Account</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your account? This cannot be undone...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dear God, No!</button>
+        <button type="delete" class="delete_account btn btn-danger"><span>{{username}}</span>Yes, Delete My Account</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

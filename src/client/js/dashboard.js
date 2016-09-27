@@ -3,3 +3,12 @@ $(document).on('change', 'select', function() {
   $('.pinned-project-info').hide();
   $(`div[id*='${id}']`).show();
 });
+
+$('.delete_account').click(function () {
+    var thespantag = $('.delete_account span')
+    console.log(thespantag);
+  // $.ajax({
+  //   method: DELETE,
+  //   url: '/'
+  // })
+})
