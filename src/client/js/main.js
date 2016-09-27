@@ -13,6 +13,11 @@
       });
       $(this).html('<i class="fa fa-github fa-spin fa-fw"></i>');
     });
+    $('.top-right-login').on('click', function () {
+      $('.top-right-login-icon').addClass('fa-spin fa-fw');
+      $('.top-right-login-icon').css({padding: 'none', margin: 'none' })
+    });
+
   });
 
 })();

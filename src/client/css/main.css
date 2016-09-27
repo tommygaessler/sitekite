@@ -54,10 +54,7 @@ body {
   transform: rotate(180deg);
   transition: all 0.3s ease-in-out;
 }
-.navbar-default .navbar-nav>li>a.focus .caret {
-  transform: rotate(180deg);
-  transition: all 0.3s ease-in-out;
-}
+
 .navbar-default .navbar-nav>li>a .caret {
   transition: all 0.3s ease-in-out;
 }
