@@ -2,6 +2,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+img {
+  width: 100%;
+}
+
 .navbar {
   margin-bottom: 0;
   width: 100%;
@@ -54,10 +58,7 @@ body {
   transform: rotate(180deg);
   transition: all 0.3s ease-in-out;
 }
-.navbar-default .navbar-nav>li>a.focus .caret {
-  transform: rotate(180deg);
-  transition: all 0.3s ease-in-out;
-}
+
 .navbar-default .navbar-nav>li>a .caret {
   transition: all 0.3s ease-in-out;
 }
@@ -65,4 +66,10 @@ body {
 .error-message h1 {
   margin-top: 10%;
   font-size: 5rem;
+}
+.github-signin .fa-github {
+  border: none;
+  padding: 0 !important;
+  margin: 0;
+  transition: all 0.5s ease-in-out;
 }
