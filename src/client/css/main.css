@@ -66,3 +66,9 @@ body {
   margin-top: 10%;
   font-size: 5rem;
 }
+.github-signin .fa-github {
+  border: none;
+  padding: 0 !important;
+  margin: 0;
+  transition: all 0.5s ease-in-out;
+}
