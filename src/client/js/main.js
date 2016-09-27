@@ -24,6 +24,8 @@
     $('#twitter').on('input', function() {
       if ($('#twitter').val()) {
         $('.fa-twitter-square').css('color', '#3cf', 'important');
+      } else {
+        $('.fa-twitter-square').css('color', '#6f6f6f', 'important');
       }
     });
     // linkedin styles
@@ -33,6 +35,8 @@
     $('#linkedin').on('input', function() {
       if ($('#linkedin').val()) {
         $('.fa-linkedin-square').css('color', '#0077b5', 'important');
+      } else {
+        $('.fa-twitter-square').css('color', '#6f6f6f', 'important');
       }
     });
   });
