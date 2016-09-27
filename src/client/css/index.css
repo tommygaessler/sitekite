@@ -12,6 +12,26 @@
   background-color: white;
 }
 
+.navbar-default .dropdown-menu {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.navbar-default .dropdown-menu>li>a:hover {
+  background-color: transparent;
+  color: #79ADDC;
+  transition: all .2s ease-in;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #FFC09F;
+  transition: all .2s ease-in;
+}
+
 .navbar-toggle.active .icon-bar:nth-of-type(2) {
     background-color: transparent !important;
 }
