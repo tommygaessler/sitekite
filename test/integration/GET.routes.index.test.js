@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 const server = require('../../src/server/app.js');
 
-describe('routes : index', () => {
+describe('All GET routes : index', () => {
 
   describe('GET /', () => {
     it('should render the landing page: "index.html" ', (done) => {
@@ -40,8 +40,8 @@ describe('routes : index', () => {
       .end((err, res) => {
         res.status.should.equal(404);
         res.type.should.equal('text/html');
-        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>')
-        done()
+        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>');
+        done();
       })
     })
   });
@@ -53,8 +53,8 @@ describe('routes : index', () => {
       .end((err, res) => {
         res.status.should.equal(202);
         res.type.should.equal('text/html');
-        res.text.should.contain('<h1>Projects</h1>')
-        done()
+        res.text.should.contain('<h1>Projects</h1>');
+        done();
       })
     })
     it('should render the error.html page if user exists in the Database', (done) => {
@@ -63,13 +63,22 @@ describe('routes : index', () => {
       .end((err, res) => {
         res.status.should.equal(404);
         res.type.should.equal('text/html');
-        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>')
-        done()
+        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>');
+        done();
       })
     })
   })
 
-  describe('GET /:userName/contact')
-
+  describe('GET /:userName/contact', () => {
+    it('should render the contact.html page if user exists in the Database', (done) => {
+      chai.request(server)
+      .get('/this_is_a_test/contact')
+      .end((err, res) => {
+        res.status.should.equal(202);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>Contact</h1>');
+        done();
+      })
+    })
+  })
 });
-// routes.index.test.js
