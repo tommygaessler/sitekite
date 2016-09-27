@@ -9,66 +9,57 @@
 {% block content %}
 
 <div class="container">
-  <div class="row">
-    <form method="post" action="/new">
+  <form method="post" action="/new">
+    <div class="row">
+
       <div class="col-md-6">
-        <form method="post">
-          <button type="submit" name="button" class="btn btn-success">Save Changes</button>
 
-          <h1>About Me</h1>
+        <h1>About Me</h1>
 
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input required type="text" class="form-control" name="name" id="name" value="{{ loggedInUser.name }}" placeholder="{{ loggedInUser.name }}">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input required type="text" class="form-control" name="name" id="name" value="{{ loggedInUser.name }}" placeholder="{{ loggedInUser.name }}">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input required type="email" class="form-control" name="email" id="email" value="{{ loggedInUser.email }}" placeholder="{{ loggedInUser.email }}">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Profile Pic Url</label>
+          <div class="input-group">
+            <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
+            <div class="input-group-addon preview-button" data-toggle="modal" data-target="#previewModal"><img id="profile_pic" src="{{ loggedInUser.profile_pic_url }}" alt="P" /></div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input required type="email" class="form-control" name="email" id="email" value="{{ loggedInUser.email }}" placeholder="{{ loggedInUser.email }}">
+        <div class="form-group">
+          <label for="twitter">Twitter</label>
+          <div class="input-group">
+            <div class="input-group-addon">twitter.com/</div>
+            <input type="text" class="form-control" name="twitter" id="twitter" placeholder="johndoe13" value="{{ loggedInUser.twitter }}">
+            <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="email">Profile Pic Url</label>
-            <div class="input-group">
-              <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
-              <div class="input-group-addon preview-button" data-toggle="modal" data-target="#previewModal"><img id="profile_pic" src="{{ loggedInUser.profile_pic_url }}" alt="P" /></div>
-            </div>
+        <div class="form-group">
+          <label for="linkedin">LinkedIn</label>
+          <div class="input-group">
+            <div class="input-group-addon">linkedin.com/in/</div>
+            <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ loggedInUser.linkedin }}" placeholder="john-doe">
+            <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="twitter">Twitter</label>
-            <div class="input-group">
-              <div class="input-group-addon">twitter.com/</div>
-              <input type="text" class="form-control" name="twitter" id="twitter" placeholder="johndoe13" value="{{ loggedInUser.twitter }}">
-              <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="bio_desc">Bio</label>
+          <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
+        </div>
 
-          <div class="form-group">
-            <label for="linkedin">LinkedIn</label>
-            <div class="input-group">
-              <div class="input-group-addon">linkedin.com/in/</div>
-              <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ loggedInUser.linkedin }}" placeholder="john-doe">
-              <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="bio_desc">Bio</label>
-            <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
-          </div>
-
-          <h1>Contact</h1>
-
-          <div class="form-group">
-            <label for="contact_desc">Contact Me Message</label>
-            <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
-          </div>
-
-          <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">Delete Account</button>
+
         <h1>Themes</h1>
         <div class="row">
           <div class="col-md-4">
@@ -122,34 +113,72 @@
             </div>
           </div>
         </div>
-      </form>
+        <h1>Contact</h1>
+
+        <div class="form-group">
+          <label for="contact_desc">Contact Me Message</label>
+          <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
+        </div>
+
+        <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
+
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#myModal">Delete Account</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" name="button" class="btn btn-success btn-block">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row margin-bottom">
+    <div class="col-md-6">
       <h1>Projects</h1>
-      <select name="project" class="form-control">
-        <option disabled selected> - Select one of your pinned projects - </option>
-        {% for project in pinnedProjects %}
-        <option value="{{project.project_name}}">{{project.project_name}}</option>
-        {% endfor %}
-      </select>
+      <div class="form-group">
+        <label for="projects">Add Project</label>
+        <select name="project" class="form-control" id="projects">
+          <option disabled selected> - Select one of your pinned projects - </option>
+          {% for project in pinnedProjects %}
+          <option value="{{project.project_name}}">{{project.project_name}}</option>
+          {% endfor %}
+        </select>
+      </div>
       {% for project in pinnedProjects %}
       <div class="pinned-project-info" id="{{project.project_name}}">
         <form class="" action="/editPro" method="post">
+        <div class="form-group">
           <label for="github_url">Project Repository URL</label>
           <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+        </div>
+        <div class="form-group">
           <label for="deployed_url">Deployed URL</label>
-          <input type="text" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
+          <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
+        </div>
+        <div class="form-group">
+          <label for="image_url">Project Image</label>
+          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
           <label for="description">Project Description</label>
           <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
+        </div>
+        <div class="form-group">
           <label for="tools_languages">Tools and Languages Used</label>
           <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.tools_languages}}</textarea>
+        </div>
+
           <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+
           <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
-          <input type="submit">
+
+          <button type="submit" class="btn btn-success btn-block">Add Project</button>
         </form>
       </div>
       {% endfor %}
     </div>
   </div>
-</div>
 
 <!-- Delete Account Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
