@@ -10,7 +10,6 @@
     <h1>Projects</h1>
     {% for project in projects %}
       <h2>{{project.project_name}}</h2>
-      {{project | dump}}
       <p>
         {{project.github_url}}
       </p>
