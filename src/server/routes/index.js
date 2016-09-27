@@ -35,8 +35,7 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
   var user2 = req.user.username
   getGithubInfo(user2)
   .then((userData) => {
-    console.log(userData);
-    ghPinnedRepos(req.params.userName)
+    ghPinnedRepos(user2)
     .then(projectsApiCalls)
     .then((projectData) => {
       compareUser(user1, user2) ? res.render('dashboard', {
