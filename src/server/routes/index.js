@@ -45,6 +45,7 @@ router.post('/new', function (req, res, next) {
   if (!checkForms(req.body)) {
     res.send('fill in all the fields');
   } else {
+    console.log(req.body);
     addUser(req.body)
     .then(() => res.redirect(`/${req.body.username}`));
   }
