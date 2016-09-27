@@ -43,6 +43,15 @@ body {
   border: none;
 }
 
+/*Navbar dropdown animation*/
+.navbar-default .navbar-nav>li>a.active .caret {
+  transform: rotate(180deg);
+  transition: all 0.3s ease-in-out;
+}
+.navbar-default .navbar-nav>li>a .caret {
+  transition: all 0.3s ease-in-out;
+}
+
 .error-message h1 {
   margin-top: 10%;
   font-size: 5rem;
