@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, userPageApiCall} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, getGithubInfo} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
@@ -12,18 +12,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => {
-    if (data.length) {
-      userPageApiCall(req.params.username)
-      .then((userData) => {
-        data[0].profile_pic_url = userData.data.avatar_url
-        res.status(202).render('home.html', data[0])
-      })
-
-    } else {
-     res.status(404).render('error', {message: 'No User Found', status: 404})
-    }
-  })
+  .then((data) => data.length ? res.status(202).render('home.html', data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
 
@@ -44,10 +33,20 @@ router.get('/:userName/contact', function (req, res, next) {
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
   var user1 = req.params.userName
   var user2 = req.user.username
-  ghPinnedRepos(req.params.userName)
-  .then(projectsApiCalls)
-  .then((data) => {
-    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects: data, username: req.params.userName}) : res.render('error');
+  getGithubInfo(user2)
+  .then((userData) => {
+    console.log(userData);
+    ghPinnedRepos(req.params.userName)
+    .then(projectsApiCalls)
+    .then((projectData) => {
+      compareUser(user1, user2) ? res.render('dashboard', {
+        pinnedProjects: projectData,
+        username: userData.data.login,
+        profile_pic_url: userData.data.avatar_url,
+        name: userData.data.name,
+        email: userData.data.email
+      }) : res.render('error');
+    })
   })
   .catch((err) => console.log(err));
 });
