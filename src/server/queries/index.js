@@ -28,10 +28,8 @@ function removeUser (id) {
 
 function checkForms(body) {
   var ok = true;
-  for (var key in body) {
-    if (body[key].length === 0 && key !== 'button') {
-      ok = false;
-    }
+  if (!body.email || !body.name || !body.bio_desc) {
+    ok = false;
   }
   return ok;
 }
@@ -42,7 +40,7 @@ function getGithubInfo (username) {
       url: `https://api.github.com/users/${username}`,
       headers: {'User-Agent': 'request'}
     }
-    function wtf (error, response, body) {
+    function response (error, response, body) {
       if (error) {
         console.log('error', error);
       }
@@ -50,7 +48,7 @@ function getGithubInfo (username) {
       resolve({data:newBody})
       return newBody;
     }
-    request(options, wtf)
+    request(options, response)
   })
 }
 
