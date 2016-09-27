@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
   $('select').change(function() {
-    var thingname = $(this).val().split('/')[1];
+    var thingname = $(this).val();
     console.log(thingname);
     $('.pinned-project-info').fadeOut(100);
     setTimeout(function() {
