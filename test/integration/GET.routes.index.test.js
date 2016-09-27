@@ -51,12 +51,25 @@ describe('routes : index', () => {
       chai.request(server)
       .get('/this_is_a_test/projects')
       .end((err, res) => {
-        // res.status.should.equal(202);
+        res.status.should.equal(202);
         res.type.should.equal('text/html');
         res.text.should.contain('<h1>Projects</h1>')
         done()
       })
     })
+    it('should render the error.html page if user exists in the Database', (done) => {
+      chai.request(server)
+      .get('/t/projects')
+      .end((err, res) => {
+        res.status.should.equal(404);
+        res.type.should.equal('text/html');
+        res.text.should.contain('<h1>Whoops. Something is wonky here.</h1>')
+        done()
+      })
+    })
   })
 
+  describe('GET /:userName/contact')
+
 });
+// routes.index.test.js

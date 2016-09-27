@@ -23,7 +23,7 @@ router.get('/:username', function (req, res, next) {
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
-  .then((data) => data ? res.render('projects.html', data[0]) : res.send('Error'))
+  .then((data) => data ? res.status(202).render('projects.html', data[0]) : res.status(404).render('error'))
   .catch((error) => console.log(error));
 });
 
