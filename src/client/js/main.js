@@ -39,6 +39,13 @@
         $('.fa-linkedin-square').css('color', '#6f6f6f');
       }
     });
+
+    $('#profile_pic_url').on('input', function() {
+      var url = $(this).val();
+      $('#preview-image').attr('src', url);
+      $('#profile_pic').attr('src', url);
+    });
+
   });
 
 })();

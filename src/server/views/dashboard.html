@@ -19,7 +19,11 @@
         <label for="email">Email Address</label>
         <input required type="email" class="form-control" name="email" id="email" value="{{ loggedInUser.email }}" placeholder="{{ loggedInUser.email }}">
         <label for="email">Profile Pic Url</label>
-        <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
+        <div class="input-group">
+          <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
+          <div class="input-group-addon preview-button" data-toggle="modal" data-target="#previewModal"><img id="profile_pic" src="{{ loggedInUser.profile_pic_url }}" alt="P" /></div>
+        </div>
+
         <label for="twitter">Twitter</label>
         <div class="input-group">
           <div class="input-group-addon">twitter.com/</div>
@@ -121,6 +125,7 @@
   </div>
 </div>
 
+<!-- Delete Account Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -137,6 +142,20 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Dear God, No!</button>
         <button type="delete" class="delete_account btn btn-danger"><span hidden>{{username}}</span>Yes, Delete My Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Picture preview Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="previewModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img class="img-responsive" src="{{ loggedInUser.profile_pic_url }}" alt="This Picture isn't working. Try another!" id="preview-image">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
