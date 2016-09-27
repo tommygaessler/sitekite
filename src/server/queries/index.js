@@ -6,7 +6,7 @@ module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects,
 function get(table) {
   return knex(table);
 }
-// test - complete (change name)
+// test - :COMPLETE: (change name)
 function addUser(body) {
   return get('users')
   .where('username', body.username)
@@ -27,7 +27,7 @@ function removeUser (username) {
     .del(), get('projects').where('user_username', username).del()]
   return Promise.all(userPromiseArr)
 }
-// test - written not passing
+// test - :COMPLETED:
 function checkForms(body) {
   var ok = true;
   if (!body.email || !body.name || !body.bio_desc) {
@@ -77,7 +77,7 @@ function projectsApiCalls(arr) {
   // console.log(promise);
   return Promise.all(promise)
 }
-// test -
+// test - written and passes :complete:
 function userInDb(user) {
   return get('users').where('username', user.username);
 }
@@ -111,7 +111,7 @@ function compareUser(user1, user2) {
   }
   return false;
 }
-
+// test - ?
 function loggedInUser(req, data) {
   if (req.user && data.length > 0) {
     data[0].loggedInUser = req.user

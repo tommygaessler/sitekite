@@ -1,3 +1,10 @@
 .pinned-project-info {
   display: none;
 }
+.preview-button {
+  cursor: pointer;
+  padding: 3px 8px;
+}
+#profile_pic {
+  width: 21px;
+}

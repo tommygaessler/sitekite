@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'test';
 
+// const knex = require('../../src/server/db/knex');
 const chai = require('chai');
 const expect = chai.expect;
 const chaiHttp = require('chai-http');
@@ -20,7 +21,6 @@ const test_user = {
 const bad_test_user = {
   username: 'this_is_a_failed_test',
   name: 'example_isaac',
-  email: 'example@test.com',
   twitter: 'twitter.com/testIsaac',
   linkedin: 'linkedin.com/in/testIsaac',
   bio_desc: 'something about me',
@@ -29,9 +29,13 @@ const bad_test_user = {
 
 describe('Queries : index.js', () => {
   // need help
-  xdescribe('function: get()', () => {
-    it('should return the table passed in, if the table exists', (done) => {
-      expect(query.get('site_builder_test')).to.deep.equal('congrats!')
+  describe('function: get()', () => {
+    it('should return the table passed in, if the table exists', () => {
+      // expect(query.get('site_builder_test')).to.deep.equal('congrats!')
+      return query.get('users')
+      .then((thing) => {
+        expect(thing[0]).to.contain.keys('id','username', 'github_token')
+      })
     })
   })
 
@@ -62,13 +66,11 @@ describe('Queries : index.js', () => {
     })
   })
 
-  xdescribe('function: checkForms()', () => {
+  describe('function: checkForms()', () => {
     it('should validate that the user has the expected fields filled out properly', (done) => {
-      query.checkForms(test_user)
-      .then((user) => {
-        expect(user).to.equal(1)
-        done()
-      })
+      expect(query.checkForms(test_user)).to.equal(true)
+      expect(query.checkForms(bad_test_user)).to.equal(false)
+      done()
     })
   })
 
