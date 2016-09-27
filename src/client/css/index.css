@@ -8,60 +8,101 @@
   flex-direction: column;
 }
 h1, h2 {
-  text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
+  /*text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;*/
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+h3 {
+  text-align: center;
+}
+
+.github-signin {
+  color: white;
+  padding: 10px 20px;
+  background-color: #79ADDC;
+  font-size: 25px;
+  border-radius: 10px;
+  transition: all .2s ease-in;
+}
+
+.github-signin:hover {
+  text-decoration: none;
+  background-color: #FFC09F;
+  color: white;
+}
+
+.github-signin i {
+  padding: 0;
+  padding-right: 8px;
+  border-right: 1px solid white;
+}
+
+.portrait {
+  width: 50%;
+  margin: auto;
+  display: block;
+  border-radius: 50%;
+}
+
+.team-text {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.margin-team {
+  margin-bottom: 40px;
+}
+
+.team-link {
+  transition: all .2s ease-in;
+  color: #79ADDC;
+}
+
+.team-link:hover {
+  color: #FFC09F;
+  text-decoration: none;
 }
 
 .jumbotron {
-  background: url('../img/splash_code.jpeg');
+  background-image: url('../img/kite.jpg');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
   color: white;
-  margin-bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-row1 {
+  background-color: #ADF7B6;
+}
+.theme-row2 {
+  background-color: #FFEE93;
+}
+.theme-row3 {
+  background-color: #79ADDC;
+}
+
+.themes img {
+  width: 100%;
+}
+
+.themes .row {
+  padding: 40px;
 }
 
 @media only screen and (max-width : 768px) {
-  .navbar-collapse {
+  /*.navbar-collapse {
     background: black;
     text-align: center;
-  }
+  }*/
 }
 
 .navbar {
   position: absolute;
   background-color: transparent;
-}
-
-.fa-github {
-  padding-top: 7px;
-}
-
-.btn-github {
-  border-radius: .5em;
-}
-
-.footer {
-  background: dimgrey;
-}
-
-.dev {
-  background-color: dimgray;
-}
-
-.portrait {
-  display: block;
-  margin: auto;
-  padding-top: 10px;
-  border-radius: 50%;
-  width: 150px;
-}
-
-.devDiv {
-  display: block;
-  background-color: #ADF7B6;
-  height: 350px;
-  margin: 23px;
-}
-
-.devDiv a {
-  color: black;
-  text-align: center;
-  text-decoration: none;
 }
