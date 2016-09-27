@@ -1,8 +1,7 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro}
 
 function get(table) {
   return knex(table);
@@ -121,7 +120,6 @@ function loggedInUser(req, data) {
 }
 
 function addProjects(data, user) {
-  console.log(user);
   var promise = data.map(function (project) {
     return get('projects').insert({
       github_url: project.data.html_url,
@@ -132,7 +130,18 @@ function addProjects(data, user) {
     }).then()
   })
   return Promise.all(promise).then(() => {
-    console.log('things2');
     return user;
+  })
+}
+
+function updatePro(body) {
+  return get('projects')
+  .where('user_username', body.username)
+  .where('project_name', body.old_projectname)
+  .update({
+    github_url: body.github_url,
+    deployed_url: body.deployed_url,
+    description: body.description,
+    tools_languages: body.tools_languages
   })
 }

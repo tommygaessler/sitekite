@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 
 
@@ -40,8 +40,10 @@ router.get('/:userName/contact', function (req, res, next) {
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
   var user1 = req.params.userName
   var user2 = req.user.username
-
-  compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username}) : res.render('error');
+  getProjects([req.user])
+  .then((data) => {
+    compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects}) : res.render('error');
+  })
   // .catch((err) => console.log(err));
 });
 
@@ -53,6 +55,12 @@ router.post('/new', function (req, res, next) {
     .then(() => res.redirect(`/${req.body.username}`));
   }
 });
+
+router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
+  console.log(req.user);
+  updatePro(req.body)
+  .then(() => res.redirect(`/${req.user.username}/dashboard`))
+})
 
 router.delete('/:username', function (req, res, next) {
   req.logout()
