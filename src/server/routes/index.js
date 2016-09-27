@@ -7,7 +7,11 @@ const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'SiteKite | Make a Portfolio'});
+  var username = false;
+  if (req.user) {
+    username = req.user.username;
+  }
+  res.render('index', {title: 'SiteKite | Make a Portfolio', username});
 });
 
 router.get('/:username', function (req, res, next) {
@@ -33,19 +37,10 @@ router.get('/:userName/contact', function (req, res, next) {
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
   var user1 = req.params.userName
   var user2 = req.user.username
-  getGithubInfo(user2)
-  .then((userData) => {
-    ghPinnedRepos(user2)
-    .then(projectsApiCalls)
-    .then((projectData) => {
-      compareUser(user1, user2) ? res.render('dashboard', {
-        pinnedProjects: projectData,
-        username: userData.data.login,
-        profile_pic_url: userData.data.avatar_url,
-        name: userData.data.name,
-        email: userData.data.email
-      }) : res.render('error');
-    })
+  ghPinnedRepos(req.params.userName)
+  .then(projectsApiCalls)
+  .then((data) => {
+    compareUser(user1, user2) ? res.render('dashboard', {pinnedProjects: data, user: req.user}) : res.render('error');
   })
   .catch((err) => console.log(err));
 });

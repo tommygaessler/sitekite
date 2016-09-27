@@ -14,9 +14,9 @@
     <h1>About Me</h1>
     <form method="post">
       <label for="name">Full Name</label>
-      <input required type="text" class="form-control" name="name" id="name" value="{{name}}" placeholder="{{name}}">
+      <input required type="text" class="form-control" name="name" id="name" value="{{user.name}}" placeholder="{{name}}">
       <label for="email">Email Address</label>
-      <input required type="email" class="form-control" name="email" id="email" value="{{email}}" placeholder="{{email}}">
+      <input required type="email" class="form-control" name="email" id="email" value="{{user.email}}" placeholder="{{email}}">
       <label for="twitter">Twitter</label>
       <div class="input-group">
         <div class="input-group-addon">twitter.com/</div>
@@ -34,7 +34,6 @@
       <label for="contact_desc">Contact Me Message</label>
       <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
       <input type="text" name="username" value="{{username}}" hidden>
-      <input type="text" name="profile_pic_url" value="{{profile_pic_url}}" hidden>
       <button type="submit" name="button">Submit</button>
     </form>
   </div>
