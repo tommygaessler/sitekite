@@ -10,7 +10,7 @@ $(document).ready(function() {
   })
 
   $('.delete_account').click(function () {
-  const username = $('.delete_account span')[0].textContent
+    const username = $('.delete_account span')[0].textContent
     $.ajax({
       method: 'DELETE',
       url: `/${username}`
