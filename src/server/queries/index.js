@@ -1,8 +1,13 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
+<<<<<<< HEAD
 module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser}
 // test - written : COMPLETE :
+=======
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects}
+
+>>>>>>> d76731b63451cf59182beed7cb56640111debc18
 function get(table) {
   return knex(table);
 }
@@ -20,10 +25,12 @@ function addUser(body) {
   });
 }
 
-function removeUser(username) {
-  return get('users')
-  .where('username', username)
-  .del()
+function removeUser (username) {
+  var userPromiseArr = [
+    get('users')
+    .where('username', username)
+    .del(), get('projects').where('user_username', username).del()]
+  return Promise.all(userPromiseArr)
 }
 // test - :COMPLETED:
 function checkForms(body) {
@@ -84,7 +91,7 @@ function getProjects(data) {
   if (!data.length) {
     return Promise.resolve(false);
   }
-  return get('projects').where('user_id', data[0].id)
+  return get('projects').where('user_username', data[0].username)
   .then((projects) => {
     data[0].projects = projects;
     return data;
@@ -115,4 +122,21 @@ function loggedInUser(req, data) {
     data[0].loggedInUser = req.user
   }
   return Promise.resolve(data)
+}
+
+function addProjects(data, user) {
+  console.log(user);
+  var promise = data.map(function (project) {
+    return get('projects').insert({
+      github_url: project.data.html_url,
+      project_name: project.data.name,
+      deployed_url: project.data.homepage,
+      tools_languages: project.data.language,
+      user_username: user.username
+    }).then()
+  })
+  return Promise.all(promise).then(() => {
+    console.log('things2');
+    return user;
+  })
 }

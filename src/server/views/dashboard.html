@@ -9,69 +9,118 @@
 {% block content %}
 
 <div class="container">
-  <form method="post" action="/new">
-  <div class="col-md-6">
-    <h1>About Me</h1>
-    <form method="post">
-      <label for="name">Full Name</label>
-      <input required type="text" class="form-control" name="name" id="name" value="{{loggedInUser.name}}" placeholder="{{loggedInUser.name}}">
-      <label for="email">Email Address</label>
-      <input required type="email" class="form-control" name="email" id="email" value="{{loggedInUser.email}}" placeholder="{{loggedInUser.email}}">
-      <label for="twitter">Twitter</label>
-      <div class="input-group">
-        <div class="input-group-addon">twitter.com/</div>
-        <input type="text" class="form-control" name="twitter" id="twitter" value="" placeholder="johndoe13">
-        <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
-      </div>
-      <label for="linkedin">LinkedIn</label>
-      <div class="input-group">
-        <div class="input-group-addon">linkedin.com/in/</div>
-        <input type="text" class="form-control" name="linkedin" id="linkedin" value="" placeholder="john-doe">
-        <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
-      </div>
-      <label for="bio_desc">Bio</label>
-      <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc"></textarea>
-      <label for="contact_desc">Contact Me Message</label>
-      <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
-      <input type="text" name="username" value="{{loggedInUser.username}}" hidden>
-      <button type="submit" name="button">Submit</button>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h1>Portfolio Styling</h1>
-    <h1>Background Picture</h1>
-  </div>
-  <div class="col-md-6">
-    <h1>Projects</h1>
-    <select name="project" class="form-control">
-      <option disabled selected> - Select one of your pinned projects - </option>
-      {% for project in pinnedProjects %}
-      <option value="{{project.pinnedProjects}}">{{project.pinnedProjects}}</option>
-      {% endfor %}
-    </select>
-    {% for project in pinnedProjects %}
-    <div class="pinned-project-info" id="{{project.data.name}}">
-      <label for="github_url">Project Repository URL</label>
-      <input type="url" name="github_url" value="{{project.data.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
-      <label for="deployed_url">Deployed URL</label>
-      <input type="text" name="deployed_url" value="{{project.data.homepage}}" class="form-control" placeholder="http://www.deployed-project.com">
-      <label for="description">Project Description</label>
-      <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.data.description}}</textarea>
-      <label for="tools_languages">Tools and Languages Used</label>
-      <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.data.language}}</textarea>
+  <div class="row">
+    <form method="post" action="/new">
+    <div class="col-md-6">
+      <h1>About Me</h1>
+      <form method="post">
+        <label for="name">Full Name</label>
+        <input required type="text" class="form-control" name="name" id="name" value="{{ loggedInUser.name }}" placeholder="{{ loggedInUser.name }}">
+        <label for="email">Email Address</label>
+        <input required type="email" class="form-control" name="email" id="email" value="{{ loggedInUser.email }}" placeholder="{{ loggedInUser.email }}">
+        <label for="email">Profile Pic Url</label>
+        <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
+        <label for="twitter">Twitter</label>
+        <div class="input-group">
+          <div class="input-group-addon">twitter.com/</div>
+          <input type="text" class="form-control" name="twitter" id="twitter" placeholder="johndoe13" value="{{ loggedInUser.twitter }}">
+          <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
+        </div>
+        <label for="linkedin">LinkedIn</label>
+        <div class="input-group">
+          <div class="input-group-addon">linkedin.com/in/</div>
+          <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ loggedInUser.linkedin }}" placeholder="john-doe">
+          <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
+        </div>
+        <label for="bio_desc">Bio</label>
+        <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
+        <h1>Contact</h1>
+        <label for="contact_desc">Contact Me Message</label>
+        <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
+        <input type="text" name="username" value="{{loggedInUser.username}}" hidden>
+        <button type="submit" name="button">Submit</button>
+      </form>
     </div>
-    {% endfor %}
+    <div class="col-md-6">
+      <h1>Themes</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="theme_name" value="themeNameHere1" />
+              <img src="/img/theme1.jpg">
+            </label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="theme_name" value="themeNameHere2" />
+              <img src="/img/theme1.jpg">
+            </label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="theme_name" value="themeNameHere3" />
+              <img src="/img/theme1.jpg">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="theme_name" value="themeNameHere4" />
+              <img src="/img/theme1.jpg">
+            </label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="theme_name" value="themeNameHere5" />
+              <img src="/img/theme1.jpg">
+            </label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="theme_name" value="themeNameHere6" />
+              <img src="/img/theme1.jpg">
+            </label>
+          </div>
+        </div>
+      </div>
+      <h1>Projects</h1>
+      <select name="project" class="form-control">
+        <option disabled selected> - Select one of your pinned projects - </option>
+        {% for project in pinnedProjects %}
+        <option value="{{project.pinnedProjects}}">{{project.pinnedProjects}}</option>
+        {% endfor %}
+      </select>
+      {% for project in pinnedProjects %}
+      <div class="pinned-project-info" id="{{project.data.name}}">
+        <label for="github_url">Project Repository URL</label>
+        <input type="url" name="github_url" value="{{project.data.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+        <label for="deployed_url">Deployed URL</label>
+        <input type="text" name="deployed_url" value="{{project.data.homepage}}" class="form-control" placeholder="http://www.deployed-project.com">
+        <label for="description">Project Description</label>
+        <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.data.description}}</textarea>
+        <label for="tools_languages">Tools and Languages Used</label>
+        <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.data.language}}</textarea>
+      </div>
+      {% endfor %}
+    </div>
+    <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
+      Delete Account
+    </button>
   </div>
-  <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
-    Delete Account
-  </button>
 </div>
 
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
