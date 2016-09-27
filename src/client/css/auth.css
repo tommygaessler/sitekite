@@ -1,0 +1,9 @@
+.jumbotron {
+  background-image: url('../img/sky.jpg');
+}
+.go-home {
+  color: white;
+}
+.go-home:hover {
+  color: #FFEE93;
+}
