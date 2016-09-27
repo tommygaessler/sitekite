@@ -50,7 +50,7 @@
       {% endfor %}
     </select>
     {% for project in pinnedProjects %}
-    <div class="pinned-project-info" id="{{project.data.full_name}}">
+    <div class="pinned-project-info" id="{{project.data.name}}">
       <label for="github_url">Project Repository URL</label>
       <input type="url" name="github_url" value="{{project.data.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
       <label for="deployed_url">Deployed URL</label>
