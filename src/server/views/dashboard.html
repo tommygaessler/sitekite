@@ -14,9 +14,9 @@
     <h1>About Me</h1>
     <form method="post">
       <label for="name">Full Name</label>
-      <input required type="text" class="form-control" name="name" id="name" value="{{user.name}}" placeholder="{{name}}">
+      <input required type="text" class="form-control" name="name" id="name" value="{{loggedInUser.name}}" placeholder="{{loggedInUser.name}}">
       <label for="email">Email Address</label>
-      <input required type="email" class="form-control" name="email" id="email" value="{{user.email}}" placeholder="{{email}}">
+      <input required type="email" class="form-control" name="email" id="email" value="{{loggedInUser.email}}" placeholder="{{loggedInUser.email}}">
       <label for="twitter">Twitter</label>
       <div class="input-group">
         <div class="input-group-addon">twitter.com/</div>
@@ -30,10 +30,10 @@
         <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
       </div>
       <label for="bio_desc">Bio</label>
-      <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page"></textarea>
+      <textarea required name="bio_desc" id="bio_desc" rows="5" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc"></textarea>
       <label for="contact_desc">Contact Me Message</label>
       <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page"></textarea>
-      <input type="text" name="username" value="{{username}}" hidden>
+      <input type="text" name="username" value="{{loggedInUser.username}}" hidden>
       <button type="submit" name="button">Submit</button>
     </form>
   </div>
@@ -50,7 +50,7 @@
       {% endfor %}
     </select>
     {% for project in pinnedProjects %}
-    <div class="pinned-project-info" id="{{project.data.full_name}}">
+    <div class="pinned-project-info" id="{{project.data.name}}">
       <label for="github_url">Project Repository URL</label>
       <input type="url" name="github_url" value="{{project.data.html_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
       <label for="deployed_url">Deployed URL</label>
@@ -62,7 +62,35 @@
     </div>
     {% endfor %}
   </div>
+  <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
+    Delete Account
+  </button>
+</div>
 
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+        Delete Account</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your account? This cannot be undone...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dear God, No!</button>
+        <button type="delete" class="delete_account btn btn-danger"><span hidden>{{username}}</span>Yes, Delete My Account</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

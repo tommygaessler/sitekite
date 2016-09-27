@@ -1,8 +1,8 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, projectsApiCalls, getGithubInfo}
-// test - written not passing
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser}
+// test - written
 function get(table) {
   return knex(table);
 }
@@ -19,10 +19,10 @@ function addUser(body) {
     contact_desc: body.contact_desc
   });
 }
-// test - written not passing
-function removeUser (id) {
+
+removeUser (username) {
   return get('users')
-  .where('id', id)
+  .where('username', username)
   .del()
 }
 // test - written not passing
@@ -45,7 +45,7 @@ function getGithubInfo (username) {
         console.log('error', error);
       }
       var newBody = JSON.parse(body)
-      resolve({data:newBody})
+      resolve({data: newBody})
       return newBody;
     }
     request(options, response)
@@ -66,7 +66,7 @@ function projectsApiCalls(arr) {
           console.log('error', error);
         }
         var body = JSON.parse(body)
-        resolve({pinnedProjects: project, data:body})
+        resolve({pinnedProjects: project, data: body})
         return body;
       }
       request(options, wtf)
@@ -108,4 +108,11 @@ function compareUser(user1, user2) {
     return true;
   }
   return false;
+}
+
+function loggedInUser(req, data) {
+  if (req.user && data.length > 0) {
+    data[0].loggedInUser = req.user
+  }
+  return Promise.resolve(data)
 }

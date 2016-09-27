@@ -9,10 +9,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/logout',
-  authHelpers.loginRedirect,
   (req, res, next) => {
   req.logout();
-  res.redirect('/auth');
+  res.redirect('/');
 });
 
 router.get('/github',
@@ -26,7 +25,7 @@ router.get('/github/callback',
   passportGithub.authenticate('github', { failureRedirect: '/' }), (req, res, next) => {
     // Successful authentication
     userInDb(req.user)
-    .then((data) => res.redirect(`/${data[0].username}/dashboard`));
+    .then((data) => res.redirect(`/${data[0].username}`));
   });
 
 module.exports = router;

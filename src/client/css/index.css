@@ -7,8 +7,41 @@
   justify-content: center;
   flex-direction: column;
 }
-h1, h2 {
-  /*text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;*/
+
+.navbar .navbar-toggle:hover .icon-bar {
+  background-color: white;
+}
+
+.navbar-default .dropdown-menu {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.navbar-default .dropdown-menu>li>a:hover {
+  background-color: transparent;
+  color: #79ADDC;
+  transition: all .2s ease-in;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #FFC09F;
+  transition: all .2s ease-in;
+}
+
+.navbar-toggle.active .icon-bar:nth-of-type(2) {
+    background-color: transparent !important;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:active, .navbar-default .navbar-nav>.open>a:link, .navbar-default .navbar-nav>.open>a:visited {
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+  background-color: transparent;
 }
 
 h2 {
@@ -52,7 +85,6 @@ h3 {
 .github-signin i {
   padding: 0;
   padding-right: 8px;
-  border-right: 1px solid white;
 }
 
 .portrait {
@@ -94,6 +126,10 @@ h3 {
 
 .themes .col-md-12 p {
   font-size: 17px;
+}
+
+.themes .col-md-12 h1 {
+  margin-bottom: 30px;
 }
 
 .theme-row1 {
