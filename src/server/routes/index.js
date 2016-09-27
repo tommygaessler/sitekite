@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
   if (req.user) {
     username = req.user.username;
   }
-  res.render('index', {title: 'SiteKite | Make a Portfolio', username});
+  res.render('index', {title: 'SiteKite | Welcome!', username});
 });
 
 router.get('/:username', function (req, res, next) {
