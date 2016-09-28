@@ -137,6 +137,10 @@ function addProjects(data, user) {
 }
 // test - ?
 function addNewPro(body) {
+  console.log(body.name.replace(/[^A-Za-z]/g, '').length);
+  if (body.name.replace(/[^A-Za-z]/g, '').length == 0) {
+    return Promise.resolve(false);
+  }
   return get('projects').insert({
     github_url: body.github_url,
     project_name: body.name,
@@ -163,6 +167,5 @@ function updatePro(body) {
 }
 
 function removePro(projectName) {
-  console.log(projectName);
   return get('projects').where('project_name', projectName).del()
 }
