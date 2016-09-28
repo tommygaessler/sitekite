@@ -15,6 +15,6 @@ $(document).ready(function() {
     })
     .done(() => {
       location.href = '/';
-    })
-  })
-})
+    });
+  });
+});

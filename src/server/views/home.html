@@ -1,17 +1,24 @@
 {% extends "_base.html" %}
 
 {% block title %}{% endblock %}
-{% block css %}<link rel="stylesheet" href="/css/tommy.css">{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/css/tommy.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+{% endblock %}
 {% block content %}
 
   {% include "_side.html" %}
 
   <div class="main">
     <h1>About Me</h1>
-    <p>{% if bio_desc %}{{ bio_desc }}{% else %}
+    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }} {% else %}
       Yr sartorial lomo, kombucha four loko truffaut kogi meggings whatever deep v before they sold out. Ennui pinterest chillwave, forage humblebrag retro jean shorts bitters cronut raw denim before they sold out tilde. Vegan pinterest 90's, stumptown man bun jianbing succulents. Intelligentsia locavore tumblr art party, etsy drinking vinegar fam iceland migas unicorn readymade salvia. 8-bit post-ironic fap banh mi. Selvage chillwave offal lo-fi crucifix squid master cleanse, meditation dreamcatcher. Gastropub skateboard meditation, pour-over jean shorts salvia church-key kale chips meh.
       {% endif %}
     </p>
   </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="./js/home.js"></script>
 {% endblock %}
