@@ -1,17 +1,24 @@
 {% extends "_base.html" %}
 
 {% block title %}{% endblock %}
-{% block css %}<link rel="stylesheet" href="/css/tommy.css">{% endblock %}
+{% block css %}<link rel="stylesheet" href="/css/themes/tommy/tommy.css">{% endblock %}
 {% block content %}
 
-  {% include "_side.html" %}
+  {% include "./_side.html" %}
 
   <div class="main">
     <h1>Projects</h1>
     {% for project in projects %}
-    <p>
-      {{project.project_name}}
-    </p>
+      <h2>{{project.project_name}}</h2>
+      <p>
+        {{project.github_url}}
+      </p>
+      <p>
+        Written with: {{project.tools_languages}}
+      </p>
+      <p>
+        description: {{project.description}}
+      </p>
     {% endfor %}
   </div>
 

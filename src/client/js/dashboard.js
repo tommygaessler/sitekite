@@ -1,12 +1,10 @@
-
 $(document).ready(function() {
   $('select').change(function() {
-    var thingname = $(this).val().split('/')[1];
-    console.log(thingname);
-    $('.pinned-project-info').fadeOut(100);
+    var thingname = $(this).val();
+    $('.pinned-project-info').fadeOut(1);
     setTimeout(function() {
-      $(`#${thingname}`).fadeIn(100)
-    }, 100)
+      $(`#${thingname}`).fadeIn(1)
+    }, 1)
   })
 
   $('.delete_account').click(function () {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 
 
@@ -40,9 +40,11 @@ router.get('/:userName/contact', function (req, res, next) {
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
   var user1 = req.params.userName
   var user2 = req.user.username
-
-  compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username}) : res.render('error');
-  // .catch((err) => console.log(err));
+  getProjects([req.user])
+  .then((data) => {
+    compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects}) : res.render('error');
+  })
+  .catch((err) => res.send(err));
 });
 
 router.post('/new', function (req, res, next) {
@@ -54,10 +56,17 @@ router.post('/new', function (req, res, next) {
   }
 });
 
-router.delete('/:username', function (req, res, next) {
+router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
+  updatePro(req.body)
+  .then(() => res.redirect(`/${req.user.username}/dashboard`))
+})
+
+router.delete('/:username', authHelpers.authRequired, function (req, res, next) {
+  var user1 = req.params.userName
+  var user2 = req.user.username
   req.logout()
   removeUser(req.params.username)
-  .then(() => res.send('winning'))
+  .then(() => compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))
 })
 
 module.exports = router;
