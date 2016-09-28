@@ -144,6 +144,11 @@
           <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
           {% endfor %}
         </select>
+        <form class="" action="/importing" method="post">
+          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+          <input type="submit" value="Imports">
+        </form>
+
       </div>
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">

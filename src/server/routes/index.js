@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
+const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
   var loggedInUser = false;
@@ -62,6 +63,19 @@ router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
 router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
   addNewPro(req.body)
   .then(() => res.redirect(`/${req.user.username}/dashboard`))
+})
+router.post('/importing', authHelpers.authRequired, function (req, res, next) {
+  get('projects')
+  .where('user_username', req.body.username)
+  .del()
+  .then(() => {return ghPinnedRepos(req.body.username)})
+  .then(projectsApiCalls)
+  .then((data) => {
+    return addProjects(data, req.user)
+  })
+  .then((data) => {
+    res.redirect(`/${req.user.username}/dashboard`)
+  })
 })
 
 router.delete('/:username', authHelpers.authRequired, function (req, res, next) {
