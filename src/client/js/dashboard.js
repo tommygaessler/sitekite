@@ -46,8 +46,8 @@ $(document).ready(function() {
   });
 
   $('.import-repos').on('click', function() {
-    console.log('hi');
     $('i.fa-cloud-download').addClass('fa-spin fa-fw');
+    $('#gh-import').attr('disabled', 'disabled');
     var username = $(this).attr('data-user-name');
     $.ajax({
       method: 'POST',
