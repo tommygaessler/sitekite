@@ -35,21 +35,20 @@ function checkForms(body) {
   }
   return ok;
 }
-// test - abstraction from getGithubInfo for Isaac's test
-function response (error, response, body) {
-  if (error) {
-    res.send(error);
-  }
-  var newBody = JSON.parse(body)
-  resolve({data: newBody})
-  return newBody;
-}
-// test - abstracted out response (function above this text)
+// test - Waiting for Alex & Austin
 function getGithubInfo (username) {
   return new Promise ((resolve, reject) => {
     var options = {
       url: `https://api.github.com/users/${username}?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_KEY}`,
       headers: {'User-Agent': 'request'}
+    }
+    function response (error, response, body) {
+      if (error) {
+        res.send(error);
+      }
+      var newBody = JSON.parse(body)
+      resolve({data: newBody})
+      return newBody;
     }
     request(options, response)
   })
