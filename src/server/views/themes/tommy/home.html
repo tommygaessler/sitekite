@@ -12,11 +12,26 @@
   {% include "./_side.html" %}
 
   <div class="main">
+    {% if (loggedInUser and not bio_desc) %}
+    <br>
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h2>Welcome!</h2>
+      <br>
+      <a href='/{{loggedInUser.username}}/dashboard' class="alert-link">Click Here</a> to edit your profile
+      <br>
+      <br>
+      Unless you like the bio below, but we're betting you won't <i class="fa fa-smile-o" aria-hidden="true"></i>
+    </div>
+    {% endif %}
     <h1>About Me</h1>
-    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }} {% else %}
-      Yr sartorial lomo, kombucha four loko truffaut kogi meggings whatever deep v before they sold out. Ennui pinterest chillwave, forage humblebrag retro jean shorts bitters cronut raw denim before they sold out tilde. Vegan pinterest 90's, stumptown man bun jianbing succulents. Intelligentsia locavore tumblr art party, etsy drinking vinegar fam iceland migas unicorn readymade salvia. 8-bit post-ironic fap banh mi. Selvage chillwave offal lo-fi crucifix squid master cleanse, meditation dreamcatcher. Gastropub skateboard meditation, pour-over jean shorts salvia church-key kale chips meh.
-      {% endif %}
-    </p>
+    <br>
+    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
+      {% else %}
+    <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
+    {% endif %}
   </div>
 
 {% endblock %}
