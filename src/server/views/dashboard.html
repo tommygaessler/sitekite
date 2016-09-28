@@ -136,7 +136,18 @@
   <div class="row margin-bottom">
     <div class="col-md-6">
       <h1>Projects</h1>
-      <div class="form-group">
+      {% for project in pinnedProjects %}
+      <div class="well">
+        <h4>{{ project.project_name }}
+          <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project" aria-hidden="true"></i>
+          <i id="{{ project.project_name | normalizer}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
+        </h4>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-6">
+      <h1>Add Project</h1>
+      <!-- <div class="form-group">
         <label for="projects">Add Project</label>
         <select name="project" class="form-control" id="projects">
           <option selected value="manual"> - Select pinned projects or fill in manually - </option>
@@ -144,7 +155,7 @@
           <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
           {% endfor %}
         </select>
-      </div>
+      </div> -->
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">
         <div class="form-group">
@@ -180,7 +191,7 @@
         </form>
       </div>
       {% for project in pinnedProjects %}
-      <div class="pinned-project-info" id="{{project.project_name | replace(' ', '')}}">
+      <div class="pinned-project-info" id="{{project.project_name | normalizer}}">
         <form class="" action="/editPro" method="post">
         <div class="form-group">
           <label for="name">Project Name</label>
