@@ -17,7 +17,8 @@ function addUser(body) {
     twitter: body.twitter,
     linkedin: body.linkedin,
     bio_desc: body.bio_desc,
-    contact_desc: body.contact_desc
+    contact_desc: body.contact_desc,
+    theme_name: body.theme_name
   });
 }
 // test - :COMPLETED
