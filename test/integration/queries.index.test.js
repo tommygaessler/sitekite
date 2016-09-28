@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test';
 
-// const knex = require('../../src/server/db/knex');
+const knex = require('../../src/server/db/knex');
 const chai = require('chai');
 const expect = chai.expect;
 const chaiHttp = require('chai-http');
@@ -28,10 +28,16 @@ const bad_test_user = {
 }
 
 describe('Queries : index.js', () => {
-  // need help
   describe('function: get()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should return the table passed in, if the table exists', () => {
-      // expect(query.get('site_builder_test')).to.deep.equal('congrats!')
       return query.get('users')
       .then((thing) => {
         expect(thing[0]).to.contain.keys('id','username', 'github_token')
@@ -40,6 +46,14 @@ describe('Queries : index.js', () => {
   })
 
   describe('function: addUser()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should update the user to the user database *if user exists*', (done) => {
       query.addUser(test_user)
       .then((update) => {
@@ -57,6 +71,14 @@ describe('Queries : index.js', () => {
   })
   // waiting for removeUser() to run properly (austin/alex)
   xdescribe('function: removeUser()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should remove that user from the database *if user exists*', (done) => {
       query.removeUser(test_user)
       .then((del) => {
@@ -67,6 +89,14 @@ describe('Queries : index.js', () => {
   })
 
   describe('function: checkForms()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should validate that the user has the expected fields filled out properly', (done) => {
       expect(query.checkForms(test_user)).to.equal(true)
       expect(query.checkForms(bad_test_user)).to.equal(false)
@@ -75,6 +105,14 @@ describe('Queries : index.js', () => {
   })
 
   describe('function: userInDb()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should validate that the user being pased through has the required keys', () => {
       return query.userInDb(test_user)
       .then((res) => {
@@ -84,6 +122,14 @@ describe('Queries : index.js', () => {
   })
 
   xdescribe('function: getProjects()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should return the projects from the user that is passed in', () => {
       query.getProjects(data)
     })
