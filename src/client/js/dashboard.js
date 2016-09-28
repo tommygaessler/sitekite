@@ -3,17 +3,24 @@ $(document).ready(function() {
     var project = $(this).attr('id');
     $('.project-text').html(`Edit Project`);
     $('.project-button').html('Save Changes');
+
     $('.new-project').css('display', 'block');
+
     $('.pinned-project-info').css('display', 'none');
+
     $(`.pinned-project-info#${project}`).css('display', 'block');
+
     $('.edit-project-name').focus();
   })
 
 
   $('.new-project').on('click', function() {
     $('.project-text').html('Add Project');
+
     $('.pinned-project-info').css('display', 'none');
-    $(`.pinned-project-info#manual`).css('display', 'block');
+
+    $('.pinned-project-info#manual').css('display', 'block');
+
     $('#new-project-name').focus();
   })
 

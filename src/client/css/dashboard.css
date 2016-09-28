@@ -1,6 +1,12 @@
 .pinned-project-info {
   display: none;
 }
+
+.project-well {
+  height: 455px;
+  overflow: scroll;
+}
+
 #manual{
   display: block;
 }
