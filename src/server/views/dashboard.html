@@ -135,11 +135,17 @@
   </form>
   <div class="row margin-bottom">
     <div class="col-md-6">
-      <form class="pull-right" action="/importing" method="post">
-        <input hidden type="text" name="username" value="{{loggedInUser.username}}">
-        <input type="submit" value="Import my Pinned Github Repos">
-      </form>
-      <h1 id="projects">Projects</h1>
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 id="projects">Projects</h1>
+        </div>
+        <div class="col-sm-6">
+          <form class="pull-right" action="/importing" method="post">
+            <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+            <button type="submit" class="btn btn-info btn-block"><i class="fa fa-cloud-download" aria-hidden="true"></i> Import Pinned Github Repos</button>
+          </form>
+        </div>
+      </div>
       <div class="well new-project">
         <h4>Add a New Project
           <small>
