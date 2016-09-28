@@ -3,7 +3,7 @@
 }
 
 .project-well {
-  height: 455px;
+  height: 485px;
   overflow: scroll;
 }
 
@@ -22,14 +22,9 @@
   display: inline-block;
 }
 
-form.pull-right {
+button#gh-import {
   margin-bottom: 10.5px;
-}
-
-@media (max-width: 767px) {
-  form.pull-right {
-    float: none !important;
-  }
+  margin-top: 21px;
 }
 
 form .btn {
