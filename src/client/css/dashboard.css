@@ -12,6 +12,20 @@
   width: 21px;
 }
 
+#projects {
+  display: inline-block;
+}
+
+form.pull-right {
+  margin-bottom: 10.5px;
+}
+
+@media (max-width: 767px) {
+  form.pull-right {
+    float: none !important;
+  }
+}
+
 form .btn {
   margin-top: 21px;
 }
