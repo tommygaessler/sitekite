@@ -26,15 +26,6 @@ const bad_test_user = {
   bio_desc: 'something about me',
   contact_desc: '1234567890'
 }
-// const test_projects = {
-//   github_url: 'example_projects.github.com/url',
-//   deployed_url: 'example_green_potatoes.com',
-//   description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud',
-//   tools_languages: 'JavaScript, Suby, Swift, Go, Node',
-//   project_name: 'project_example_name',
-//   image_url: 'http://morningshow.hot1035radio.com/files/2014/05/a-mc-random-30.jpg',
-//   user_username: 'this_is_a_test'
-// }
 
 describe('Queries : index.js', () => {
   describe('function: get()', () => {
@@ -142,6 +133,38 @@ describe('Queries : index.js', () => {
       return query.getProjects([test_user])
       .then((res) => {
         expect(res[0].projects.length).to.equal(1)
+      })
+    })
+  })
+
+  describe('function: compareUser()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
+    it('should return true if the users are the same, false if they are different.', () => {
+      expect(query.compareUser(test_user, bad_test_user)).to.equal(false)
+      expect(query.compareUser(test_user, test_user)).to.equal(true)
+    })
+  })
+
+  describe('function: loggedInUser()', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
+    it('should verify that someone is logged in', () => {
+      return query.loggedInUser(test_user, bad_test_user)
+      .then((results) => {
+        expect(results)
       })
     })
   })
