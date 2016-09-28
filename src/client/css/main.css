@@ -25,6 +25,8 @@ textarea {
 .navbar {
   margin-bottom: 0;
   width: 100%;
+  z-index: 5;
+  position: relative;
 }
 
 .navbar-brand img {
