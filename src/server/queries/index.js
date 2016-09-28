@@ -137,7 +137,6 @@ function addProjects(data, user) {
 }
 // test - ?
 function addNewPro(body) {
-  console.log(body.name.replace(/[^A-Za-z]/g, '').length);
   if (body.name.replace(/[^A-Za-z]/g, '').length == 0) {
     return Promise.resolve(false);
   }
