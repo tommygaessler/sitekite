@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'test';
-
+const knex = require('../../src/server/db/knex');
 const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
@@ -10,11 +10,18 @@ const server = require('../../src/server/app.js');
 describe('routes : index', () => {
 
   describe('GET /', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should render the landing page: "index.html" ', (done) => {
       chai.request(server)
       .get('/')
       .end((err, res) => {
-        res.redirects.length.should.equal(0);
         res.status.should.equal(200);
         res.type.should.equal('text/html');
         res.text.should.contain('<h1>Making a Portfolio Sucks</h1>');
@@ -24,6 +31,14 @@ describe('routes : index', () => {
   });
 
   describe('GET /:username', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should render the home.html if user exists in the Database', (done) => {
       chai.request(server)
       .get('/this_is_a_test')
@@ -47,6 +62,14 @@ describe('routes : index', () => {
   });
 
   describe('GET /:username/projects', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
     it('should render the projects.html page if user exists in the Database', (done) => {
       chai.request(server)
       .get('/this_is_a_test/projects')
@@ -69,7 +92,7 @@ describe('routes : index', () => {
     })
   })
 
-  describe('GET /:userName/contact')
+  // describe('GET /:userName/contact')
 
 });
 // routes.index.test.js

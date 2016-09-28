@@ -5,7 +5,6 @@ const passportGithub = require('../auth/github');
 const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 
-
 router.get('/', function (req, res, next) {
   var loggedInUser = false;
   if (req.user) {
