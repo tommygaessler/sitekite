@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block css%}
-<link rel="stylesheet" href="/css/tommy/dashboard.css">
+<link rel="stylesheet" href="/css/dashboard.css">
 {% endblock %}
 
 {% block content %}
@@ -141,7 +141,7 @@
         <select name="project" class="form-control" id="projects">
           <option selected value="manual"> - Select pinned projects or fill in manually - </option>
           {% for project in pinnedProjects %}
-          <option value="{{project.project_name}}">{{project.project_name}}</option>
+          <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
           {% endfor %}
         </select>
       </div>
@@ -180,8 +180,12 @@
         </form>
       </div>
       {% for project in pinnedProjects %}
-      <div class="pinned-project-info" id="{{project.project_name}}">
+      <div class="pinned-project-info" id="{{project.project_name | replace(' ', '')}}">
         <form class="" action="/editPro" method="post">
+        <div class="form-group">
+          <label for="name">Project Name</label>
+          <input type="text" name="name" class="form-control" value="{{project.project_name}}" placeholder="repo-name">
+        </div>
         <div class="form-group">
           <label for="github_url">Project Repository URL</label>
           <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">

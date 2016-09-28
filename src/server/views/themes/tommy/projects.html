@@ -11,7 +11,7 @@
     {% for project in projects %}
       <h2>{{project.project_name}}</h2>
       <p>
-        {{project.github_url}}
+        <a href="{{project.github_url}}">GitHub Repo</a>
       </p>
       <p>
         Written with: {{project.tools_languages}}

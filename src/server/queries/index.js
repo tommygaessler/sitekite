@@ -151,6 +151,7 @@ function updatePro(body) {
   .where('user_username', body.username)
   .where('project_name', body.old_projectname)
   .update({
+    project_name: body.name,
     github_url: body.github_url,
     deployed_url: body.deployed_url,
     description: body.description,
