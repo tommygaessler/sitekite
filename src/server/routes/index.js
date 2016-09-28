@@ -15,7 +15,8 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => {return loggedInUser(req, data)})
+  .then((data) => {
+    return loggedInUser(req, data)})
   .then((data) => data.length ? res.status(202).render(`themes/${data[0].theme_name}/home`, data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
