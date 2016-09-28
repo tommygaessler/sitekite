@@ -23,9 +23,12 @@
   appConfig.init = function(app, express) {
 
     // *** view engine *** //
-    nunjucks.configure(viewFolders, {
+    let env = nunjucks.configure(viewFolders, {
       express: app,
       autoescape: true
+    });
+    env.addFilter('normalizer', function(str) {
+      return str.replace(/[^A-Za-z]/g, '');
     });
     app.set('view engine', 'html');
 
