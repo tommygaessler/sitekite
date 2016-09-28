@@ -161,6 +161,6 @@ function updatePro(body) {
 }
 
 function removePro(projectName) {
-  console.log(projectNamet);
+  console.log(projectName);
   return get('projects').where('project_name', projectName).del()
 }
