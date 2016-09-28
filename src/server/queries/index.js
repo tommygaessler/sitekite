@@ -44,7 +44,7 @@ function getGithubInfo (username) {
     }
     function response (error, response, body) {
       if (error) {
-        console.log('error', error);
+        res.send(error);
       }
       var newBody = JSON.parse(body)
       resolve({data: newBody})
@@ -65,7 +65,7 @@ function projectsApiCalls(arr) {
       }
       function wtf (error, response, body) {
         if (error) {
-          console.log('error', error);
+          res.send(error);
         }
         var body = JSON.parse(body)
         resolve({pinnedProjects: project, data: body})
@@ -74,7 +74,6 @@ function projectsApiCalls(arr) {
       request(options, wtf)
     })
   })
-  // console.log(promise);
   return Promise.all(promise)
 }
 // test - written and passes :complete:
