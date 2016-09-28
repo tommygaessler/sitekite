@@ -1,11 +1,12 @@
 $(document).ready(function() {
   $('.edit-project').on('click', function() {
-    $('.project-text').html('Edit Project');
-    var thingname = $(this).attr('id');
-    console.log('test');
+    var project = $(this).attr('id');
+    $('.project-text').html(`Edit Project`);
+    $('.project-button').html('Save Changes');
     $('.new-project').css('display', 'block');
     $('.pinned-project-info').css('display', 'none');
-    $(`.pinned-project-info#${thingname}`).css('display', 'block');
+    $(`.pinned-project-info#${project}`).css('display', 'block');
+    $('.edit-project-name').focus();
   })
 
 
@@ -13,7 +14,7 @@ $(document).ready(function() {
     $('.project-text').html('Add Project');
     $('.pinned-project-info').css('display', 'none');
     $(`.pinned-project-info#manual`).css('display', 'block');
-    $(this).css('display', 'none');
+    $('#new-project-name').focus();
   })
 
   $('.delete-project').click(function() {

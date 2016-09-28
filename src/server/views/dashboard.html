@@ -135,28 +135,36 @@
   </form>
   <div class="row margin-bottom">
     <div class="col-md-6">
-      <h1 id="projects">Projects</h1>
-      <form class="" action="/importing" method="post">
+      <form class="pull-right" action="/importing" method="post">
         <input hidden type="text" name="username" value="{{loggedInUser.username}}">
-        <input type="submit" value="Imports">
+        <input type="submit" value="Import my Pinned Github Repos">
       </form>
+      <h1 id="projects">Projects</h1>
+      <div class="well new-project">
+        <h4>Add a New Project
+          <small>
+            <i class="fa fa-plus fa-2x pull-right" aria-hidden="true"></i>
+          </small>
+        </h4>
+      </div>
       {% for project in pinnedProjects %}
       <div class="well">
         <h4>{{ project.project_name }}
-          <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project" aria-hidden="true"></i>
-          <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
+          <small>
+            <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project pull-right" aria-hidden="true"></i>
+            <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project pull-right" aria-hidden="true"></i>
+          </small>
         </h4>
       </div>
       {% endfor %}
-      <button type="submit" class="btn btn-success btn-block new-project">New Project</button>
     </div>
     <div class="col-md-6">
       <h1 class="project-text">Add Project</h1>
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">
         <div class="form-group">
-          <label for="name">Project Name</label>
-          <input type="text" name="name" class="form-control" placeholder="repo-name">
+          <label for="new-project-name">Project Name</label>
+          <input type="text" name="name" id="new-project-name" class="form-control" placeholder="repo-name">
         </div>
         <div class="form-group">
           <label for="github_url">Project Repository URL</label>
@@ -167,8 +175,8 @@
           <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
         </div>
         <div class="form-group">
-          <label for="image_url">Project Image</label>
-          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="">
+          <label for="image_url">Project Image URL</label>
+          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
         </div>
         <div class="form-group">
           <label for="description">Project Description</label>
@@ -190,8 +198,8 @@
       <div class="pinned-project-info" id="{{project.project_name | normalizer}}">
         <form class="" action="/editPro" method="post">
         <div class="form-group">
-          <label for="name">Project Name</label>
-          <input type="text" name="name" class="form-control" value="{{project.project_name}}" placeholder="repo-name">
+          <label for="edit-project-name">Project Name</label>
+          <input type="text" name="name" class="form-control edit-project-name" value="{{project.project_name}}" id="edit-project-name" placeholder="repo-name">
         </div>
         <div class="form-group">
           <label for="github_url">Project Repository URL</label>
@@ -218,7 +226,7 @@
 
           <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
 
-          <button type="submit" class="btn btn-success btn-block project-text">Add Project</button>
+          <button type="submit" class="btn btn-success btn-block project-button">Add Project</button>
         </form>
       </div>
       {% endfor %}
