@@ -140,7 +140,7 @@
       <div class="well">
         <h4>{{ project.project_name }}
           <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project" aria-hidden="true"></i>
-          <i id="{{ project.project_name | normalizer}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
+          <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
         </h4>
       </div>
       {% endfor %}

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro, removePro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 const ghPinnedRepos = require('gh-pinned-repos');
 
@@ -84,6 +84,11 @@ router.delete('/:username', authHelpers.authRequired, function (req, res, next) 
   req.logout()
   removeUser(req.params.username)
   .then(() => compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))
+})
+
+router.delete('/project/:projectName', authHelpers.authRequired, function (req, res, next) {
+  removePro(req.params.projectName)
+  .then(() =>res.send('test'))
 })
 
 module.exports = router;
