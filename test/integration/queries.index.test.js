@@ -26,6 +26,15 @@ const bad_test_user = {
   bio_desc: 'something about me',
   contact_desc: '1234567890'
 }
+// const test_projects = {
+//   github_url: 'example_projects.github.com/url',
+//   deployed_url: 'example_green_potatoes.com',
+//   description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud',
+//   tools_languages: 'JavaScript, Suby, Swift, Go, Node',
+//   project_name: 'project_example_name',
+//   image_url: 'http://morningshow.hot1035radio.com/files/2014/05/a-mc-random-30.jpg',
+//   user_username: 'this_is_a_test'
+// }
 
 describe('Queries : index.js', () => {
   describe('function: get()', () => {
@@ -70,7 +79,7 @@ describe('Queries : index.js', () => {
     })
   })
   // waiting for removeUser() to run properly (austin/alex)
-  xdescribe('function: removeUser()', () => {
+  describe('function: removeUser()', () => {
     beforeEach(() => {
       return knex.migrate.rollback()
       .then(() => { return knex.migrate.latest(); })
@@ -79,11 +88,10 @@ describe('Queries : index.js', () => {
     afterEach(() => {
       return knex.migrate.rollback();
     });
-    it('should remove that user from the database *if user exists*', (done) => {
-      query.removeUser(test_user)
+    it('should remove that user from the database *if user exists*', () => {
+      return query.removeUser(test_user)
       .then((del) => {
-        expect(del).to.equal(1)
-        done()
+        expect(del[0]).to.equal(0)
       })
     })
   })
@@ -121,7 +129,7 @@ describe('Queries : index.js', () => {
     })
   })
 
-  xdescribe('function: getProjects()', () => {
+  describe('function: getProjects()', () => {
     beforeEach(() => {
       return knex.migrate.rollback()
       .then(() => { return knex.migrate.latest(); })
@@ -131,7 +139,10 @@ describe('Queries : index.js', () => {
       return knex.migrate.rollback();
     });
     it('should return the projects from the user that is passed in', () => {
-      query.getProjects(data)
+      return query.getProjects([test_user])
+      .then((res) => {
+        expect(res[0].projects.length).to.equal(1)
+      })
     })
   })
 
