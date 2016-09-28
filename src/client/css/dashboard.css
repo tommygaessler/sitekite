@@ -19,3 +19,7 @@ form .btn {
 .margin-bottom {
   margin-bottom: 50px;
 }
+
+.new-project {
+  display: none;
+}
