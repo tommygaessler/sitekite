@@ -1,7 +1,7 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro}
 
 function get(table) {
   return knex(table);
@@ -131,6 +131,18 @@ function addProjects(data, user) {
   })
   return Promise.all(promise).then(() => {
     return user;
+  })
+}
+
+function addNewPro(body) {
+  return get('projects').insert({
+    github_url: body.github_url,
+    project_name: body.name,
+    deployed_url: body.deployed_url,
+    tools_languages: body.tools_languages,
+    user_username: body.username,
+    description: body.description,
+    image_url: body.image_url
   })
 }
 

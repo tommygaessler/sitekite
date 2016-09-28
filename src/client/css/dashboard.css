@@ -1,6 +1,9 @@
 .pinned-project-info {
   display: none;
 }
+#manual{
+  display: block;
+}
 .preview-button {
   cursor: pointer;
   padding: 3px 8px;

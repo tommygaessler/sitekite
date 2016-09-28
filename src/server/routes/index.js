@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 
 
@@ -58,6 +58,10 @@ router.post('/new', function (req, res, next) {
 
 router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
   updatePro(req.body)
+  .then(() => res.redirect(`/${req.user.username}/dashboard`))
+})
+router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
+  addNewPro(req.body)
   .then(() => res.redirect(`/${req.user.username}/dashboard`))
 })
 
