@@ -135,7 +135,11 @@
   </form>
   <div class="row margin-bottom">
     <div class="col-md-6">
-      <h1>Projects</h1>
+      <h1 id="projects">Projects</h1>
+      <form class="" action="/importing" method="post">
+        <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+        <input type="submit" value="Imports">
+      </form>
       {% for project in pinnedProjects %}
       <div class="well">
         <h4>{{ project.project_name }}
@@ -148,19 +152,6 @@
     </div>
     <div class="col-md-6">
       <h1 class="project-text">Add Project</h1>
-      <div class="form-group">
-        <label for="projects">Add Project</label>
-        <select name="project" class="form-control" id="projects">
-          <option selected value="manual"> - Select pinned projects or fill in manually - </option>
-          {% for project in pinnedProjects %}
-          <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
-          {% endfor %}
-        </select>
-        <form class="" action="/importing" method="post">
-          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
-          <input type="submit" value="Imports">
-        </form>
-      </div>
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">
         <div class="form-group">
@@ -273,5 +264,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="../js/dashboard.js"></script>
+<script type="text/javascript" src="/js/dashboard.js"></script>
 {% endblock %}

@@ -75,7 +75,7 @@ router.post('/importing', authHelpers.authRequired, function (req, res, next) {
     return addProjects(data, req.user)
   })
   .then((data) => {
-    res.redirect(`/${req.user.username}/dashboard`)
+    res.redirect(`/${req.user.username}/dashboard/#projects`)
   })
 })
 

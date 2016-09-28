@@ -2,6 +2,7 @@ $(document).ready(function() {
   $('.edit-project').on('click', function() {
     $('.project-text').html('Edit Project');
     var thingname = $(this).attr('id');
+    console.log('test');
     $('.new-project').css('display', 'block');
     $('.pinned-project-info').css('display', 'none');
     $(`.pinned-project-info#${thingname}`).css('display', 'block');
