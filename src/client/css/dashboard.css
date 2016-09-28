@@ -39,3 +39,7 @@ form .btn {
   margin: 0 25px;
   cursor: pointer;
 }
+
+.delete-account-btn {
+  margin-bottom: 20px;
+}

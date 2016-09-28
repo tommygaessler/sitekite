@@ -123,10 +123,7 @@
         <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
 
         <div class="row">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#myModal">Delete Account</button>
-          </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <button type="submit" name="button" class="btn btn-success btn-block">Save Changes</button>
           </div>
         </div>
@@ -235,6 +232,11 @@
         </form>
       </div>
       {% endfor %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-secondary btn-sm btn-block delete-account-btn" data-toggle="modal" data-target="#myModal">Delete Account</button>
     </div>
   </div>
 
