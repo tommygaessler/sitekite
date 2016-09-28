@@ -13,7 +13,6 @@ $(document).ready(function() {
     $('.edit-project-name').focus();
   })
 
-
   $('.new-project').on('click', function() {
     $('.project-text').html('Add Project');
 
@@ -43,6 +42,22 @@ $(document).ready(function() {
     })
     .done(() => {
       location.href = '/';
+    });
+  });
+
+  $('.import-repos').on('click', function() {
+    console.log('hi');
+    $('i.fa-cloud-download').addClass('fa-spin fa-fw');
+    var username = $(this).attr('data-user-name');
+    $.ajax({
+      method: 'POST',
+      url: '/importing',
+      data: {
+        username
+      }
+    })
+    .done(() => {
+      location.href = `/${username}/dashboard/#projects`;
     });
   });
 });

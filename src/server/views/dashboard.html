@@ -140,10 +140,7 @@
           <h1 id="projects">Projects</h1>
         </div>
         <div class="col-sm-6">
-          <form class="pull-right" action="/importing" method="post">
-            <input hidden type="text" name="username" value="{{loggedInUser.username}}">
-            <button type="submit" class="btn btn-info btn-block"><i class="fa fa-cloud-download" aria-hidden="true"></i> Import Pinned Github Repos</button>
-          </form>
+          <button id="gh-import" data-user-name="{{loggedInUser.username}}" class="btn btn-info btn-block pull-right" data-toggle="modal" data-target="#gh-import-modal"><i class="fa fa-cloud-download" aria-hidden="true"></i>  Import Pinned Github Repos</button>
         </div>
       </div>
       <div class="well new-project">
@@ -218,8 +215,8 @@
           <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
         </div>
         <div class="form-group">
-          <label for="image_url">Project Image</label>
-          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="">
+          <label for="image_url">Project Image URL</label>
+          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
         </div>
         <div class="form-group">
           <label for="description">Project Description</label>
@@ -272,6 +269,28 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Import GH-Pinned Repos Modal -->
+<div class="modal fade" id="gh-import-modal" tabindex="-1" role="dialog" aria-labelledby="gh-import-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="gh-import-modal-label">
+        Import Github Repos</h4>
+      </div>
+      <div class="modal-body">
+        This will override your current projects. Are you sure you want to continue?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button class="import-repos btn btn-primary" data-user-name="{{username}}" data-dismiss="modal">Yes, Import my Repos</button>
       </div>
     </div>
   </div>
