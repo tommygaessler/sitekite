@@ -1,7 +1,7 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro, removePro}
 
 function get(table) {
   return knex(table);
@@ -158,4 +158,9 @@ function updatePro(body) {
     tools_languages: body.tools_languages,
     image_url: body.image_url
   })
+}
+
+function removePro(projectName) {
+  console.log(projectNamet);
+  return get('projects').where('project_name', projectName).del()
 }
