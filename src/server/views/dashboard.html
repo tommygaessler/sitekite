@@ -147,7 +147,7 @@
     </div>
     <div class="col-md-6">
       <h1>Add Project</h1>
-      <!-- <div class="form-group">
+      <div class="form-group">
         <label for="projects">Add Project</label>
         <select name="project" class="form-control" id="projects">
           <option selected value="manual"> - Select pinned projects or fill in manually - </option>
@@ -155,16 +155,12 @@
           <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
           {% endfor %}
         </select>
-<<<<<<< HEAD
         <form class="" action="/importing" method="post">
           <input hidden type="text" name="username" value="{{loggedInUser.username}}">
           <input type="submit" value="Imports">
         </form>
 
       </div>
-=======
-      </div> -->
->>>>>>> 8d855ff27e9eb1843e90a31b8f734566daec7d03
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">
         <div class="form-group">
