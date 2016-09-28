@@ -140,7 +140,7 @@
       <div class="well">
         <h4>{{ project.project_name }}
           <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project" aria-hidden="true"></i>
-          <i id="{{ project.project_name | normalizer}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
+          <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
         </h4>
       </div>
       {% endfor %}
@@ -155,7 +155,16 @@
           <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
           {% endfor %}
         </select>
+<<<<<<< HEAD
+        <form class="" action="/importing" method="post">
+          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+          <input type="submit" value="Imports">
+        </form>
+
+      </div>
+=======
       </div> -->
+>>>>>>> 8d855ff27e9eb1843e90a31b8f734566daec7d03
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">
         <div class="form-group">

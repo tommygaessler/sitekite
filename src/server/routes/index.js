@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro, removePro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
+const ghPinnedRepos = require('gh-pinned-repos');
 
 router.get('/', function (req, res, next) {
   var loggedInUser = false;
@@ -64,6 +65,19 @@ router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
   addNewPro(req.body)
   .then(() => res.redirect(`/${req.user.username}/dashboard`))
 })
+router.post('/importing', authHelpers.authRequired, function (req, res, next) {
+  get('projects')
+  .where('user_username', req.body.username)
+  .del()
+  .then(() => {return ghPinnedRepos(req.body.username)})
+  .then(projectsApiCalls)
+  .then((data) => {
+    return addProjects(data, req.user)
+  })
+  .then((data) => {
+    res.redirect(`/${req.user.username}/dashboard`)
+  })
+})
 
 router.delete('/:username', authHelpers.authRequired, function (req, res, next) {
   var user1 = req.params.userName
@@ -71,6 +85,11 @@ router.delete('/:username', authHelpers.authRequired, function (req, res, next) 
   req.logout()
   removeUser(req.params.username)
   .then(() => compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))
+})
+
+router.delete('/project/:projectName', authHelpers.authRequired, function (req, res, next) {
+  removePro(req.params.projectName)
+  .then(() =>res.send('test'))
 })
 
 module.exports = router;

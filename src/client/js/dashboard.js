@@ -1,13 +1,19 @@
 $(document).ready(function() {
   $('.edit-project').on('click', function() {
     var thingname = $(this).attr('id');
-    console.log(thingname);
-    // $('.pinned-project-info').fadeOut(1);
-    // setTimeout(function() {
-    //   $(`#${thingname}`).fadeIn(1)
-    // }, 1)
     $('.pinned-project-info').css('display', 'none');
     $(`.pinned-project-info#${thingname}`).css('display', 'block');
+  })
+
+  $('.delete-project').click(function() {
+    var projectName = $(this).attr('value')
+    $.ajax({
+      method: 'DELETE',
+      url: `/project/${projectName}`
+    })
+    .done(function() {
+      location.reload();
+    })
   })
 
   $('.delete_account').click(function () {
