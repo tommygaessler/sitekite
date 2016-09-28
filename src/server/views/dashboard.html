@@ -65,7 +65,7 @@
           <div class="col-md-4">
             <div class="radio">
               <label>
-                <input type="radio" name="theme_name" value="themeNameHere1" />
+                <input type="radio" name="theme_name" value="tommy" {%if loggedInUser.theme_name == 'tommy'%} checked {%endif%}/>
                 <img src="/img/theme1.jpg">
               </label>
             </div>
@@ -73,7 +73,7 @@
           <div class="col-md-4">
             <div class="radio">
               <label>
-                <input type="radio" name="theme_name" value="themeNameHere2" />
+                <input type="radio" name="theme_name" value="isaac"{%if loggedInUser.theme_name == 'isaac'%} checked {%endif%} />
                 <img src="/img/theme1.jpg">
               </label>
             </div>
@@ -81,7 +81,7 @@
           <div class="col-md-4">
             <div class="radio">
               <label>
-                <input type="radio" name="theme_name" value="themeNameHere3" />
+                <input type="radio" name="theme_name" value="john" {%if loggedInUser.theme_name == 'john'%} checked {%endif%}/>
                 <img src="/img/theme1.jpg">
               </label>
             </div>
@@ -91,7 +91,7 @@
           <div class="col-md-4">
             <div class="radio">
               <label>
-                <input type="radio" name="theme_name" value="themeNameHere4" />
+                <input type="radio" name="theme_name" value="alex" {%if loggedInUser.theme_name == 'alex'%} checked {%endif%}/>
                 <img src="/img/theme1.jpg">
               </label>
             </div>
@@ -99,7 +99,7 @@
           <div class="col-md-4">
             <div class="radio">
               <label>
-                <input type="radio" name="theme_name" value="themeNameHere5" />
+                <input type="radio" name="theme_name" value="austin" {%if loggedInUser.theme_name == 'austin'%} checked {%endif%}/>
                 <img src="/img/theme1.jpg">
               </label>
             </div>
@@ -107,7 +107,7 @@
           <div class="col-md-4">
             <div class="radio">
               <label>
-                <input type="radio" name="theme_name" value="themeNameHere6" />
+                <input type="radio" name="theme_name" value="timmy" {%if loggedInUser.theme_name == 'timmy'%} checked {%endif%} />
                 <img src="/img/theme1.jpg">
               </label>
             </div>
@@ -140,7 +140,7 @@
       <div class="well">
         <h4>{{ project.project_name }}
           <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project" aria-hidden="true"></i>
-          <i id="{{ project.project_name | normalizer}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
+          <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project" aria-hidden="true"></i>
         </h4>
       </div>
       {% endfor %}
@@ -148,6 +148,19 @@
     </div>
     <div class="col-md-6">
       <h1 class="project-text">Add Project</h1>
+      <div class="form-group">
+        <label for="projects">Add Project</label>
+        <select name="project" class="form-control" id="projects">
+          <option selected value="manual"> - Select pinned projects or fill in manually - </option>
+          {% for project in pinnedProjects %}
+          <option value="{{project.project_name | replace(' ', '')}}">{{project.project_name}}</option>
+          {% endfor %}
+        </select>
+        <form class="" action="/importing" method="post">
+          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+          <input type="submit" value="Imports">
+        </form>
+      </div>
       <div class="pinned-project-info" id="manual">
         <form class="" action="/newPro" method="post">
         <div class="form-group">

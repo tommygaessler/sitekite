@@ -1,8 +1,9 @@
 const knex = require('../db/knex');
 const request = require('request');
 var http = require('http');
-module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro}
+module.exports = {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro, removePro}
 
+// test - :COMPLETE:
 function get(table) {
   return knex(table);
 }
@@ -16,10 +17,11 @@ function addUser(body) {
     twitter: body.twitter,
     linkedin: body.linkedin,
     bio_desc: body.bio_desc,
-    contact_desc: body.contact_desc
+    contact_desc: body.contact_desc,
+    theme_name: body.theme_name
   });
 }
-
+// test - :COMPLETED
 function removeUser (username) {
   var userPromiseArr = [
     get('users')
@@ -76,11 +78,11 @@ function projectsApiCalls(arr) {
   })
   return Promise.all(promise)
 }
-// test - written and passes :complete:
+// test -  :COMPLETED:
 function userInDb(user) {
   return get('users').where('username', user.username);
 }
-// test -
+// test - :COMPLETED:
 function getProjects(data) {
   if (!data.length) {
     return Promise.resolve(false);
@@ -103,7 +105,7 @@ function checkNewUser(data) {
     }
   }
 }
-// test -
+// test - :COMPLETED:
 function compareUser(user1, user2) {
   if (user1 === user2) {
     return true;
@@ -117,7 +119,7 @@ function loggedInUser(req, data) {
   }
   return Promise.resolve(data)
 }
-
+// test - ?
 function addProjects(data, user) {
   var promise = data.map(function (project) {
     return get('projects').insert({
@@ -133,7 +135,7 @@ function addProjects(data, user) {
     return user;
   })
 }
-
+// test - ?
 function addNewPro(body) {
   return get('projects').insert({
     github_url: body.github_url,
@@ -145,7 +147,7 @@ function addNewPro(body) {
     image_url: body.image_url
   })
 }
-
+// test - ?
 function updatePro(body) {
   return get('projects')
   .where('user_username', body.username)
@@ -158,4 +160,9 @@ function updatePro(body) {
     tools_languages: body.tools_languages,
     image_url: body.image_url
   })
+}
+
+function removePro(projectName) {
+  console.log(projectName);
+  return get('projects').where('project_name', projectName).del()
 }
