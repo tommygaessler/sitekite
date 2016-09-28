@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block css%}
-<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/tommy/dashboard.css">
 {% endblock %}
 
 {% block content %}
@@ -139,11 +139,45 @@
       <div class="form-group">
         <label for="projects">Add Project</label>
         <select name="project" class="form-control" id="projects">
-          <option disabled selected> - Select one of your pinned projects - </option>
+          <option selected value="manual"> - Select pinned projects or fill in manually - </option>
           {% for project in pinnedProjects %}
           <option value="{{project.project_name}}">{{project.project_name}}</option>
           {% endfor %}
         </select>
+      </div>
+      <div class="pinned-project-info" id="manual">
+        <form class="" action="/newPro" method="post">
+        <div class="form-group">
+          <label for="name">Project Name</label>
+          <input type="text" name="name" class="form-control" placeholder="repo-name">
+        </div>
+        <div class="form-group">
+          <label for="github_url">Project Repository URL</label>
+          <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+        </div>
+        <div class="form-group">
+          <label for="deployed_url">Deployed URL</label>
+          <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
+        </div>
+        <div class="form-group">
+          <label for="image_url">Project Image</label>
+          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="description">Project Description</label>
+          <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="tools_languages">Tools and Languages Used</label>
+          <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.tools_languages}}</textarea>
+        </div>
+
+          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+
+          <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
+
+          <button type="submit" class="btn btn-success btn-block">Add Project</button>
+        </form>
       </div>
       {% for project in pinnedProjects %}
       <div class="pinned-project-info" id="{{project.project_name}}">

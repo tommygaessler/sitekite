@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
 
 router.get('/', function (req, res, next) {
@@ -16,24 +16,24 @@ router.get('/', function (req, res, next) {
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
   .then((data) => {return loggedInUser(req, data)})
-  .then((data) => data.length ? res.status(202).render('home.html', data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
-  .catch((error) => res.send(error));
+  .then((data) => data.length ? res.status(202).render(`themes/${data[0].theme_name}/home`, data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
+  .catch((error) => console.log(error));
 });
 
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
   .then((data) => {return loggedInUser(req, data)})
-  .then((data) => data ? res.status(202).render('projects.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
-  .catch((error) => res.send(error));
+  .then((data) => data ? res.status(202).render(`themes/${data[0].theme_name}/projects`, data[0]) : res.status(404).render('error'))
+  .catch((error) => console.log(error));
 });
 
 router.get('/:userName/contact', function (req, res, next) {
   const username = req.params.userName;
   knex('users').where('username', username)
   .then((data) => {return loggedInUser(req, data)})
-  .then((data) => data.length ? res.status(202).render('contact.html', data[0]) : res.status(404).render('error', {message: 'No User Found', status: 404}))
-  .catch((error) => res.send(error));
+  .then((user) => res.status(202).render(`themes/${user[0].theme_name}/contact`, user[0]))
+  .catch((error) => console.log(error));
 });
 
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
@@ -57,6 +57,10 @@ router.post('/new', function (req, res, next) {
 
 router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
   updatePro(req.body)
+  .then(() => res.redirect(`/${req.user.username}/dashboard`))
+})
+router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
+  addNewPro(req.body)
   .then(() => res.redirect(`/${req.user.username}/dashboard`))
 })
 
