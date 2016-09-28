@@ -61,10 +61,12 @@ router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
   updatePro(req.body)
   .then(() => res.redirect(`/${req.user.username}/dashboard`))
 })
+
 router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
   addNewPro(req.body)
   .then(() => res.redirect(`/${req.user.username}/dashboard`))
 })
+
 router.post('/importing', authHelpers.authRequired, function (req, res, next) {
   get('projects')
   .where('user_username', req.body.username)
