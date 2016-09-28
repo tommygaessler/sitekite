@@ -20,6 +20,7 @@ form .btn {
   margin-bottom: 50px;
 }
 
-.new-project {
-  display: none;
+.fa-trash, .fa-pencil, .fa-plus {
+  margin: 0 25px;
+  cursor: pointer;
 }
