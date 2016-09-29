@@ -23,6 +23,7 @@ function addUser(body) {
 }
 // test - :COMPLETED
 function removeUser (username) {
+  console.log(username);
   var userPromiseArr = [
     get('users')
     .where(knex.raw('LOWER("username") = ?', username.toLowerCase()))
