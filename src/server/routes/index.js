@@ -55,7 +55,7 @@ router.post('/new', function (req, res, next) {
 
 router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
   updatePro(req.body)
-  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects`))
+  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects-tab`))
 })
 
 router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
@@ -81,7 +81,7 @@ router.delete('/:username', authHelpers.authRequired, function (req, res, next) 
   var user1 = req.params.username.toLowerCase()
   var user2 = req.user.username.toLowerCase()
   req.logout()
-  removeUser(req.params.username)
+  removeUser(user1)
   .then(() => compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))
 })
 

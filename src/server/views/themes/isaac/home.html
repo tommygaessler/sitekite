@@ -36,6 +36,20 @@
 
     <div class="col-md-9">
       <h2 class="about_me">About Me:</h2>
+      {% if (loggedInUser and not bio_desc) %}
+      <br>
+      <div class="alert alert-info alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h2>Welcome!</h2>
+        <br>
+        <a href='/{{loggedInUser.username}}/dashboard' class="alert-link">Click Here</a> to edit your profile
+        <br>
+        <br>
+        Unless you like the bio below, but we're betting you won't <i class="fa fa-smile-o" aria-hidden="true"></i>
+      </div>
+      {% endif %}
       {% if bio_desc %}
       <p class="about_me_content" id="bio_desc">{{ bio_desc }}</p>
       {% else %}
