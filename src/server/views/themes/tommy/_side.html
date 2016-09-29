@@ -11,7 +11,7 @@
     <a href="/{{ username }}/projects">Projects</a>
     <a href="/{{ username }}/contact">Contact</a>
     {% if loggedInUser %}
-    <a href="{{ loggedInUser.username }}/dashboard">
+    <a href="/{{ loggedInUser.username }}/dashboard">
       Dashboard
       <br>
       (Only you can see this)
