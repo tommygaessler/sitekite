@@ -11,12 +11,6 @@
 
   <!-- {% include "./_side.html" %} -->
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
@@ -49,17 +43,31 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="content">
+          <h1>About Me</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <p class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+
+          {% if bio_desc %}
+          <p id="bio_desc">
+            <img src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" class="profile_pic"/>
+            {{ bio_desc }}
+          </p>
+          {% else %}
+          <p>
+            <img src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" class="profile_pic"/>
+            I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.
+          </p>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
 
 {% endblock %}
 

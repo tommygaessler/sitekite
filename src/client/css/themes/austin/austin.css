@@ -6,8 +6,24 @@ body{
   z-index: 0;
 }
 .content{
+  padding: 20px 50px;
+  width: 100%;
   position: absolute;
   z-index: 1;
-  top: 400px;
-  background-color: white;
+  /*top: 320px;*/
+  bottom: 0px;
+  background: rgba(255,255,255, 0.7);
+}
+h1{
+  text-align: center;
+}
+p{
+  font-size: 17px;
+  float: left;
+}
+.profile_pic{
+  float: left;
+  margin-right: 20px;
+  height: 13vw;
+  width: 13vw;
 }
