@@ -7,9 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {% if title %}
-      <title>{{ title }}</title>
+    <title>{{ title }}</title>
+    {% elif name %}
+    <title>{{ name }} | SiteKite</title>
+    {% elif username %}
+    <title>{{ username }} | SiteKite</title>
     {% else %}
-      <title>Site Kite | Make a Portfolio</title>
+    <title>Site Kite | Make a Portfolio</title>
     {% endif %}
     <link rel="icon" href="/img/kite.png">
     <!-- stylesheets -->

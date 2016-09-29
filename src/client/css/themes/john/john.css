@@ -1,50 +1,76 @@
 /*-------- theme styles --------*/
-
 img {
   width: 100%;
 }
-.background-image {
-  background-image: url('../../../img/carlight.jpeg');
+p a, h2 a {
+  color: black;
+}
+p a:hover, h2 a:hover {
+  color: #79ADDC;
+}
+.fa-twitter:hover {
+  color: #1DA1F2;
+}
+.fa-linkedin-square:hover {
+  color: #0077B5;
+}
+.fa-github:hover {
+  color: lightgrey;
+}
+.main {
+  background-image: url('../../../img/pw_maze_white.png');
+  min-height: 100vh;
+}
+.main, .page-links {
+  font-family: 'Muli', sans-serif;
+}
+.title {
+  font-weight: bold;
+  font-size: 6rem;
 }
 
 /*-------- side --------*/
 
 .profile-pic {
-  width: 70%;
+  margin-top: 45px;
+  width: 60%;
   border-radius: 50%;
   border: 3px solid white;
   z-index: 1;
 }
 
 .background-image {
-  width: 30%;
+  width: 40%;
   height: 100%;
   position: fixed;
-  left: 0;
-  top: 45px;
+  right: 0;
+  top: 0;
   opacity: 0.6;
-  background-position: left;
+  background-position: right;
   background-size: cover;
   z-index: -1;
+  background-image: url('../../../img/building.jpeg');
 }
 
 .side {
-  width: 30%;
+  width: 40%;
   height: 100%;
   padding: 6%;
   padding-top: 30px;
   position: fixed;
-  left: 0;
-  top: 45px;
+  right: 0;
+  top: 0;
   color: white;
   text-align: center;
-  z-index: 0;
+  z-index: -1;
   background: rgba(0, 0, 0, 0.4);
   text-shadow: 0px 0px 5px #333;
 }
 
 .side h3 a {
   color: white;
+  text-shadow: 1px 1px dimgrey;
+  cursor: pointer;
 }
 
 .page-links a {
@@ -52,6 +78,7 @@ img {
   color: white;
   font-size: 20px;
   margin-bottom: 10px;
+  text-shadow: 1px 1px dimgrey;
 }
 
 .social-links {
@@ -90,9 +117,9 @@ li.mobile-only {
 /*-------- main --------*/
 
 .main {
-  padding: 60px 150px;
-  margin-left: 30%;
-  width: 70%;
+  padding: 60px 100px;
+  margin-right: 40%;
+  width: 60%;
   float: left;
 }
 
@@ -117,33 +144,45 @@ textarea {
     margin-top: 10px;
   }
 
+  .page-links a {
+    margin: 10px 10px 20px;
+    font-size: 12px;
+  }
   .page-links {
-    display: none;
+    display: inline-flex;
+    justify-content: space-between;
   }
 
   hr {
     display: none;
   }
-
+  .title {
+    font-weight: bold;
+    font-size: 4rem;
+  }
   .profile-pic {
-    margin-top: 20px;
-    width: 80px;
+    margin-top: 60px;
+    width: 100px;
   }
 
   .background-image {
     width: 100%;
-    height: 200px;
+    height: 300px;
     position: absolute;
     top: 0;
     background-position: center center;
+    z-index: -1;
   }
-
+  .social-links a:hover {
+    text-decoration: underline;
+  }
   .side {
     width: 100%;
-    height: 200px;
+    height: 300px;
     position: relative;
     padding: 0;
     top: 0;
+    z-index: 2;
   }
 
   .main {
@@ -151,10 +190,9 @@ textarea {
     margin: 0;
     float: 0;
     width: 100%;
-    padding: 0;
+    padding: 15px 10%;
+    padding-top: 0;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
   }
 }

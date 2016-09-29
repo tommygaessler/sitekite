@@ -82,7 +82,7 @@
             <div class="radio">
               <label>
                 <input type="radio" name="theme_name" value="john" {%if loggedInUser.theme_name == 'john'%} checked {%endif%}/>
-                <img src="/img/theme1.jpg">
+                <img src="/img/john_theme.png">
               </label>
             </div>
           </div>
@@ -116,8 +116,8 @@
         <h1>Contact</h1>
 
         <div class="form-group">
-          <label for="contact_desc">Contact Me Message</label>
-          <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
+          <label for="contact_desc">Contact Me Message (optional)</label>
+          <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display above the contact form on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
         </div>
 
         <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
