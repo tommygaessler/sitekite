@@ -1,0 +1,13 @@
+body{
+  position: relative;
+}
+.carousel{
+  position: absolute;
+  z-index: 0;
+}
+.content{
+  position: absolute;
+  z-index: 1;
+  top: 400px;
+  background-color: white;
+}
