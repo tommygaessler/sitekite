@@ -4,8 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="{{ bio_desc }}">
+    <meta name="author" content="{{ name }}">
+    <title>{{ name }}</title>
+
+    <!-- Twitter Cards -->
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://sitekite.co/img/og.jpg">
+    <meta name="twitter:site" content="{{ twitter }}">
+    <meta name="twitter:title" content="{{ name }}">
+    <meta name="twitter:description" content="{{ bio_desc }}">
+
+    <!-- OpenGraph -->
+
+    <meta property="fb:app_id" content="892776057520144" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://sitekite.co/{{ username }}" />
+    <meta property="og:title" content="{{ name }}" />
+    <meta property="og:description" content="{{ bio_desc }}" />
+    <meta property="og:image" content="http://sitekite.co/img/og.jpg" />
+    <meta property="og:site_name" content="{{ bio_desc }}" />
+
+    <!-- links -->
+
+    <link rel="icon" href="{{ profile_pic_url }}">
     {% if title %}
     <title>{{ title }}</title>
     {% elif name %}
@@ -15,7 +38,6 @@
     {% else %}
     <title>Site Kite | Make a Portfolio</title>
     {% endif %}
-    <link rel="icon" href="/img/kite.png">
     <!-- stylesheets -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
