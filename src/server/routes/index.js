@@ -61,7 +61,7 @@ router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
 
 router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
   addNewPro(req.body)
-  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects`))
+  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects-tab`))
 })
 
 router.post('/importing', authHelpers.authRequired, function (req, res, next) {
