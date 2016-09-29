@@ -1,13 +1,4 @@
-{% extends "_base.html" %}
-
-{% block title %}{% endblock %}
-
-{% block css %}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
-<link rel="stylesheet" href="/css/themes/tommy/tommy.css">
-{% endblock %}
-
-{% block content %}
+{% include "./_header.html" %}
 
   {% include "./_side.html" %}
 
@@ -27,15 +18,10 @@
     </div>
     {% endif %}
     <h1>About Me</h1>
-    <br>
     <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
       {% else %}
     <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
     {% endif %}
   </div>
 
-{% endblock %}
-
-{% block scripts %}
-<script type="text/javascript" src="./js/home.js"></script>
-{% endblock %}
+{% include "./_footer.html" %}

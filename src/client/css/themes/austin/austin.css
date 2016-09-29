@@ -1,0 +1,40 @@
+body{
+  position: relative;
+}
+.carousel{
+  position: absolute;
+  z-index: 0;
+}
+.content{
+  padding: 20px 50px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  /*top: 320px;*/
+  bottom: 0px;
+  background: rgba(255,255,255, 0.7);
+}
+.carousel img {
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+}
+h1 {
+  text-align: center;
+}
+.home p{
+  font-size: 17px;
+  float: left;
+}
+.profile_pic{
+  float: left;
+  margin-right: 20px;
+  height: 13vw;
+  width: 13vw;
+}
+.projects{
+  overflow-y: scroll;
+  height: 300px;
+}

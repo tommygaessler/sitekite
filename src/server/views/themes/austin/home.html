@@ -1,0 +1,73 @@
+{% extends "./base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block css %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<link rel="stylesheet" href="/css/themes/austin/austin.css">
+{% endblock %}
+
+{% block content %}
+
+  <!-- {% include "./_side.html" %} -->
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="/img/car1.jpg" alt="...">
+      <div class="carousel-caption">
+
+      </div>
+    </div>
+    <div class="item">
+      <img src="/img/car2.jpg" alt="...">
+      <div class="carousel-caption">
+
+      </div>
+    </div>
+    <div class="item">
+      <img src="/img/car3.jpg" alt="...">
+      <div class="carousel-caption">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="content home">
+          <h1>About Me</h1>
+
+
+          {% if bio_desc %}
+          <p id="bio_desc"> {{ bio_desc }} </p>
+          {% else %}
+          <p>
+            <img src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" class="profile_pic"/>
+            I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="./js/home.js"></script>
+{% endblock %}

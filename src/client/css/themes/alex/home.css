@@ -1,0 +1,23 @@
+.profile-pic {
+    border: 5px solid #79ADDC;
+}
+.main {
+  font-family: 'Pavanam', sans-serif;
+  font-size: 30px;
+}
+.about {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 150px;
+}
+
+@media (max-width: 1199px) {
+  .about {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 452px) {
+  .about {
+    font-size: 100px;
+  }
+}

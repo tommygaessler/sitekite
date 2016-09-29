@@ -4,16 +4,38 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="SiteKite allows developers to make a website to showcase who they are, and what they've built!">
+    <meta name="author" content="SiteKite">
+    <!-- Twitter Cards -->
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://sitekite.co/img/oghome.jpg">
+    <meta name="twitter:site" content="@tommygaessler">
+    <meta name="twitter:title" content="SiteKite">
+    <meta name="twitter:description" content="SiteKite allows developers to make a website to showcase who they are, and what they've built!">
+
+    <!-- OpenGraph -->
+
+    <meta property="fb:app_id" content="892776057520144" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://sitekite.co" />
+    <meta property="og:title" content="SiteKite" />
+    <meta property="og:description" content="SiteKite allows developers to make a website to showcase who they are, and what they've built!" />
+    <meta property="og:image" content="http://sitekite.co/img/oghome.jpg" />
+    <meta property="og:site_name" content="SiteKite" />
     {% if title %}
-      <title>{{ title }}</title>
+    <title>{{ title }}</title>
+    {% elif name %}
+    <title>{{ name }} | SiteKite</title>
+    {% elif username %}
+    <title>{{ username }} | SiteKite</title>
     {% else %}
-      <title>Site Kite | Make a Portfolio</title>
+    <title>Site Kite | Make a Portfolio</title>
     {% endif %}
     <link rel="icon" href="/img/kite.png">
     <!-- stylesheets -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Gudea|Pavanam|Questrial" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/main.css">
     {% block css %}{% endblock %}
@@ -23,7 +45,7 @@
       {% block content %}
       {% endblock %}
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
     {% block scripts %}{% endblock %}
   </body>

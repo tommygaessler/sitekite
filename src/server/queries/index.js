@@ -105,21 +105,20 @@ function checkNewUser(data) {
     }
   }
 }
-// test - :COMPLETED:
+// test - :Not Needed:
 function compareUser(user1, user2) {
   if (user1 === user2) {
     return true;
   }
   return false;
 }
-// test - ?
 function loggedInUser(req, data) {
   if (req.user && data.length > 0) {
     data[0].loggedInUser = req.user
   }
   return Promise.resolve(data)
 }
-// test - ?
+// test - ...
 function addProjects(data, user) {
   var promise = data.map(function (project) {
     return get('projects').insert({
@@ -135,8 +134,9 @@ function addProjects(data, user) {
     return user;
   })
 }
-// test - ?
+// test -
 function addNewPro(body) {
+  console.log(body.name.replace(/[^A-Za-z]/g, '').length);
   if (body.name.replace(/[^A-Za-z]/g, '').length == 0) {
     return Promise.resolve(false);
   }

@@ -1,0 +1,57 @@
+{% include "./resources.html" %}
+
+{% extends "_base.html"%}
+
+{% block css %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<link rel="stylesheet" href="/css/themes/isaac/main.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container extra_body_bottom">
+  <h1><a class="text_username social_link" href="/{{ username }}">{% if name %}{{ name }}{% else %}Name Here!{% endif %}</a></h1>
+
+  <nav class="social-links">
+    {% if twitter %}
+    <a class="social_link" href="https://twitter.com/{{ twitter }}" target="_blank">
+      <i class="fa fa-twitter" aria-hidden="true"> My Twitter</i>
+    </a>
+    {% endif %}
+    <a class="social_link" href="https://github.com/{{ username }}" target="_blank">
+      <i class="fa fa-github" aria-hidden="true"> My Github</i>
+    </a>
+    {% if linkedin %}
+    <a class="social_link" href="https://linkedin.com/in/{{ linkedin }}" target="_blank">
+      <i class="fa fa-linkedin-square" aria-hidden="true"> My Linkedin</i>
+    </a>
+    {% endif %}
+  </nav>
+<hr>
+
+  <div class="container">
+    <a class="col-md-3" href="/{{ username }}">
+      <img class="main-user-pic" src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" />
+    </a>
+
+    <div class="col-md-9">
+      <h2 class="about_me">About Me:</h2>
+      {% if bio_desc %}
+      <p class="about_me_content" id="bio_desc">{{ bio_desc }}</p>
+      {% else %}
+      <p class="about_me_content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+
+  <hr>
+</div>
+
+{% include "./footer.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="./js/home.js"></script>
+{% endblock %}

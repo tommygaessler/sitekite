@@ -1,0 +1,59 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block css %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<link rel="stylesheet" href="/css/themes/geocity/geocity.css">
+{% endblock %}
+
+{% block content %}
+
+  {% include "./_side.html" %}
+
+  <div class="col-md-8 col-md-offset-3 main">
+    {% if (loggedInUser and not bio_desc) %}
+    <br>
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h2>Welcome!</h2>
+      <hr>
+      <br>
+      <a href='/{{loggedInUser.username}}/dashboard' class="alert-link">Click Here</a> to edit your profile
+      <br>
+      <br>
+      Unless you like the bio below, but we're betting you won't <i class="fa fa-smile-o" aria-hidden="true"></i>
+    </div>
+    {% endif %}
+    <hr>
+    <h1 class="row main"><img class="geocity-pic" src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" style="float:left"/>{{username}} Home Page <img class="geocity-pic" src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" style="float:right"/></h1>
+    <br>
+    <hr>
+    <hr>
+    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
+      {% else %}
+    <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
+    {% endif %}
+    <hr>
+    <hr>
+    <div class="row">
+      <p>
+        I have worked very hard on all my projects a link to vew them all is available <br> <a href="/{{username}}">here</a>
+      </p>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <div class="row">
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="./js/home.js"></script>
+{% endblock %}

@@ -9,7 +9,6 @@ img {
 textarea {
   resize: none;
 }
-
 .radio label > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
   position: absolute; /* Remove input from document flow */
@@ -19,12 +18,14 @@ textarea {
   border:2px solid transparent;
 }
 .radio label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+  border:2px solid #DB5A42;
 }
 
 .navbar {
   margin-bottom: 0;
   width: 100%;
+  z-index: 5;
+  position: relative;
 }
 
 .navbar-brand img {
@@ -88,4 +89,10 @@ textarea {
   padding: 0 !important;
   margin: 0;
   transition: all 0.5s ease-in-out;
+}
+.fa:hover {
+  text-decoration: none;
+}
+.nav-tabs {
+  margin-top: 20px;
 }

@@ -1,26 +1,28 @@
-{% extends "_base.html" %}
-
-{% block title %}{% endblock %}
-{% block css %}<link rel="stylesheet" href="/css/themes/tommy/tommy.css">{% endblock %}
-{% block content %}
+{% include "./_header.html" %}
 
   {% include "./_side.html" %}
 
   <div class="main">
     <h1>Projects</h1>
     {% for project in projects %}
-      <h2>{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
+    {% if project.image_url %}
+    <img class="project-image" src="{{ project.image_url }}" alt="" />
+    {% endif %}
+    <div class="well {% if project.image_url %}project-well{% endif %}">
+      <h2 class="project-title">{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
+
       <p>
-        <a href="{{project.github_url}}">GitHub Repo</a>
+        <a href="{{ project.github_url }}"><i class="fa fa-github" aria-hidden="true"></i> GitHub Repo</a>
+
+        {% if project.deployed_url %}
+        <span>| </span><a href="{{ project.deployed_url }}">Deployed Site <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        {% endif %}
       </p>
-      <p>
-        Written with: {{project.tools_languages}}
-      </p>
-      <p>
-        description: {{project.description}}
-      </p>
+
+      <p>{{ project.description }}</p>
+      <p>Developed With: {{ project.tools_languages }}</p>
+      </div>
     {% endfor %}
+
   </div>
-
-
-{% endblock %}
+{% include "./_footer.html" %}
