@@ -33,13 +33,12 @@ passport.use(new GitHubStrategy({
     .then((user) => {
       getGithubInfo(user[0].username)
       .then((userData) => {
-        var randomTheme = themes[Math.floor(Math.random()*themes.length)];
         knex('users').where('id', user[0].id)
         .update({
           profile_pic_url: userData.data.avatar_url,
           name: userData.data.name,
           email: userData.data.email,
-          theme_name: randomTheme
+          theme_name: themes[Math.floor(Math.random()*themes.length)]
         }).then(() => {
           ghPinnedRepos(user[0].username)
           .then(projectsApiCalls)
