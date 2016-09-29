@@ -38,6 +38,8 @@ $(document).ready(function () {
   $('#linkedin').on('input', function() {
     if ($('#linkedin').val()) {
       $('.fa-linkedin-square').css('color', '#0077b5');
+    } else {
+      $('.fa-linkedin-square').css('color', '#6f6f6f');
     }
     $('#linkedin').on('input', function() {
       if ($('#linkedin').val()) {
