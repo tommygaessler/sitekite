@@ -1,3 +1,5 @@
 $(document).ready(function() {
-  document.getElementById('bio_desc').innerHTML = marked($('#bio_desc').text());
+  if (document.getElementById('bio_desc')) {
+    document.getElementById('bio_desc').innerHTML = marked($('#bio_desc').text());
+  }
 });
