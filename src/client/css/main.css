@@ -91,3 +91,6 @@ textarea {
   margin: 0;
   transition: all 0.5s ease-in-out;
 }
+.fa:hover {
+  text-decoration: none;
+}
