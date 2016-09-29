@@ -32,7 +32,11 @@ $(document).ready(function() {
       url: `/project/${projectName}`
     })
     .done(function() {
-      location.href = `/${username}/dashboard/#projects-tab`;
+      if (location.hash === '#projects-tab') {
+        location.reload();
+      } else {
+        location.href = `/${username}/dashboard/#projects-tab`;
+      }
     });
   });
 
@@ -61,8 +65,11 @@ $(document).ready(function() {
       }
     })
     .done(() => {
-      console.log('done', `/${username}/dashboard/#projects-tab`);
-      location.href = `/${username}/dashboard/#projects-tab`;
+      if (location.hash === '#projects-tab') {
+        location.reload();
+      } else {
+        location.href = `/${username}/dashboard/#projects-tab`;
+      }
     });
   });
 
