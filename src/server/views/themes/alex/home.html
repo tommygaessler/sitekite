@@ -27,12 +27,20 @@
       Unless you like the bio below, but we're betting you won't <i class="fa fa-smile-o" aria-hidden="true"></i>
     </div>
     {% endif %}
-    <h1>About Me</h1>
     <br>
-    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
-      {% else %}
-    <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
-    {% endif %}
+    <div class="container">
+      <div class="about_me row">
+        <div class="about_div col-md-4 col-md-offset-1">
+          <h3 class="about">About Me</h3>
+        </div>
+        <div class="bio_div col-md-6">
+          <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
+            {% else %}
+          <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </div>
 
 {% endblock %}
