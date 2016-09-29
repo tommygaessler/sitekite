@@ -61,6 +61,7 @@ $(document).ready(function() {
       }
     })
     .done(() => {
+      console.log('done');
       location.href = `/${username}/dashboard/#projects-tab`;
     });
   });
