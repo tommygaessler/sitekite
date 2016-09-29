@@ -1,0 +1,70 @@
+{% include "./resources.html" %}
+
+{% extends "_base.html"%}
+
+{% block css %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<link rel="stylesheet" href="/css/themes/isaac/main.css">
+{% endblock %}
+
+{% block content %}
+<div class="container extra_body_bottom">
+
+  <h1 ><a class="text_username social_link" href="/{{ username }}">{% if name %}{{ name }}{% else %}Name Here!{% endif %}</a></h1>
+
+  <nav class="social-links">
+    {% if twitter %}
+    <a class="social_link" href="https://twitter.com/{{ twitter }}" target="_blank">
+      <i class="fa fa-twitter" aria-hidden="true"> My Twitter</i>
+    </a>
+    {% endif %}
+    <a class="social_link" href="https://github.com/{{ username }}" target="_blank">
+      <i class="fa fa-github" aria-hidden="true"> My Github</i>
+    </a>
+    {% if linkedin %}
+    <a class="social_link" href="https://linkedin.com/in/{{ linkedin }}" target="_blank">
+      <i class="fa fa-linkedin-square" aria-hidden="true"> My Linkedin</i>
+    </a>
+    {% endif %}
+  </nav>
+<hr>
+
+  <div class="container">
+    <a class="col-md-3" href="/{{ username }}">
+      <img class="main-user-pic" src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" />
+    </a>
+<!-- contact me! -->
+  <div class="col-md-9">
+    <h1 class="bump text_project_name">Send Me an Email to connect!</h1>
+
+    <p class="bump text_project">
+      {% if contact_desc %}
+      {{ contact_desc }}
+      {% endif %}
+    </p>
+
+    <form action="/{{ username }}/contact/send" method="post">
+      <div class="form-group bump">
+        <label class="text_project_name" for="name">What is you Name?</label>
+        <input type="text" class="form-control" id="name" placeholder="" name="name">
+      </div>
+      <div class="form-group bump">
+        <label class="text_project_name" for="email">What is your Email?</label>
+        <input type="email" class="form-control" id="email" placeholder="" name="from_email">
+      </div>
+      <div class="form-group bump">
+        <label class="text_project_name" for="message">Send me this Message!</label>
+        <textarea class="form-control" rows="5" name="message" id="message"></textarea>
+      </div>
+      <input type="hidden" name="to_email" value="{{ email }}">
+      <button type="submit" class="btn btn-success bump round">Submit</button>
+    </form>
+  </div>
+
+<!-- end content -->
+  </div>
+  <hr>
+</div>
+
+{% include "./footer.html" %}
+{% endblock %}

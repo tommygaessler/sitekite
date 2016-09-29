@@ -161,7 +161,7 @@ describe('Queries : index.js', () => {
     })
   })
 
-  describe('function: addNewPro()', () => {
+  xdescribe('function: addNewPro()', () => {
     beforeEach(() => {
       return knex.migrate.rollback()
       .then(() => { return knex.migrate.latest(); })
