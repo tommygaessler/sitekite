@@ -11,7 +11,7 @@ $(document).ready(function() {
     $(`.pinned-project-info#${project}`).css('display', 'block');
 
     $('.edit-project-name').focus();
-  })
+  });
 
   $('.new-project').on('click', function() {
     $('.project-text').html('Add Project');
@@ -21,18 +21,18 @@ $(document).ready(function() {
     $('.pinned-project-info#manual').css('display', 'block');
 
     $('#new-project-name').focus();
-  })
+  });
 
   $('.delete-project').click(function() {
-    var projectName = $(this).attr('value')
+    var projectName = $(this).attr('data-value');
     $.ajax({
       method: 'DELETE',
       url: `/project/${projectName}`
     })
     .done(function() {
       location.reload();
-    })
-  })
+    });
+  });
 
   $('.delete_account').click(function () {
     const username = $('.delete_account span')[0].textContent
