@@ -37,7 +37,7 @@ router.get('/:username/contact', function (req, res, next) {
   .catch((error) => console.log(error));
 });
 
-router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
+router.get('/:username/dashboard', authHelpers.authRequired, function (req, res, next) {
   var user1 = req.params.username.toLowerCase()
   var user2 = req.user.username.toLowerCase()
   getProjects([req.user])
