@@ -28,5 +28,6 @@ h1{
   width: 13vw;
 }
 .projects{
-  height: 400px;
+  overflow-y: scroll;
+  height: 300px;
 }
