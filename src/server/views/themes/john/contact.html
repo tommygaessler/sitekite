@@ -1,13 +1,8 @@
-{% extends "_base.html" %}
-
-{% block css %}
-<link rel="stylesheet" href="/css/themes/john/john.css">
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-{% endblock %}
-{% block content %}
-
+{% include "./_header.html" %}
+<body>
+  {% include "./_nav.html" %}
   {% include "./_side.html" %}
-
+  
   <div class="main">
     <h1 class="title">Contact</h1>
 
@@ -35,4 +30,4 @@
     </form>
   </div>
 
-{% endblock %}
+{% include "./_footer.html" %}
