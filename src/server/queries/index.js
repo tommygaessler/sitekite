@@ -80,7 +80,7 @@ function projectsApiCalls(arr) {
 }
 // test -  :COMPLETED:
 function userInDb(user) {
-  return get('users').where('username', user.username);
+  return get('users').where(knex.raw('LOWER("username") = ?', user.username.toLowerCase()));
 }
 // test - :COMPLETED:
 function getProjects(data) {

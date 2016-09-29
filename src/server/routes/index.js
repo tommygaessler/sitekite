@@ -30,17 +30,16 @@ router.get('/:username/projects', function (req, res, next) {
   .catch((error) => console.log(error));
 });
 
-router.get('/:userName/contact', function (req, res, next) {
-  const username = req.params.userName;
-  knex('users').where('username', username)
+router.get('/:username/contact', function (req, res, next) {
+  userInDb(req.params)
   .then((data) => {return loggedInUser(req, data)})
   .then((user) => res.status(202).render(`themes/${user[0].theme_name}/contact`, user[0]))
   .catch((error) => console.log(error));
 });
 
 router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
-  var user1 = req.params.userName
-  var user2 = req.user.username
+  var user1 = req.params.userName.toLowerCase()
+  var user2 = req.user.username.toLowerCase()
   getProjects([req.user])
   .then((data) => compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects, title: 'SiteKite | Dashboard'}) : res.render('error'))
   .catch((err) => res.send(err));
@@ -80,8 +79,8 @@ router.post('/importing', authHelpers.authRequired, function (req, res, next) {
 })
 
 router.delete('/:username', authHelpers.authRequired, function (req, res, next) {
-  var user1 = req.params.userName
-  var user2 = req.user.username
+  var user1 = req.params.userName.toLowerCase()
+  var user2 = req.user.username.toLowerCase()
   req.logout()
   removeUser(req.params.username)
   .then(() => compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))
