@@ -1,0 +1,22 @@
+.geocity-pic {
+  height: 10vw;
+  width: 10vw;
+}
+h1{
+  text-align: center;
+}
+p{
+  margin: 40px 20px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 25px;
+}
+a{
+  float: left;
+  text-decoration: underline;
+}
+.main{
+  padding: 0px;
+  display: inline;
+  margin: 0px;
+}
