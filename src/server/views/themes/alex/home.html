@@ -1,0 +1,41 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block css %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<link rel="stylesheet" href="/css/themes/alex/alex.css">
+{% endblock %}
+
+{% block content %}
+
+  {% include "./_top.html" %}
+
+  <div class="main">
+    {% if (loggedInUser and not bio_desc) %}
+    <br>
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h2>Welcome!</h2>
+      <br>
+      <a href='/{{loggedInUser.username}}/dashboard' class="alert-link">Click Here</a> to edit your profile
+      <br>
+      <br>
+      Unless you like the bio below, but we're betting you won't <i class="fa fa-smile-o" aria-hidden="true"></i>
+    </div>
+    {% endif %}
+    <h1>About Me</h1>
+    <br>
+    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
+      {% else %}
+    <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="./js/home.js"></script>
+{% endblock %}

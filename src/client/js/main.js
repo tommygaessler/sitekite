@@ -21,16 +21,16 @@ $(document).ready(function () {
   }
   $('#twitter').on('input', function() {
     if ($('#twitter').val()) {
-      $('.fa-twitter-square').css('color', '#3cf');
-    } else {
-      $('.fa-twitter-square').css('color', '#6f6f6f');
+      $('.fa-twitter-square').css('color', '#1DA1F2');
     }
-  });
-  // linkedin styles
-  if ($('#linkedin').val()) {
-    $('.fa-linkedin-square').css('color', '#0077b5');
-  }
-  $('#linkedin').on('input', function() {
+    $('#twitter').on('input', function() {
+      if ($('#twitter').val()) {
+        $('.fa-twitter-square').css('color', '#1DA1F2');
+      } else {
+        $('.fa-twitter-square').css('color', '#6f6f6f');
+      }
+    });
+    // linkedin styles
     if ($('#linkedin').val()) {
       $('.fa-linkedin-square').css('color', '#0077b5');
     } else {

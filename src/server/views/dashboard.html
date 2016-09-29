@@ -82,7 +82,7 @@
             <div class="radio">
               <label>
                 <input type="radio" name="theme_name" value="john" {%if loggedInUser.theme_name == 'john'%} checked {%endif%}/>
-                <img src="/img/theme1.jpg">
+                <img src="/img/john_theme.png">
               </label>
             </div>
           </div>
@@ -92,7 +92,7 @@
             <div class="radio">
               <label>
                 <input type="radio" name="theme_name" value="alex" {%if loggedInUser.theme_name == 'alex'%} checked {%endif%}/>
-                <img src="/img/theme1.jpg">
+                <img src="../img/alex_theme.png">
               </label>
             </div>
           </div>
@@ -116,17 +116,14 @@
         <h1>Contact</h1>
 
         <div class="form-group">
-          <label for="contact_desc">Contact Me Message</label>
-          <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
+          <label for="contact_desc">Contact Me Message (optional)</label>
+          <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display above the contact form on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
         </div>
 
         <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
 
         <div class="row">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#myModal">Delete Account</button>
-          </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <button type="submit" name="button" class="btn btn-success btn-block">Save Changes</button>
           </div>
         </div>
@@ -135,11 +132,14 @@
   </form>
   <div class="row margin-bottom">
     <div class="col-md-6">
-      <form class="pull-right" action="/importing" method="post">
-        <input hidden type="text" name="username" value="{{loggedInUser.username}}">
-        <input type="submit" value="Import my Pinned Github Repos">
-      </form>
-      <h1 id="projects">Projects</h1>
+      <div class="row">
+        <div class="col-sm-5">
+          <h1 id="projects">Projects</h1>
+        </div>
+        <div class="col-sm-7">
+          <button id="gh-import" data-user-name="{{loggedInUser.username}}" class="btn btn-info btn-block" data-toggle="modal" data-target="#gh-import-modal"><i class="fa fa-cloud-download" aria-hidden="true"></i>  Import Pinned Github Repos</button>
+        </div>
+      </div>
       <div class="well new-project">
         <h4>Add a New Project
           <small>
@@ -147,16 +147,19 @@
           </small>
         </h4>
       </div>
+      <div class="project-well">
       {% for project in pinnedProjects %}
-      <div class="well">
-        <h4>{{ project.project_name }}
-          <small>
-            <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project pull-right" aria-hidden="true"></i>
-            <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project pull-right" aria-hidden="true"></i>
-          </small>
-        </h4>
-      </div>
+        <div class="well">
+          <h4>{{ project.project_name }}
+            <small>
+              <i class="fa fa-trash pull-right" data-toggle="modal" data-target="#{{project.project_name | normalizer}}-modal" aria-hidden="true"></i>
+              <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project pull-right" aria-hidden="true"></i>
+            </small>
+          </h4>
+          {% include '_delete-projects-modal.html' %}
+        </div>
       {% endfor %}
+      </div>
     </div>
     <div class="col-md-6">
       <h1 class="project-text">Add Project</h1>
@@ -210,8 +213,8 @@
           <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
         </div>
         <div class="form-group">
-          <label for="image_url">Project Image</label>
-          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="">
+          <label for="image_url">Project Image URL</label>
+          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
         </div>
         <div class="form-group">
           <label for="description">Project Description</label>
@@ -232,42 +235,13 @@
       {% endfor %}
     </div>
   </div>
-
-<!-- Delete Account Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">
-        Delete Account</h4>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete your account? This cannot be undone...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dear God, No!</button>
-        <button type="delete" class="delete_account btn btn-danger"><span hidden>{{username}}</span>Yes, Delete My Account</button>
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-secondary btn-sm btn-block delete-account-btn" data-toggle="modal" data-target="#myModal">Delete Account</button>
     </div>
   </div>
-</div>
 
-<!-- Profile Picture preview Modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="previewModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img class="img-responsive" src="{{ loggedInUser.profile_pic_url }}" alt="This Picture isn't working. Try another!" id="preview-image">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+{% include '_modals.html' %}
 
 {% endblock %}
 

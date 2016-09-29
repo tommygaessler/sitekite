@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/css/themes/john/john.css">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+  {% include "./_side.html" %}
+
+  <div class="main">
+    <h1  class="title">Projects</h1>
+    {% for project in projects %}
+      <h2>{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
+      <p>
+        <a href="{{project.github_url}}"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a>
+      </p>
+      <p>
+        Written with: {{project.tools_languages}}
+      </p>
+      <p>
+        Description: {{project.description}}
+      </p>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}

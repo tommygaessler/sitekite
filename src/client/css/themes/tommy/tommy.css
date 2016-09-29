@@ -3,6 +3,9 @@
 img {
   width: 100%;
 }
+.background-image {
+  background-image: url('../../../img/carlight.jpeg');
+}
 
 /*-------- side --------*/
 

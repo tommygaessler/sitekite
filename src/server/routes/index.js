@@ -16,7 +16,8 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => {return loggedInUser(req, data)})
+  .then((data) => {
+    return loggedInUser(req, data)})
   .then((data) => data.length ? res.status(202).render(`themes/${data[0].theme_name}/home`, data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
@@ -42,7 +43,7 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
   var user2 = req.user.username
   getProjects([req.user])
   .then((data) => {
-    compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects}) : res.render('error');
+    compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects, title: 'SiteKite | Dashboard'}) : res.render('error');
   })
   .catch((err) => res.send(err));
 });
@@ -58,12 +59,12 @@ router.post('/new', function (req, res, next) {
 
 router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
   updatePro(req.body)
-  .then(() => res.redirect(`/${req.user.username}/dashboard`))
+  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects`))
 })
 
 router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
   addNewPro(req.body)
-  .then(() => res.redirect(`/${req.user.username}/dashboard`))
+  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects`))
 })
 
 router.post('/importing', authHelpers.authRequired, function (req, res, next) {
@@ -90,7 +91,7 @@ router.delete('/:username', authHelpers.authRequired, function (req, res, next) 
 
 router.delete('/project/:projectName', authHelpers.authRequired, function (req, res, next) {
   removePro(req.params.projectName)
-  .then(() =>res.send('test'))
+  .then(() => res.send('project deleted'))
 })
 
 module.exports = router;

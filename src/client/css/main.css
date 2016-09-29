@@ -25,6 +25,8 @@ textarea {
 .navbar {
   margin-bottom: 0;
   width: 100%;
+  z-index: 5;
+  position: relative;
 }
 
 .navbar-brand img {
@@ -88,4 +90,7 @@ textarea {
   padding: 0 !important;
   margin: 0;
   transition: all 0.5s ease-in-out;
+}
+.fa:hover {
+  text-decoration: none;
 }

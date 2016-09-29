@@ -26,6 +26,15 @@ const bad_test_user = {
   bio_desc: 'something about me',
   contact_desc: '1234567890'
 }
+const test_projects = {
+  github_url: 'example.github.url',
+  project_name: 'Example Project',
+  deployed_url: 'heroku/example.com',
+  tools_languages: 'javascript, ruby, etc',
+  username: 'test_user',
+  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  image_url: 'body.image_url.com/example.png'
+}
 
 describe('Queries : index.js', () => {
   describe('function: get()', () => {
@@ -152,7 +161,7 @@ describe('Queries : index.js', () => {
     })
   })
 
-  describe('function: loggedInUser()', () => {
+  describe('function: addNewPro()', () => {
     beforeEach(() => {
       return knex.migrate.rollback()
       .then(() => { return knex.migrate.latest(); })
@@ -161,10 +170,10 @@ describe('Queries : index.js', () => {
     afterEach(() => {
       return knex.migrate.rollback();
     });
-    it('should verify that someone is logged in', () => {
-      return query.loggedInUser(test_user, bad_test_user)
+    it('should add a new project into the project database', () => {
+      query.addNewPro(test_projects)
       .then((results) => {
-        expect(results)
+        console.log(results);
       })
     })
   })
