@@ -25,8 +25,8 @@ function addUser(body) {
 function removeUser (username) {
   var userPromiseArr = [
     get('users')
-    .where('username', username)
-    .del(), get('projects').where('user_username', username).del()]
+    .where(knex.raw('LOWER("username") = ?', username.toLowerCase()))
+    .del(), get('projects').where(knex.raw('LOWER("user_username") = ?', username.toLowerCase())).del()]
   return Promise.all(userPromiseArr)
 }
 // test - :COMPLETED:
