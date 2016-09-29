@@ -5,6 +5,7 @@ const {getGithubInfo, projectsApiCalls, addProjects} = require('../queries/index
 const init = require('./init');
 const knex = require('../db/knex');
 const ghPinnedRepos = require('gh-pinned-repos');
+const themes = ['tommy', 'john', 'alex'];
 
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
@@ -32,11 +33,13 @@ passport.use(new GitHubStrategy({
     .then((user) => {
       getGithubInfo(user[0].username)
       .then((userData) => {
+        var randomTheme = themes[Math.floor(Math.random()*themes.length)];
         knex('users').where('id', user[0].id)
         .update({
           profile_pic_url: userData.data.avatar_url,
           name: userData.data.name,
-          email: userData.data.email
+          email: userData.data.email,
+          theme_name: randomTheme
         }).then(() => {
           ghPinnedRepos(user[0].username)
           .then(projectsApiCalls)
