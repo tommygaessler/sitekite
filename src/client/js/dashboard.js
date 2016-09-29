@@ -25,6 +25,7 @@ $(document).ready(function() {
   });
 
   $('.delete-project').click(function() {
+    var username = $(this).attr('data-username');
     var projectName = $(this).attr('data-value');
     $.ajax({
       method: 'DELETE',
