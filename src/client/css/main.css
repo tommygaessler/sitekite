@@ -94,3 +94,6 @@ textarea {
 .fa:hover {
   text-decoration: none;
 }
+.nav-tabs {
+  margin-top: 20px;
+}
