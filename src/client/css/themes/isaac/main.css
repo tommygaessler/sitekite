@@ -24,7 +24,7 @@ body {
   color: limegreen;
   margin-left: 1%;
 }
-.text_project a {
+.text_project a, .text_project {
   color: limegreen;
 }
 .text_project a:hover {
