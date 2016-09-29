@@ -36,7 +36,7 @@ $(document).ready(function() {
   });
 
   $('.delete_account').click(function () {
-    const username = $('.delete_account span')[0].textContent;
+    const username = $('.delete_account').attr('data-name');
     $(this).attr('disabled', 'disabled');
     $(this).html('<i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i>');
     $.ajax({
