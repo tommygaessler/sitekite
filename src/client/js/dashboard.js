@@ -31,7 +31,7 @@ $(document).ready(function() {
       url: `/project/${projectName}`
     })
     .done(function() {
-      location.reload();
+      location.href = `/${username}/dashboard/#projects-tab`;
     });
   });
 
@@ -63,4 +63,12 @@ $(document).ready(function() {
       location.href = `/${username}/dashboard/#projects-tab`;
     });
   });
+
+  if (location.hash === '#projects-tab') {
+    $('#portfolio-tab-li').toggleClass('active');
+    $('#projects-tab-li').toggleClass('active');
+    $('#portfolio-tab').toggleClass('active');
+    $('#projects-tab').toggleClass('active');
+  }
+
 });
