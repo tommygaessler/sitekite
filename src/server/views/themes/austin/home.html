@@ -51,10 +51,7 @@
 
 
           {% if bio_desc %}
-          <p id="bio_desc">
-            <img src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" class="profile_pic"/>
-            {{ bio_desc }}
-          </p>
+          <p id="bio_desc"> {{ bio_desc }} </p>
           {% else %}
           <p>
             <img src="{% if profile_pic_url %}{{ profile_pic_url }}{% else %}http://placehold.it/350x350{% endif %}" alt="" class="profile_pic"/>
@@ -72,5 +69,5 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- <script type="text/javascript" src="./js/home.js"></script> -->
+<script type="text/javascript" src="./js/home.js"></script>
 {% endblock %}
