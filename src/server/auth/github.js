@@ -5,7 +5,7 @@ const {getGithubInfo, projectsApiCalls, addProjects} = require('../queries/index
 const init = require('./init');
 const knex = require('../db/knex');
 const ghPinnedRepos = require('gh-pinned-repos');
-const themes = ['tommy', 'john', 'alex'];
+const themes = ['tommy', 'john', 'alex', 'isaac', 'austin'];
 
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
