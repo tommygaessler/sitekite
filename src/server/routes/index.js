@@ -79,7 +79,7 @@ router.post('/importing', authHelpers.authRequired, function (req, res, next) {
 })
 
 router.delete('/:username', authHelpers.authRequired, function (req, res, next) {
-  var user1 = req.params.userName.toLowerCase()
+  var user1 = req.params.username.toLowerCase()
   var user2 = req.user.username.toLowerCase()
   req.logout()
   removeUser(req.params.username)
