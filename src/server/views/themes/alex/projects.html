@@ -11,7 +11,7 @@
       <h1>Projects</h1>
       <hr>
       {% for project in projects %}
-      <div class="col-md-4">
+      <div class="col-md-5">
         <h2>{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
         <p>
           <a href="{{project.github_url}}">GitHub Repo</a>
