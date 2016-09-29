@@ -70,6 +70,7 @@ p a:hover, h2 a:hover {
 .side h3 a {
   color: white;
   text-shadow: 1px 1px dimgrey;
+  cursor: pointer;
 }
 
 .page-links a {
@@ -155,7 +156,10 @@ textarea {
   hr {
     display: none;
   }
-
+  .title {
+    font-weight: bold;
+    font-size: 4rem;
+  }
   .profile-pic {
     margin-top: 60px;
     width: 100px;
@@ -167,14 +171,18 @@ textarea {
     position: absolute;
     top: 0;
     background-position: center center;
+    z-index: -1;
   }
-
+  .social-links a:hover {
+    text-decoration: underline;
+  }
   .side {
     width: 100%;
     height: 300px;
     position: relative;
     padding: 0;
     top: 0;
+    z-index: 2;
   }
 
   .main {
@@ -182,7 +190,7 @@ textarea {
     margin: 0;
     float: 0;
     width: 100%;
-    padding: 15px;
+    padding: 15px 10%;
     padding-top: 0;
     margin-right: auto;
     margin-left: auto;

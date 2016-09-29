@@ -13,15 +13,15 @@
       <ul class="nav navbar-nav navbar-right">
         {% if loggedInUser %}
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{loggedInUser.username}} <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{loggedInUser.username}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/{{loggedInUser.username}}/dashboard">Dashboard</a></li>
-            <li><a href="/{{loggedInUser.username}}">Your Site</a></li>
-            <li><a href="/auth/logout">Log Out</a></li>
+            <li class="text-center"><a href="/{{loggedInUser.username}}/dashboard">Dashboard</a></li>
+            <li class="text-center"><a href="/{{loggedInUser.username}}">Your Portfolio</a></li>
+            <li class="text-center"><a href="/auth/logout">Log Out</a></li>
           </ul>
         </li>
         {% else %}
-        <li><a href="/auth/github" class="top-right-login"><i class="fa fa-github top-right-login-icon" aria-hidden="true"></i> Log In</a></li>
+        <li class="text-center"><a href="/auth/github" class="top-right-login"><i class="fa fa-github top-right-login-icon" aria-hidden="true"></i> Log In</a></li>
         {% endif %}
       </ul>
     </div>
