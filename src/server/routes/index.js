@@ -42,9 +42,7 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
   var user1 = req.params.userName
   var user2 = req.user.username
   getProjects([req.user])
-  .then((data) => {
-    compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects, title: 'SiteKite | Dashboard'}) : res.render('error');
-  })
+  .then((data) => compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects, title: 'SiteKite | Dashboard'}) : res.render('error'))
   .catch((err) => res.send(err));
 });
 
