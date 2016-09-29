@@ -8,9 +8,11 @@
 {% block content %}
 
   {% include "./_top.html" %}
-
-  <div class="main">
+  <div class="main container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
     <div class="col-md-12">
+      <br>
       <br>
       <p>
         {% if contact_desc %}
@@ -34,6 +36,8 @@
       <input type="hidden" name="to_email" value="{{ email }}">
       <button type="submit" class="col-md-4 col-md-offset-4 btn btn-success">Submit</button>
     </form>
+    </div>
+    </div>
   </div>
 
 {% endblock %}

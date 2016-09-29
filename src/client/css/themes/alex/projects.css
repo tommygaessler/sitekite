@@ -1,5 +1,45 @@
 .projectsLink {
   border: 5px solid #79ADDC;
   line-height: 90px;
+}
+
+.title_div h3 {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 150px;
+}
+.title_div {
+  margin-top: 120px;
+  padding: 0px;
+}
+
+.proj_div {
+  padding: 0px;
+}
+
+@media (max-width: 1199px) {
+  .title_div h3 {
+    font-size: 120px;
+    text-align: center;
+  }
+  .proj_div {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 991px) {
+  .title_div {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 452px) {
+  .title_div h3 {
+    font-size: 100px;
+    text-align: center;
+  }
+  .proj_div {
+    padding: 0px;
+
+  }
 
 }
