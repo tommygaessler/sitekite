@@ -61,7 +61,7 @@ $(document).ready(function() {
       }
     })
     .done(() => {
-      console.log('done');
+      console.log('done', `/${username}/dashboard/#projects-tab`);
       location.href = `/${username}/dashboard/#projects-tab`;
     });
   });
