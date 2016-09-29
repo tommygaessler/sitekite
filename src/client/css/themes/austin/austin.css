@@ -14,7 +14,14 @@ body{
   bottom: 0px;
   background: rgba(255,255,255, 0.7);
 }
-h1{
+.carousel img {
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+}
+h1 {
   text-align: center;
 }
 .home p{
