@@ -19,11 +19,11 @@
     });
     // twitter styles
     if ($('#twitter').val()) {
-      $('.fa-twitter-square').css('color', '#3cf');
+      $('.fa-twitter-square').css('color', '#1DA1F2');
     }
     $('#twitter').on('input', function() {
       if ($('#twitter').val()) {
-        $('.fa-twitter-square').css('color', '#3cf');
+        $('.fa-twitter-square').css('color', '#1DA1F2');
       } else {
         $('.fa-twitter-square').css('color', '#6f6f6f');
       }
