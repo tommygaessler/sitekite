@@ -30,12 +30,22 @@ $(document).ready(function () {
         $('.fa-twitter-square').css('color', '#6f6f6f');
       }
     });
-    // linkedin styles
+  });
+  // linkedin styles
+  if ($('#linkedin').val()) {
+    $('.fa-linkedin-square').css('color', '#0077b5');
+  }
+  $('#linkedin').on('input', function() {
     if ($('#linkedin').val()) {
       $('.fa-linkedin-square').css('color', '#0077b5');
-    } else {
-      $('.fa-linkedin-square').css('color', '#6f6f6f');
     }
+    $('#linkedin').on('input', function() {
+      if ($('#linkedin').val()) {
+        $('.fa-linkedin-square').css('color', '#0077b5');
+      } else {
+        $('.fa-linkedin-square').css('color', '#6f6f6f');
+      }
+    });
   });
 
   $('#profile_pic_url').on('input', function() {
