@@ -23,11 +23,10 @@ function addUser(body) {
 }
 // test - :COMPLETED
 function removeUser (username) {
-  console.log(username);
   var userPromiseArr = [
     get('users')
-    .where(knex.raw('LOWER("username") = ?', username.toLowerCase()))
-    .del(), get('projects').where(knex.raw('LOWER("user_username") = ?', username.toLowerCase())).del()]
+    .where(knex.raw('LOWER("username") = ?', username))
+    .del(), get('projects').where(knex.raw('LOWER("user_username") = ?', username)).del()]
   return Promise.all(userPromiseArr)
 }
 // test - :COMPLETED:
