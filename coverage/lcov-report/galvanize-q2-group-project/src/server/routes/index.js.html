@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">49.02% </span>
+        <span class="strong">46.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/51</span>
+        <span class='fraction'>28/60</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">41.67% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>5/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">27.27% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/9</span>
+        <span class='fraction'>3/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">49.02% </span>
+        <span class="strong">46.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>25/51</span>
+        <span class='fraction'>28/60</span>
       </div>
     </div>
   </div>
@@ -119,7 +119,29 @@
 74
 75
 76
-77</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -181,6 +203,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -188,8 +211,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,8 +241,9 @@
 const router = express.Router();
 const knex = require('../db/knex');
 const passportGithub = require('../auth/github');
-const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, getGithubInfo, loggedInUser, updatePro, addNewPro} = require('../queries/index');
+const {get, addUser, checkForms, userInDb, checkNewUser, getProjects, compareUser, removeUser, projectsApiCalls, getGithubInfo, loggedInUser, addProjects, updatePro, addNewPro, removePro} = require('../queries/index');
 const authHelpers = require('../auth/helpers');
+const ghPinnedRepos = require('gh-pinned-repos');
 &nbsp;
 router.get('/', function (req, res, next) {
   var loggedInUser = false;
@@ -255,11 +298,26 @@ router.post('/new', <span class="fstat-no" title="function not covered" >functio
 &nbsp;
 router.post('/editPro', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  updatePro(req.body)</span>
-  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard`))</span>
+  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard/#projects`))</span>
 })
+&nbsp;
 router.post('/newPro', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  addNewPro(req.body)</span>
-  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard`))</span>
+  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard/#projects`))</span>
+})
+&nbsp;
+router.post('/importing', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  get('projects')</span>
+  .where('user_username', req.body.username)
+  .del()
+  .then(() =&gt; {<span class="cstat-no" title="statement not covered" >return ghPinnedRepos(req.body.username)}</span>)
+  .then(projectsApiCalls)
+  .then((data) =&gt; {
+<span class="cstat-no" title="statement not covered" >    return addProjects(data, req.user)</span>
+  })
+  .then((data) =&gt; {
+<span class="cstat-no" title="statement not covered" >    res.redirect(`/${req.user.username}/dashboard/#projects`)</span>
+  })
 })
 &nbsp;
 router.delete('/:username', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
@@ -270,6 +328,11 @@ router.delete('/:username', authHelpers.authRequired, <span class="fstat-no" tit
   .then(() =&gt; <span class="cstat-no" title="statement not covered" >compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))</span>
 })
 &nbsp;
+router.delete('/project/:projectName', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
+<span class="cstat-no" title="statement not covered" >  removePro(req.params.projectName)</span>
+  .then(() =&gt;<span class="cstat-no" title="statement not covered" >res.send('test'))</span>
+})
+&nbsp;
 module.exports = router;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -277,7 +340,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 14:48:36 GMT-0600 (MDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 28 2016 19:39:55 GMT-0600 (MDT)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>

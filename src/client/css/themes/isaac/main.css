@@ -1,0 +1,70 @@
+body {
+  background: rgb(17,98,165); /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(17,98,165,1) 0%, rgba(33,59,83,1) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(17,98,165,1) 0%,rgba(33,59,83,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center,  rgba(17,98,165,1) 0%,rgba(33,59,83,1) 100%);
+  background-repeat: no-repeat;
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1162a5', endColorstr='#213b53',GradientType=1 );
+  height: 0%;
+}
+.extra_body_bottom {
+  margin-bottom: 200px;
+}
+.navbar-default .navbar-nav>li>a {
+  width: 100px;;
+}
+.round {
+  width: 99%;
+}
+.bump {
+  margin-left: 1%;
+}
+.text_username {
+  color: limegreen;
+  margin-left: 1%;
+}
+.text_project {
+  color: limegreen;
+}
+.text_project_name {
+  color: white;
+}
+
+.about_me {
+  color: limegreen;
+}
+
+.about_me_content {
+  color: white;
+}
+.social_link:hover {
+  color: orange;
+}
+.social_link:link {
+  text-decoration: none;
+}
+
+.fa-github, .fa-twitter, .fa-linkedin-square  {
+  color: white;
+  padding-left: 1%;
+  hover: none;
+}
+
+.container {
+  padding: 15px;
+}
+
+.main-user-pic {
+  height: 20%;
+  border-radius: 50%;
+}
+
+.my_links {
+  color: orange;
+}
+
+.footer_links {
+  bottom: 0;
+  width: 100%;
+}
