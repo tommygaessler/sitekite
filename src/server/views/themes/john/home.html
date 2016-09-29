@@ -28,8 +28,7 @@
     </div>
     {% endif %}
     <h1 class="title">About Me</h1>
-    <p id="bio_desc">{% if bio_desc %} {{ bio_desc }}</p>
-      {% else %}
+    {% if bio_desc %}<p id="bio_desc">{{ bio_desc }}</p>{% else %}
     <p>I'm basically the greatest thing ever. Any given day, you can find me crushing code, eating kale chips, slamming four lokos, foraging in my jean shorts, or participating in the latest pinterest lo-fi vegan master cleanse.</p>
     {% endif %}
   </div>

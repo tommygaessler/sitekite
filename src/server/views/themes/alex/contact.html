@@ -1,15 +1,17 @@
 {% extends "_base.html" %}
 
 {% block title %}{% endblock %}
-{% block css %}<link rel="stylesheet" href="/css/themes/alex/alex.css">{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/css/themes/alex/alex.css">
+<link rel="stylesheet" href="/css/themes/alex/contacts.css">
+{% endblock %}
 {% block content %}
 
   {% include "./_top.html" %}
 
   <div class="main">
     <div class="col-md-12">
-      <h1>Contact</h1>
-      <hr>
+      <br>
       <p>
         {% if contact_desc %}
         {{ contact_desc }}

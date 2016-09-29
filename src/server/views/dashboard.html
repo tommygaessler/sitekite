@@ -8,238 +8,252 @@
 
 {% block content %}
 
+
+
 <div class="container">
-  <form method="post" action="/new">
-    <div class="row">
-
-      <div class="col-md-6">
-
-        <h1>About Me</h1>
-
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input required type="text" class="form-control" name="name" id="name" value="{{ loggedInUser.name }}" placeholder="{{ loggedInUser.name }}">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input required type="email" class="form-control" name="email" id="email" value="{{ loggedInUser.email }}" placeholder="{{ loggedInUser.email }}">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Profile Pic Url</label>
-          <div class="input-group">
-            <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
-            <div class="input-group-addon preview-button" data-toggle="modal" data-target="#previewModal"><img id="profile_pic" src="{{ loggedInUser.profile_pic_url }}" alt="P" /></div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="twitter">Twitter</label>
-          <div class="input-group">
-            <div class="input-group-addon">twitter.com/</div>
-            <input type="text" class="form-control" name="twitter" id="twitter" placeholder="johndoe13" value="{{ loggedInUser.twitter }}">
-            <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="linkedin">LinkedIn</label>
-          <div class="input-group">
-            <div class="input-group-addon">linkedin.com/in/</div>
-            <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ loggedInUser.linkedin }}" placeholder="john-doe">
-            <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="bio_desc">Bio (supports markdown)</label>
-          <textarea required name="bio_desc" id="bio_desc" rows="9" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
-        </div>
-
-      </div>
-      <div class="col-md-6">
-
-        <h1>Themes</h1>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#portfolio-tab" data-toggle="tab">Portfolio Layout</a></li>
+    <li><a href="#projects-tab" data-toggle="tab">Projects</a></li>
+  </ul>
+  <section class="tab-content">
+    <div class="tab-pane active" id="portfolio-tab">
+      <form method="post" action="/new">
         <div class="row">
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="theme_name" value="tommy" {%if loggedInUser.theme_name == 'tommy'%} checked {%endif%}/>
-                <img src="/img/theme1.jpg">
-              </label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="theme_name" value="isaac"{%if loggedInUser.theme_name == 'isaac'%} checked {%endif%} />
-                <img src="/img/theme1.jpg">
-              </label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="theme_name" value="john" {%if loggedInUser.theme_name == 'john'%} checked {%endif%}/>
-                <img src="/img/john_theme.png">
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="theme_name" value="alex" {%if loggedInUser.theme_name == 'alex'%} checked {%endif%}/>
-                <img src="../img/alex_theme.png">
-              </label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="theme_name" value="geocity" {%if loggedInUser.theme_name == 'geocity'%} checked {%endif%}/>
-                <img src="/img/theme1.jpg">
-              </label>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="radio">
-              <label>
-                <input type="radio" name="theme_name" value="austin" {%if loggedInUser.theme_name == 'austin'%} checked {%endif%} />
-                <img src="/img/austinTheme.png">
-              </label>
-            </div>
-          </div>
-        </div>
-        <h1>Contact</h1>
 
-        <div class="form-group">
-          <label for="contact_desc">Contact Me Message (optional)</label>
-          <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display above the contact form on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
-        </div>
+          <div class="col-md-6">
 
-        <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
+            <h1>About Me</h1>
 
-        <div class="row">
-          <div class="col-md-12">
-            <button type="submit" name="button" class="btn btn-success btn-block">Save Changes</button>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input required type="text" class="form-control" name="name" id="name" value="{{ loggedInUser.name }}" placeholder="{{ loggedInUser.name }}">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input required type="email" class="form-control" name="email" id="email" value="{{ loggedInUser.email }}" placeholder="{{ loggedInUser.email }}">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Profile Pic Url</label>
+              <div class="input-group">
+                <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
+                <div class="input-group-addon preview-button" data-toggle="modal" data-target="#previewModal"><img id="profile_pic" src="{{ loggedInUser.profile_pic_url }}" alt="P" /></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="twitter">Twitter</label>
+              <div class="input-group">
+                <div class="input-group-addon">twitter.com/</div>
+                <input type="text" class="form-control" name="twitter" id="twitter" placeholder="johndoe13" value="{{ loggedInUser.twitter }}">
+                <div class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="linkedin">LinkedIn</label>
+              <div class="input-group">
+                <div class="input-group-addon">linkedin.com/in/</div>
+                <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{ loggedInUser.linkedin }}" placeholder="john-doe">
+                <div class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bio_desc">Bio (supports markdown)</label>
+              <textarea required name="bio_desc" id="bio_desc" rows="9" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+
+            <h1>Themes</h1>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="theme_name" value="tommy" {%if loggedInUser.theme_name == 'tommy'%} checked {%endif%}/>
+                    <img src="/img/theme1.jpg">
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="theme_name" value="isaac"{%if loggedInUser.theme_name == 'isaac'%} checked {%endif%} />
+                    <img src="/img/theme1.jpg">
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="theme_name" value="john" {%if loggedInUser.theme_name == 'john'%} checked {%endif%}/>
+                    <img src="/img/john_theme.png">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="theme_name" value="alex" {%if loggedInUser.theme_name == 'alex'%} checked {%endif%}/>
+                    <img src="../img/alex_theme.png">
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="theme_name" value="geocity" {%if loggedInUser.theme_name == 'geocity'%} checked {%endif%}/>
+                    <img src="/img/austinTheme.png">
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="theme_name" value="austin" {%if loggedInUser.theme_name == 'austin'%} checked {%endif%} />
+                    <img src="/img/theme1.jpg">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <h1>Contact</h1>
+
+            <div class="form-group">
+              <label for="contact_desc">Contact Me Message (optional)</label>
+              <textarea name="contact_desc" id="contact_desc" rows="3" class="form-control" placeholder="This message will display above the contact form on the 'Contact Me' page">{{ loggedInUser.contact_desc }}</textarea>
+            </div>
+
+            <input type="text" name="username" value="{{ loggedInUser.username }}" hidden>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button type="submit" name="button" class="btn btn-success btn-block">Save Changes</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </form>
-  <div class="row margin-bottom">
-    <div class="col-md-6">
+      </form>
+      <br>
+      <br>
       <div class="row">
-        <div class="col-sm-5">
-          <h1 id="projects">Projects</h1>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-secondary btn-sm btn-block delete-account-btn" data-toggle="modal" data-target="#myModal">Delete Account</button>
         </div>
-        <div class="col-sm-7">
-          <button id="gh-import" data-user-name="{{loggedInUser.username}}" class="btn btn-info btn-block" data-toggle="modal" data-target="#gh-import-modal"><i class="fa fa-cloud-download" aria-hidden="true"></i>  Import Pinned Github Repos</button>
-        </div>
-      </div>
-      <div class="well new-project">
-        <h4>Add a New Project
-          <small>
-            <i class="fa fa-plus fa-2x pull-right" aria-hidden="true"></i>
-          </small>
-        </h4>
-      </div>
-      <div class="project-well">
-      {% for project in pinnedProjects %}
-        <div class="well">
-          <h4>{{ project.project_name }}
-            <small>
-              <i class="fa fa-trash pull-right" data-toggle="modal" data-target="#{{project.project_name | normalizer}}-modal" aria-hidden="true"></i>
-              <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project pull-right" aria-hidden="true"></i>
-            </small>
-          </h4>
-          {% include '_delete-projects-modal.html' %}
-        </div>
-      {% endfor %}
       </div>
     </div>
-    <div class="col-md-6">
-      <h1 class="project-text">Add Project</h1>
-      <div class="pinned-project-info" id="manual">
-        <form class="" action="/newPro" method="post">
-        <div class="form-group">
-          <label for="new-project-name">Project Name</label>
-          <input type="text" name="name" id="new-project-name" class="form-control" placeholder="repo-name">
+    <div class="tab-pane" id="projects-tab">
+      <div class="row margin-bottom">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-sm-5">
+              <h1 id="projects">Projects</h1>
+            </div>
+            <div class="col-sm-7">
+              <button id="gh-import" data-user-name="{{loggedInUser.username}}" class="btn btn-info btn-block" data-toggle="modal" data-target="#gh-import-modal"><i class="fa fa-cloud-download" aria-hidden="true"></i>  Import Pinned Github Repos</button>
+            </div>
+          </div>
+          <div class="well new-project">
+            <h4>Add a New Project
+              <small>
+                <i class="fa fa-plus fa-2x pull-right" aria-hidden="true"></i>
+              </small>
+            </h4>
+          </div>
+          <div class="project-well">
+          {% for project in pinnedProjects %}
+            <div class="well">
+              <h4>{{ project.project_name }}
+                <small>
+                  <i class="fa fa-trash pull-right" data-toggle="modal" data-target="#{{project.project_name | normalizer}}-modal" aria-hidden="true"></i>
+                  <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project pull-right" aria-hidden="true"></i>
+                </small>
+              </h4>
+              {% include '_delete-projects-modal.html' %}
+            </div>
+          {% endfor %}
+          </div>
         </div>
-        <div class="form-group">
-          <label for="github_url">Project Repository URL</label>
-          <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
-        </div>
-        <div class="form-group">
-          <label for="deployed_url">Deployed URL</label>
-          <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
-        </div>
-        <div class="form-group">
-          <label for="image_url">Project Image URL</label>
-          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
-        </div>
-        <div class="form-group">
-          <label for="description">Project Description</label>
-          <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
-        </div>
-        <div class="form-group">
-          <label for="tools_languages">Tools and Languages Used</label>
-          <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.tools_languages}}</textarea>
-        </div>
+        <div class="col-md-6">
+          <h1 class="project-text">Add Project</h1>
+          <div class="pinned-project-info" id="manual">
+            <form class="" action="/newPro" method="post">
+            <div class="form-group">
+              <label for="new-project-name">Project Name</label>
+              <input type="text" name="name" id="new-project-name" class="form-control" placeholder="repo-name">
+            </div>
+            <div class="form-group">
+              <label for="github_url">Project Repository URL</label>
+              <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+            </div>
+            <div class="form-group">
+              <label for="deployed_url">Deployed URL</label>
+              <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
+            </div>
+            <div class="form-group">
+              <label for="image_url">Project Image URL</label>
+              <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
+            </div>
+            <div class="form-group">
+              <label for="description">Project Description</label>
+              <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="tools_languages">Tools and Languages Used</label>
+              <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.tools_languages}}</textarea>
+            </div>
 
-          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+              <input hidden type="text" name="username" value="{{loggedInUser.username}}">
 
-          <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
+              <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
 
-          <button type="submit" class="btn btn-success btn-block project-text">Add Project</button>
-        </form>
+              <button type="submit" class="btn btn-success btn-block project-text">Add Project</button>
+            </form>
+          </div>
+          {% for project in pinnedProjects %}
+          <div class="pinned-project-info" id="{{project.project_name | normalizer}}">
+            <form class="" action="/editPro" method="post">
+            <div class="form-group">
+              <label for="edit-project-name">Project Name</label>
+              <input type="text" name="name" class="form-control edit-project-name" value="{{project.project_name}}" id="edit-project-name" placeholder="repo-name">
+            </div>
+            <div class="form-group">
+              <label for="github_url">Project Repository URL</label>
+              <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
+            </div>
+            <div class="form-group">
+              <label for="deployed_url">Deployed URL</label>
+              <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
+            </div>
+            <div class="form-group">
+              <label for="image_url">Project Image URL</label>
+              <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
+            </div>
+            <div class="form-group">
+              <label for="description">Project Description</label>
+              <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="tools_languages">Tools and Languages Used</label>
+              <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.tools_languages}}</textarea>
+            </div>
+
+              <input hidden type="text" name="username" value="{{loggedInUser.username}}">
+
+              <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
+
+              <button type="submit" class="btn btn-success btn-block project-button">Add Project</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% for project in pinnedProjects %}
-      <div class="pinned-project-info" id="{{project.project_name | normalizer}}">
-        <form class="" action="/editPro" method="post">
-        <div class="form-group">
-          <label for="edit-project-name">Project Name</label>
-          <input type="text" name="name" class="form-control edit-project-name" value="{{project.project_name}}" id="edit-project-name" placeholder="repo-name">
-        </div>
-        <div class="form-group">
-          <label for="github_url">Project Repository URL</label>
-          <input type="url" name="github_url" value="{{project.github_url}}" class="form-control" placeholder="http://github.com/your-name/your-repo-name">
-        </div>
-        <div class="form-group">
-          <label for="deployed_url">Deployed URL</label>
-          <input type="url" name="deployed_url" value="{{project.deployed_url}}" class="form-control" placeholder="http://www.deployed-project.com">
-        </div>
-        <div class="form-group">
-          <label for="image_url">Project Image URL</label>
-          <input type="url" name="image_url" value="{{project.image_url}}" class="form-control" placeholder="http://imageurl.com/image">
-        </div>
-        <div class="form-group">
-          <label for="description">Project Description</label>
-          <textarea name="description" value="" rows="3" class="form-control" placeholder="A brief description of your project">{{project.description}}</textarea>
-        </div>
-        <div class="form-group">
-          <label for="tools_languages">Tools and Languages Used</label>
-          <textarea name="tools_languages" rows="3" value="" class="form-control" placeholder="Javascript, HTML5, CSS3, etc.">{{project.tools_languages}}</textarea>
-        </div>
-
-          <input hidden type="text" name="username" value="{{loggedInUser.username}}">
-
-          <input hidden type="text" name="old_projectname" value="{{project.project_name}}">
-
-          <button type="submit" class="btn btn-success btn-block project-button">Add Project</button>
-        </form>
-      </div>
-      {% endfor %}
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-secondary btn-sm btn-block delete-account-btn" data-toggle="modal" data-target="#myModal">Delete Account</button>
-    </div>
-  </div>
+  </section>
 
 {% include '_modals.html' %}
 

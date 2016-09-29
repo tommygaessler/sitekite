@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $('.edit-project').on('click', function() {
     var project = $(this).attr('id');
     $('.project-text').html(`Edit Project`);
@@ -35,7 +36,9 @@ $(document).ready(function() {
   });
 
   $('.delete_account').click(function () {
-    const username = $('.delete_account span')[0].textContent
+    const username = $('.delete_account span')[0].textContent;
+    $(this).attr('disabled', 'disabled');
+    $(this).html('<i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i>');
     $.ajax({
       method: 'DELETE',
       url: `/${username}`
@@ -57,7 +60,7 @@ $(document).ready(function() {
       }
     })
     .done(() => {
-      location.href = `/${username}/dashboard/#projects`;
+      location.href = `/${username}/dashboard/#projects-tab`;
     });
   });
 });

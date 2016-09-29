@@ -1,15 +1,16 @@
 {% extends "_base.html" %}
 
 {% block title %}{% endblock %}
-{% block css %}<link rel="stylesheet" href="/css/themes/alex/alex.css">{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/css/themes/alex/alex.css">
+<link rel="stylesheet" href="/css/themes/alex/projects.css">
+{% endblock %}
 {% block content %}
 
   {% include "./_top.html" %}
 
   <div class="main">
     <div class="col-md-12">
-      <h1>Projects</h1>
-      <hr>
       {% for project in projects %}
       <div class="col-md-4">
         <h2>{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
