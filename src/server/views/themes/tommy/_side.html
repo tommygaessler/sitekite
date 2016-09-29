@@ -10,6 +10,13 @@
     <a href="/{{ username }}">Home</a>
     <a href="/{{ username }}/projects">Projects</a>
     <a href="/{{ username }}/contact">Contact</a>
+    {% if loggedInUser %}
+    <a href="{{ loggedInUser.username }}/dashboard">
+      Dashboard
+      <br>
+      (Only you can see this)
+    </a>
+    {% endif %}
   </nav>
   <hr>
   <nav class="social-links">
