@@ -91,7 +91,7 @@ router.delete('/:username', authHelpers.authRequired, function (req, res, next) 
 
 router.delete('/project/:projectName', authHelpers.authRequired, function (req, res, next) {
   removePro(req.params.projectName)
-  .then(() =>res.send('test'))
+  .then(() => res.send('project deleted'))
 })
 
 module.exports = router;

@@ -152,10 +152,11 @@
         <div class="well">
           <h4>{{ project.project_name }}
             <small>
-              <i id="{{ project.project_name | normalizer}}" value="{{project.project_name}}" class="fa fa-trash delete-project pull-right" aria-hidden="true"></i>
+              <i class="fa fa-trash pull-right" data-toggle="modal" data-target="#{{project.project_name | normalizer}}-modal" aria-hidden="true"></i>
               <i id="{{ project.project_name | normalizer}}" class="fa fa-pencil edit-project pull-right" aria-hidden="true"></i>
             </small>
           </h4>
+          {% include '_delete-projects-modal.html' %}
         </div>
       {% endfor %}
       </div>
@@ -240,65 +241,7 @@
     </div>
   </div>
 
-<!-- Delete Account Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">
-        Delete Account</h4>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete your account? This cannot be undone...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dear God, No!</button>
-        <button type="delete" class="delete_account btn btn-danger"><span hidden>{{username}}</span>Yes, Delete My Account</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Profile Picture preview Modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="previewModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img class="img-responsive" src="{{ loggedInUser.profile_pic_url }}" alt="This Picture isn't working. Try another!" id="preview-image">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Import GH-Pinned Repos Modal -->
-<div class="modal fade" id="gh-import-modal" tabindex="-1" role="dialog" aria-labelledby="gh-import-modal-label" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="gh-import-modal-label">
-        Import Github Repos</h4>
-      </div>
-      <div class="modal-body">
-        <strong>This will replace your currently displayed projects.</strong>
-        <br>
-        Are you sure you want to continue?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button class="import-repos btn btn-primary" data-user-name="{{username}}" data-dismiss="modal">Yes, Import my Repos</button>
-      </div>
-    </div>
-  </div>
-</div>
+{% include '_modals.html' %}
 
 {% endblock %}
 
