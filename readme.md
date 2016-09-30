@@ -19,6 +19,9 @@ When you log into our website using your github account, SiteKite auto populates
 
 1. Run `gulp` in the Terminal/Command Line
 
+## ![My image](./README_logo.png) Now get out there and start networking! ![My image](./README_logo.png)
+
+
 >### Development Team
 - Isaac Collier
   - [view Isaac's github](https://github.com/Isaacjcollier)
@@ -30,7 +33,3 @@ When you log into our website using your github account, SiteKite auto populates
   - [view Austin's github](https://github.com/AustinMahan)
 - Alex Glassford
   - [view Alex's github](https://github.com/abglassford)
-
-
-
-## ![My image](./README_logo.png) Now get out there and start networking! ![My image](./README_logo.png)
