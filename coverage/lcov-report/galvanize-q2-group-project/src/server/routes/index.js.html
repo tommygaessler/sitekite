@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.24% </span>
+        <span class="strong">57.63% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>32/59</span>
+        <span class='fraction'>34/59</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">58.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/12</span>
+        <span class='fraction'>7/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">36.36% </span>
+        <span class="strong">45.45% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/11</span>
+        <span class='fraction'>5/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.24% </span>
+        <span class="strong">57.63% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>32/59</span>
+        <span class='fraction'>34/59</span>
       </div>
     </div>
   </div>
@@ -136,8 +136,7 @@
 91
 92
 93
-94
-95</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+94</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -155,7 +154,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -185,8 +183,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -249,8 +247,7 @@ router.get('/', function (req, res, next) {
 &nbsp;
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) =&gt; {
-    return loggedInUser(req, data)})
+  .then((data) =&gt; loggedInUser(req, data))
   .then((data) =&gt; data.length ? res.status(202).render(`themes/${data[0].theme_name}/home`, data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) =&gt; <span class="cstat-no" title="statement not covered" >console.log(error))</span>;
 });
@@ -258,14 +255,14 @@ router.get('/:username', function (req, res, next) {
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
-  .then((data) =&gt; {return loggedInUser(req, data)})
+  .then((data) =&gt; loggedInUser(req, data))
   .then((data) =&gt; data ? res.status(202).render(`themes/${data[0].theme_name}/projects`, data[0]) : res.status(404).render('error'))
   .catch((error) =&gt; <span class="cstat-no" title="statement not covered" >console.log(error))</span>;
 });
 &nbsp;
 router.get('/:username/contact', <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  userInDb(req.params)</span>
-  .then((data) =&gt; {<span class="cstat-no" title="statement not covered" >return loggedInUser(req, data)}</span>)
+  .then((data) =&gt; <span class="cstat-no" title="statement not covered" >loggedInUser(req, data))</span>
   .then((user) =&gt; <span class="cstat-no" title="statement not covered" >res.status(202).render(`themes/${user[0].theme_name}/contact`, user[0]))</span>
   .catch((error) =&gt; <span class="cstat-no" title="statement not covered" >console.log(error))</span>;
 });
@@ -278,9 +275,9 @@ router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res,
   .catch((err) =&gt; <span class="cstat-no" title="statement not covered" >res.send(err))</span>;
 });
 &nbsp;
-router.post('/new', <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
-<span class="cstat-no" title="statement not covered" >  if (!checkForms(req.body)) {</span>
-<span class="cstat-no" title="statement not covered" >    res.send('fill in all the fields');</span>
+router.post('/new', function (req, res, next) {
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (!checkForms(req.body)) {
+    res.send('fill in all the fields');
   } else {
 <span class="cstat-no" title="statement not covered" >    addUser(req.body)</span>
     .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.body.username}`))</span>;
@@ -289,12 +286,12 @@ router.post('/new', <span class="fstat-no" title="function not covered" >functio
 &nbsp;
 router.post('/editPro', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  updatePro(req.body)</span>
-  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard/#projects`))</span>
+  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard/#projects-tab`))</span>
 })
 &nbsp;
 router.post('/newPro', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  addNewPro(req.body)</span>
-  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard/#projects`))</span>
+  .then(() =&gt; <span class="cstat-no" title="statement not covered" >res.redirect(`/${req.user.username}/dashboard/#projects-tab`))</span>
 })
 &nbsp;
 router.post('/importing', authHelpers.authRequired, <span class="fstat-no" title="function not covered" >function (req, res, next) {</span>
@@ -315,7 +312,7 @@ router.delete('/:username', authHelpers.authRequired, <span class="fstat-no" tit
 <span class="cstat-no" title="statement not covered" >  var user1 = req.params.username.toLowerCase()</span>
 <span class="cstat-no" title="statement not covered" >  var user2 = req.user.username.toLowerCase()</span>
 <span class="cstat-no" title="statement not covered" >  req.logout()</span>
-<span class="cstat-no" title="statement not covered" >  removeUser(req.params.username)</span>
+<span class="cstat-no" title="statement not covered" >  removeUser(user1)</span>
   .then(() =&gt; <span class="cstat-no" title="statement not covered" >compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))</span>
 })
 &nbsp;
@@ -331,7 +328,7 @@ module.exports = router;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Sep 29 2016 16:23:44 GMT-0600 (MDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 30 2016 09:48:28 GMT-0600 (MDT)
 </div>
 </div>
 <script src="../../../../prettify.js"></script>
