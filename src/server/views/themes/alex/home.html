@@ -13,7 +13,7 @@
   {% include "./_top.html" %}
 
   <div class="main">
-    {% if loggedInUser and not bio_desc and (loggedInUser === username) %}
+    {% if loggedInUser and not bio_desc and (loggedInUser.username === username) %}
     <br>
     <div class="container">
       <div class="alert alert-info alert-dismissible">
