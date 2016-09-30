@@ -1,0 +1,5 @@
+NODE_ENV=development
+GITHUB_CLIENT_ID=1fe24303182ab892f7c5
+GITHUB_SECRET_KEY=4ce1db8c8a553a882a88b9da23b5182ab4677ae3
+GITHUB_CALLBACK_URL=http://127.0.0.1:3000/auth/github/callback
+SECRET_KEY=\xab\xed\x83(C\x03\xe1\x83\xa0=+\xc6\x0f\xc6\xf7O\xc9\rtD[\x153\xe8
