@@ -68,9 +68,8 @@ $(document).ready(function () {
         name: $('#name').val(),
         to_email: $('#to_email').val(),
         from_email: $('#from_email').val(),
-        message: $('#to_email').val()
+        message: $('#message').val()
       }
-
       $.ajax({
         method: 'POST',
         url: `/${username}/contact/send`,
