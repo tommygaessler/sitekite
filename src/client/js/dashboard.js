@@ -36,9 +36,7 @@ $(document).ready(function() {
   })
 
   $('#bio_desc').on('blur', function() {
-    if ($('#bio_desc').val().length > 0) {
-      $(this).css({'border-color': '', 'box-shadow': ''});
-    }
+    $(this).css({'border-color': '', 'box-shadow': ''});
   })
 
   $('.delete-project').click(function() {
