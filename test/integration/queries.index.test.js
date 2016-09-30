@@ -37,7 +37,7 @@ const test_projects = {
 }
 
 describe('Queries : index.js', () => {
-  
+
   describe('function: get()', () => {
     beforeEach(() => {
       return knex.migrate.rollback()
@@ -90,9 +90,9 @@ describe('Queries : index.js', () => {
       return knex.migrate.rollback();
     });
     it('should remove that user from the database *if user exists*', () => {
-      return query.removeUser(test_user)
+      return query.removeUser(test_user.username)
       .then((del) => {
-        expect(del[0]).to.equal(0)
+        expect(del[0]).to.equal(1)
       })
     })
   })
