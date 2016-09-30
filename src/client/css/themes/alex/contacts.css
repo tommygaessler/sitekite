@@ -2,3 +2,11 @@
   border: 5px solid #79ADDC;
   line-height: 90px;
 }
+
+#success-message {
+  display: none;
+}
+
+#fail-message {
+  display: none;
+}

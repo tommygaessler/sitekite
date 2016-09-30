@@ -6,16 +6,22 @@
     <h1>Projects</h1>
     {% for project in projects %}
     {% if project.image_url %}
-    <img class="project-image" src="{{ project.image_url }}" alt="" />
+    {% if project.deployed_url %}
+    <a href="{{ project.deployed_url }}" target="_blank">
+    {% endif %}
+      <img class="project-image" src="{{ project.image_url }}" alt="" />
+    {% if project.deployed_url %}
+    </a>
+    {% endif %}
     {% endif %}
     <div class="well {% if project.image_url %}project-well{% endif %}">
-      <h2 class="project-title">{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
+      <h2 class="project-title">{% if project.deployed_url %}<a href="{{ project.deployed_url }}" target="_blank">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
 
       <p>
-        <a href="{{ project.github_url }}"><i class="fa fa-github" aria-hidden="true"></i> GitHub Repo</a>
+        <a href="{{ project.github_url }}" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> GitHub Repo</a>
 
         {% if project.deployed_url %}
-        <span>| </span><a href="{{ project.deployed_url }}">Deployed Site <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        <span>| </span><a href="{{ project.deployed_url }}" target="_blank">Deployed Site <i class="fa fa-external-link" aria-hidden="true"></i></a>
         {% endif %}
       </p>
 
