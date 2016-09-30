@@ -59,6 +59,8 @@ $(document).ready(function () {
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
 
+    $('#email_submit').empty().append('<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>');
+
     const username = $(this).data('id')
 
     const data = {
@@ -82,6 +84,7 @@ $(document).ready(function () {
     }).fail((error) => {
       $('#fail-message').css('display', 'block');
       $('#fail-message').text('Message was not sent, please try again');
+      $('#email_submit').empty().append('Submit');
     })
   });
 
