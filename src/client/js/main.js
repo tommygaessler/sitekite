@@ -59,33 +59,36 @@ $(document).ready(function () {
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
 
-    $('#email_submit').empty().append('<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>');
+    if ($('#name').val() && $('#to_email').val() && $('#to_email').val()) {
 
-    const username = $(this).data('id')
+      document.getElementById('email_submit').innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
 
-    const data = {
-      username: username,
-      name: $('#name').val(),
-      to_email: $('#to_email').val(),
-      from_email: $('#from_email').val(),
-      message: $('#message').val()
+      const username = $(this).data('id')
+
+      const data = {
+        username: username,
+        name: $('#name').val(),
+        to_email: $('#to_email').val(),
+        from_email: $('#from_email').val(),
+        message: $('#to_email').val()
+      }
+
+      $.ajax({
+        method: 'POST',
+        url: `/${username}/contact/send`,
+        data: data
+      }).done((data) => {
+        console.log(data);
+        $('#contact_desc').css('display', 'none');
+        $('#sendgrid').css('display', 'none');
+        $('#success-message').css('display', 'block');
+        $('#success-message').text(data.message);
+      }).fail((error) => {
+        $('#fail-message').css('display', 'block');
+        $('#fail-message').text('Message was not sent, please try again');
+        document.getElementById('email_submit').innerHTML = 'Submit';
+      })
     }
-
-    $.ajax({
-      method: 'POST',
-      url: `/${username}/contact/send`,
-      data: data
-    }).done((data) => {
-      console.log(data);
-      $('#contact_desc').css('display', 'none');
-      $('#sendgrid').css('display', 'none');
-      $('#success-message').css('display', 'block');
-      $('#success-message').text(data.message);
-    }).fail((error) => {
-      $('#fail-message').css('display', 'block');
-      $('#fail-message').text('Message was not sent, please try again');
-      $('#email_submit').empty().append('Submit');
-    })
   });
 
 });
