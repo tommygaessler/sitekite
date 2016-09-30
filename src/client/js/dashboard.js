@@ -24,8 +24,9 @@ $(document).ready(function() {
     $('#new-project-name').focus();
   });
 
-  $('#info-form').on('submit', function() {
+  $('#info-form').on('submit', function(e) {
     if ($('#bio_desc').val() === undefined) {
+      e.preventDefault();
       $('#bio_desc').css({'border-color': 'red', 'box-shadow': '0 0 10px red'});
     }
   });
