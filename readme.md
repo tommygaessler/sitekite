@@ -22,6 +22,10 @@ When you log into our website using your github account, SiteKite auto populates
 
 1. Run `gulp` in the Terminal/Command Line
 
+#### To run SiteKite locally
+1. Complete all of the above steps
+1. Copy and paste `http://localhost:3000/`
+
 >### Development Team
 - Isaac Collier
   - [view Isaac's github](https://github.com/Isaacjcollier)
