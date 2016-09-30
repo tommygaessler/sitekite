@@ -59,33 +59,34 @@ $(document).ready(function () {
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
 
-    if ($('#name').val() && $('#to_email').val() && $('#to_email').val()) {
-      document.getElementById('email_submit').innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
-      const username = $(this).data('id')
+    document.getElementById('email_submit').innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
+    $('#email_submit').addClass('disabled');
 
-      const data = {
-        username: username,
-        name: $('#name').val(),
-        to_email: $('#to_email').val(),
-        from_email: $('#from_email').val(),
-        message: $('#to_email').val()
-      }
+    const username = $(this).data('id');
 
-      $.ajax({
-        method: 'POST',
-        url: `/${username}/contact/send`,
-        data: data
-      }).done((data) => {
-        $('#contact_desc').css('display', 'none');
-        $('#sendgrid').css('display', 'none');
-        $('#success-message').css('display', 'block');
-        $('#success-message').text(data.message);
-      }).fail((error) => {
-        $('#fail-message').css('display', 'block');
-        $('#fail-message').text('Message was not sent, please try again');
-        document.getElementById('email_submit').innerHTML = 'Submit';
-      })
+    const data = {
+      username: username,
+      name: $('#name').val(),
+      to_email: $('#to_email').val(),
+      from_email: $('#from_email').val(),
+      message: $('#message').val()
     }
+
+    $.ajax({
+      method: 'POST',
+      url: `/${username}/contact/send`,
+      data: data
+    }).done((data) => {
+      $('#contact_desc').css('display', 'none');
+      $('#sendgrid').css('display', 'none');
+      $('#success-message').css('display', 'block');
+      $('#success-message').text(data.message);
+    }).fail((error) => {
+      $('#fail-message').css('display', 'block');
+      $('#fail-message').text('Message was not sent, please try again');
+      document.getElementById('email_submit').innerHTML = 'Submit';
+      $('#email_submit').removeClass('disabled');
+    });
   });
 
 });

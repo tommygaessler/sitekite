@@ -18,15 +18,15 @@
     <form id="sendgrid" data-id="{{ username }}">
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="text" class="form-control" id="name" placeholder="">
+        <input type="text" class="form-control" id="name" placeholder="" required>
       </div>
       <div class="form-group">
         <label for="email">Your Email</label>
-        <input type="email" class="form-control" id="from_email" placeholder="">
+        <input type="email" class="form-control" id="from_email" placeholder="" required>
       </div>
       <div class="form-group">
         <label for="message">Your Message</label>
-        <textarea class="form-control" rows="5" id="message"></textarea>
+        <textarea class="form-control" rows="5" id="message" required></textarea>
       </div>
       <input id="to_email" type="hidden" value="{{ email }}">
       <button type="submit" class="btn btn-primary btn-block" id="email_submit">Submit</button>
