@@ -10,7 +10,7 @@
     <a href="/{{ username }}">Home</a>
     <a href="/{{ username }}/projects">Projects</a>
     <a href="/{{ username }}/contact">Contact</a>
-    {% if loggedInUser and loggedInUser.username == username %}
+    {% if loggedInUser and loggedInUser.username | lower == username |lower %}
     <a href="/{{ loggedInUser.username }}/dashboard">
       Dashboard
       <br>
