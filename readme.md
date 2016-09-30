@@ -4,6 +4,7 @@
 
 ## What is SiteKite?
 SiteKite is an application developed and designed by 5 Galvanize students for the Unit 2 Project. This website is designed to make creating a personal portfolio website fast, easy, and fun. It will also make it easy for a company to view your portfolio, and if they like what they see, they can contact you directly from your personal portfolio!
+
 ### How does it work?
 When you log into our website using your github account, SiteKite auto populates an entire portfolio for you. You can then change the theme/layout of your portfolio, add more detailed descriptions, add/edit your projects, and change any information that was pulled from github. This allows you to make the portfolio you create with SiteKite more personalized.
 
@@ -18,9 +19,6 @@ When you log into our website using your github account, SiteKite auto populates
 #### To start the server locally
 
 1. Run `gulp` in the Terminal/Command Line
-
-## ![My image](./README_logo.png) Now get out there and start networking! ![My image](./README_logo.png)
-
 
 >### Development Team
 - Isaac Collier
