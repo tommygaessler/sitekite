@@ -62,7 +62,7 @@ $(document).ready(function () {
     document.getElementById('email_submit').innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
     $('#email_submit').addClass('disabled');
 
-    const username = $(this).data('id')
+    const username = $(this).data('id');
 
     const data = {
       username: username,
@@ -79,7 +79,7 @@ $(document).ready(function () {
     }).done((data) => {
       $('#contact_desc').css('display', 'none');
       $('#sendgrid').css('display', 'none');
-      $('#success-message').css('display', 'block');g
+      $('#success-message').css('display', 'block');
       $('#success-message').text(data.message);
     }).fail((error) => {
       $('#fail-message').css('display', 'block');
