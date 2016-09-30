@@ -24,7 +24,7 @@ When you log into our website using your github account, SiteKite auto populates
 
 #### To run SiteKite locally
 1. Complete all of the above steps
-1. Copy and paste `http://localhost:3000/`
+1. Copy and paste `http://localhost:3000/` into your browser
 
 >### Development Team
 - Isaac Collier
