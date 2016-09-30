@@ -92,7 +92,44 @@ describe('routes : index', () => {
     })
   })
 
-  // describe('GET /:userName/contact')
+  describe('GET /:userName/dashboard', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
+    it('should not render the main users dashboard.html page', (done) => {
+      chai.request(server)
+      .get('/this_is_a_test/dashboard')
+      .end((err, res) => {
+        res.type.should.equal('text/html')
+        res.text.should.contain('<h1>Please sign in to continue.</h1>')
+        done()
+      })
+    })
+  })
+
+  describe('POST /new', () => {
+    beforeEach(() => {
+      return knex.migrate.rollback()
+      .then(() => { return knex.migrate.latest(); })
+      .then(() => { return knex.seed.run(); });
+    });
+    afterEach(() => {
+      return knex.migrate.rollback();
+    });
+    it('should render that users dashboard.html page', (done) => {
+      chai.request(server)
+      .post('/new')
+      .end((err, res) => {
+        console.log(res);
+        done()
+      })
+    })
+  })
 
 });
 // routes.index.test.js
