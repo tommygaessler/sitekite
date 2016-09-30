@@ -16,7 +16,7 @@ When you log into our website using your github account, SiteKite auto populates
 
 1. Run `gulp` in the Terminal/Command Line
 
-###### ![My image](./README_logo.png) Now go out there and start networking! ![My image](./README_logo.png)
+## ![My image](./README_logo.png) Now go out there and start networking! ![My image](./README_logo.png)
 
 
 <!--
