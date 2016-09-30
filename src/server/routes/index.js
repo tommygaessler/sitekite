@@ -36,8 +36,8 @@ router.get('/:username/contact', function (req, res, next) {
   .catch((error) => console.log(error));
 });
 
-router.get('/:userName/dashboard', authHelpers.authRequired, function (req, res, next) {
-  var user1 = req.params.userName.toLowerCase()
+router.get('/:username/dashboard', authHelpers.authRequired, function (req, res, next) {
+  var user1 = req.params.username.toLowerCase()
   var user2 = req.user.username.toLowerCase()
   getProjects([req.user])
   .then((data) => compareUser(user1, user2) ? res.render('dashboard', {loggedInUser: req.user, username: req.user.username, pinnedProjects: data[0].projects, title: 'SiteKite | Dashboard'}) : res.render('error'))

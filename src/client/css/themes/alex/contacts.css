@@ -5,8 +5,20 @@
 
 #success-message {
   display: none;
+  color: rgba(85, 97, 94, 0.53);
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 22px;
+  border-radius: 5px;
+  background-color: #ADF7B6;
+  border-color: #ADF7B6
 }
 
 #fail-message {
   display: none;
+  background-color: #FFC09F;
+  border-color: #FFC09F;
+  color: rgba(85, 97, 94, 0.53);
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 22px;
+  border-radius: 5px;
 }
