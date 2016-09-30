@@ -25,7 +25,7 @@ $(document).ready(function() {
   });
 
   $('#info-form').on('submit', function(e) {
-    if ($('#bio_desc').val() === undefined) {
+    if ($('#bio_desc').val().length === 0) {
       e.preventDefault();
       $('#bio_desc').css({'border-color': 'red', 'box-shadow': '0 0 10px red'});
     }
