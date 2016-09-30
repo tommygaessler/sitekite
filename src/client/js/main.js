@@ -59,7 +59,7 @@ $(document).ready(function () {
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
 
-    $('#email_submit').empty().append('<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>');
+    $('#email_submit').empty().append('<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>');
 
     const username = $(this).data('id')
 
