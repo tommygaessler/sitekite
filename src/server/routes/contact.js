@@ -21,7 +21,7 @@ router.post('/:username/contact/send', (req, res, next) => {
   });
 
   sg.API(request, function(error, response) {
-    res.json({message: `${name}, thanks for reaching out! I will get back to you asap!`});
+    res.json({message: `${name}, thanks for reaching out. I will try get back to you ASAP!`});
   });
 });
 
