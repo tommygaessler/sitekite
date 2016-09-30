@@ -115,7 +115,9 @@ p a:hover, h2 a:hover {
   font-weight: bold;
   font-size: 6rem;
 }
-
+strong {
+  color: #3e3e3e;
+}
 /*-------- side --------*/
 
 .profile-pic {
