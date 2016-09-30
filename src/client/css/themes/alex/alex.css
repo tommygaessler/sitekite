@@ -1,10 +1,12 @@
 a {
-  color: #4d4f52;
+  color: #343537;
 }
 a:hover{
   text-decoration: none;
 }
 body {
+  color: #343537;
+  font-family: 'Pavanam', sans-serif;
   background-color: rgba(107, 142, 167, 0.21);
 }
 .side {
@@ -24,7 +26,7 @@ body {
   opacity: 0.7;
   background-position: 35% 65%;
   background-size: cover;
-  z-index: 0;
+  z-index: -1;
 }
 .profile-pic {
   z-index: 1;

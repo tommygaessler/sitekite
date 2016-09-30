@@ -22,3 +22,15 @@
   font-size: 22px;
   border-radius: 5px;
 }
+
+.btn {
+  background-color: #79ADDC;
+  border-color: #79ADDC;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 22px;
+}
+
+label {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 22px;
+}
