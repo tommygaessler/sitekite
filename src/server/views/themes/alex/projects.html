@@ -14,18 +14,18 @@
       <div class="title_div col-md-5 col-md-offset-1">
         <h3>Projects</h3>
       </div>
-      <div class="prod_div col-md-5">
+      <div class="proj_div col-md-5">
         {% for project in projects %}
-        <div class="col-md-12 ">
-          <h2>{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
-          <p>
+        <div class="proj col-md-12 ">
+          <h2 class='deployed'>{% if project.deployed_url %}<a href="{{ project.deployed_url }}">{% endif %}{{project.project_name}}{% if project.deployed_url %}</a>{% endif %}</h2>
+          <p class="repo">
             <a href="{{project.github_url}}">GitHub Repo</a>
           </p>
-          <p>
+          <p class="language">
             Written with: {{project.tools_languages}}
           </p>
-          <p>
-            description: {{project.description}}
+          <p class="description">
+            {{project.description}}
           </p>
         </div>
         {% endfor %}

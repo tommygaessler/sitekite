@@ -13,9 +13,25 @@
 }
 
 .proj_div {
-  padding: 0px;
+  padding-top: 35px;
+}
+.deployed {
+  font-size: 30px;
+  font-family: "Questrial", sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.repo {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+.language {
+  margin-bottom: 0px;
 }
 
+.description {
+  margin-bottom: 0px;
+}
 @media (max-width: 1199px) {
   .title_div h3 {
     font-size: 120px;
