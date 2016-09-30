@@ -24,6 +24,16 @@ $(document).ready(function() {
     $('#new-project-name').focus();
   });
 
+  $('#info-form').on('submit', function() {
+    if ($('#bio_desc').val() === undefined) {
+      $('#bio_desc').css({'border-color': 'red', 'box-shadow': '0 0 10px red'});
+    }
+  });
+
+  $('#bio_desc').on('input', function() {
+    $(this).css({'border-color': '#428bca', 'box-shadow': '0 0 10px #428bca'});
+  })
+
   $('.delete-project').click(function() {
     var username = $(this).attr('data-username');
     var projectName = $(this).attr('data-value');
