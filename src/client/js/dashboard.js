@@ -35,6 +35,12 @@ $(document).ready(function() {
     $(this).css({'border-color': '#428bca', 'box-shadow': '0 0 10px #428bca'});
   })
 
+  $('#bio_desc').on('blur', function() {
+    if ($('#bio_desc').val().length > 0) {
+      $(this).css({'border-color': '', 'box-shadow': ''});
+    }
+  })
+
   $('.delete-project').click(function() {
     var username = $(this).attr('data-username');
     var projectName = $(this).attr('data-value');
