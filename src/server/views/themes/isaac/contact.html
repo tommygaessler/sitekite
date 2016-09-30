@@ -36,27 +36,29 @@
 <!-- contact me! -->
   <div class="col-md-9">
     <h1 class="bump text_project_name">Send Me an Email to connect!</h1>
-
-    <p class="bump text_project">
+    <h4 id="success-message" class="text-center alert alert-success"></h4>
+    <h4 id="fail-message" class="text-center alert alert-danger"></h4>
+    
+    <p class="bump text_project" id="contact_desc">
       {% if contact_desc %}
       {{ contact_desc }}
       {% endif %}
     </p>
 
-    <form action="/{{ username }}/contact/send" method="post">
+    <form id="sendgrid">
       <div class="form-group bump">
         <label class="text_project_name" for="name">What is you Name?</label>
-        <input type="text" class="form-control" id="name" placeholder="" name="name">
+        <input type="text" class="form-control" id="name">
       </div>
       <div class="form-group bump">
         <label class="text_project_name" for="email">What is your Email?</label>
-        <input type="email" class="form-control" id="email" placeholder="" name="from_email">
+        <input type="email" class="form-control" placeholder="" id="from_email">
       </div>
       <div class="form-group bump">
         <label class="text_project_name" for="message">Send me this Message!</label>
-        <textarea class="form-control" rows="5" name="message" id="message"></textarea>
+        <textarea class="form-control" rows="5" id="message"></textarea>
       </div>
-      <input type="hidden" name="to_email" value="{{ email }}">
+      <input type="hidden" id="to_email" value="{{ email }}">
       <button type="submit" class="btn btn-success bump round">Submit</button>
     </form>
   </div>
