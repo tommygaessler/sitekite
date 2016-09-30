@@ -1,4 +1,4 @@
-# Welcome to the *SiteKite.co* Github Repository! ![alt text](https://github.com/tommygaessler/galvanize-q2-group-project/blob/master/src/client/img/kite.png | width=20 height=30)
+# Welcome to the *SiteKite.co* Github Repository! ![alt text](https://github.com/tommygaessler/galvanize-q2-group-project/blob/master/src/client/img/kite.png | width=20)
 
 
 `NODE_ENV=development`
