@@ -10,6 +10,10 @@
   font-size: 150px;
 }
 
+.bio_div {
+  padding-top: 30px;
+}
+
 @media (max-width: 1199px) {
   .about {
     font-size: 120px;
