@@ -38,14 +38,14 @@
     <h1 class="bump text_project_name">Send Me an Email to connect!</h1>
     <h4 id="success-message" class="text-center alert alert-success"></h4>
     <h4 id="fail-message" class="text-center alert alert-danger"></h4>
-    
+
     <p class="bump text_project" id="contact_desc">
       {% if contact_desc %}
       {{ contact_desc }}
       {% endif %}
     </p>
 
-    <form id="sendgrid">
+    <form class="sendgrid">
       <div class="form-group bump">
         <label class="text_project_name" for="name">What is you Name?</label>
         <input type="text" class="form-control" id="name">

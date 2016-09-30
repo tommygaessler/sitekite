@@ -58,7 +58,6 @@ $(document).ready(function () {
 
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
-
     const username = $(this).data('id')
 
     const data = {
@@ -74,7 +73,6 @@ $(document).ready(function () {
       url: `/${username}/contact/send`,
       data: data
     }).done((data) => {
-      console.log(data);
       $('#contact_desc').css('display', 'none');
       $('#sendgrid').css('display', 'none');
       $('#success-message').css('display', 'block');
