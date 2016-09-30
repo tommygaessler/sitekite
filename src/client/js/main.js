@@ -58,6 +58,7 @@ $(document).ready(function () {
 
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
+
     const username = $(this).data('id')
 
     const data = {
@@ -80,6 +81,7 @@ $(document).ready(function () {
     }).fail((error) => {
       $('#fail-message').css('display', 'block');
       $('#fail-message').text('Message was not sent, please try again');
+      $('#email_submit').empty().append('Submit');
     })
   });
 
