@@ -15,7 +15,7 @@
         <li><a href="/{{ username }}">Home</a></li>
         <li><a href="/{{ username }}/projects">Projects</a></li>
         <li><a href="/{{ username }}/contact">Contact</a></li>
-        {% if loggedInUser %}
+        {% if loggedInUser and (loggedInUser === username) %}
         <li><a href="/{{ loggedInUser.username }}/dashboard">Dashboard</a></li>
         {% endif %}
 
