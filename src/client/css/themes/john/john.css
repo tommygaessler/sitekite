@@ -196,3 +196,11 @@ textarea {
     margin-left: auto;
   }
 }
+
+#success-message {
+  display: none;
+}
+
+#fail-message {
+  display: none;
+}
