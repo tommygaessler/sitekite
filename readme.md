@@ -1,5 +1,5 @@
-- Create .env file
-> Put this in the .env file
+# Welcome to the *SiteKite.co* Github Repository! ![alt text](https://github.com/tommygaessler/galvanize-q2-group-project/blob/master/src/client/img/kite.png)
+
 
 `NODE_ENV=development`
 `GITHUB_CLIENT_ID= "your github client id goes here"`
