@@ -14,7 +14,9 @@ When you log into our website using your github account, SiteKite auto populates
 1. Create a .env
   - _hint:_ re-name the `.sample_env` file to `.env` and insert the appropriate data in the "quotes"
 1. go into *src/server/config/main-config.js* and uncomment line 22
-1. `npm install` the packages
+1. run `npm install` in the terminal.
+1. run `createdb site_builder` in the terminal.
+1. run `knex migrate:latest` in the terminal.
 
 #### To start the server locally
 
@@ -26,7 +28,7 @@ When you log into our website using your github account, SiteKite auto populates
 - Tommy Gaessler
   - [view Tommy's github](https://github.com/tommygaessler)
 - John Berger
-  - [view Johns's github](https://github.com/johnmberger)
+  - [view John's github](https://github.com/johnmberger)
 - Austin Mahan
   - [view Austin's github](https://github.com/AustinMahan)
 - Alex Glassford
