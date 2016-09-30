@@ -59,8 +59,10 @@ $(document).ready(function () {
   $('#sendgrid').on('submit', function(event) {
     event.preventDefault();
 
+    document.getElementById('email_submit').innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
+
     if ($('#name').val() && $('#to_email').val() && $('#to_email').val()) {
-      document.getElementById('email_submit').innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
+
       const username = $(this).data('id')
 
       const data = {
@@ -76,9 +78,10 @@ $(document).ready(function () {
         url: `/${username}/contact/send`,
         data: data
       }).done((data) => {
+        console.log(data);
         $('#contact_desc').css('display', 'none');
         $('#sendgrid').css('display', 'none');
-        $('#success-message').css('display', 'block');
+        $('#success-message').css('display', 'block');g
         $('#success-message').text(data.message);
       }).fail((error) => {
         $('#fail-message').css('display', 'block');
