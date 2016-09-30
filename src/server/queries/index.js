@@ -21,6 +21,12 @@ function addUser(body) {
     theme_name: body.theme_name
   });
 }
+function validateurl(str) {
+  if (str.substr(0, 7) == 'http://' || str.substr(0, 8) == 'https://') {
+    return str;
+  }
+  return 'http://' + str;
+}
 // test - :COMPLETED
 function removeUser (username) {
   var userPromiseArr = [
@@ -122,9 +128,9 @@ function loggedInUser(req, data) {
 function addProjects(data, user) {
   var promise = data.map(function (project) {
     return get('projects').insert({
-      github_url: project.data.html_url,
+      github_url: validateurl(project.data.html_url),
       project_name: project.data.name,
-      deployed_url: project.data.homepage,
+      deployed_url: validateurl(project.data.homepage),
       tools_languages: project.data.language,
       user_username: user.username,
       description: project.data.description
@@ -136,14 +142,13 @@ function addProjects(data, user) {
 }
 // test -
 function addNewPro(body) {
-  console.log(body.name.replace(/[^A-Za-z]/g, '').length);
   if (body.name.replace(/[^A-Za-z]/g, '').length == 0) {
     return Promise.resolve(false);
   }
   return get('projects').insert({
-    github_url: body.github_url,
+    github_url: validateurl(body.github_url),
     project_name: body.name,
-    deployed_url: body.deployed_url,
+    deployed_url: validateurl(body.deployed_url),
     tools_languages: body.tools_languages,
     user_username: body.username,
     description: body.description,
@@ -157,11 +162,11 @@ function updatePro(body) {
   .where('project_name', body.old_projectname)
   .update({
     project_name: body.name,
-    github_url: body.github_url,
-    deployed_url: body.deployed_url,
+    github_url: validateurl(body.github_url),
+    deployed_url: validateurl(body.deployed_url),
     description: body.description,
     tools_languages: body.tools_languages,
-    image_url: body.image_url
+    image_url: validateurl(body.image_url)
   })
 }
 
