@@ -4,12 +4,17 @@
   </a>
   <div class="background-image"></div>
 
-  <h3>{% if name %}{{ name }}{% else %}Name Here!{% endif %}</h3>
+  <h3 class="full-name">{% if name %}{{ name }}{% else %}Name Here!{% endif %}</h3>
   <hr>
   <nav class="page-links">
     <a href="/{{ username }}">Home</a>
     <a href="/{{ username }}/projects">Projects</a>
     <a href="/{{ username }}/contact">Contact</a>
+    {% if loggedInUser %}
+    <a href="/{{ loggedInUser.username }}/dashboard">
+      Dashboard
+    </a>
+    {% endif %}
   </nav>
   <hr>
   <nav class="social-links">

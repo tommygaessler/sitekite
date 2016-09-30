@@ -24,8 +24,11 @@ body {
   color: limegreen;
   margin-left: 1%;
 }
-.text_project {
+.text_project a, .text_project {
   color: limegreen;
+}
+.text_project a:hover {
+  color: orange;
 }
 .text_project_name {
   color: white;

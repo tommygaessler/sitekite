@@ -1,12 +1,6 @@
-{% extends "_base.html" %}
-
-{% block title %}{% endblock %}
-{% block css %}
-<link rel="stylesheet" href="/css/themes/john/john.css">
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-{% endblock %}
-{% block content %}
-
+{% include "./_header.html" %}
+<body>
+  {% include "./_nav.html" %}
   {% include "./_side.html" %}
 
   <div class="main">
@@ -17,13 +11,12 @@
         <a href="{{project.github_url}}"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a>
       </p>
       <p>
-        Written with: {{project.tools_languages}}
+        <strong>Tools / Languages Used: </strong>{{project.tools_languages}}
       </p>
       <p>
-        Description: {{project.description}}
+        <strong>Description: </strong>{{project.description}}
       </p>
     {% endfor %}
   </div>
 
-
-{% endblock %}
+{% include "./_footer.html" %}

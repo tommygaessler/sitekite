@@ -24,6 +24,21 @@ $(document).ready(function() {
     $('#new-project-name').focus();
   });
 
+  $('#info-form').on('submit', function(e) {
+    if ($('#bio_desc').val().length === 0) {
+      e.preventDefault();
+      $('#bio_desc').css({'border-color': 'red', 'box-shadow': '0 0 10px red'});
+    }
+  });
+
+  $('#bio_desc').on('input', function() {
+    $(this).css({'border-color': '#428bca', 'box-shadow': '0 0 10px #428bca'});
+  })
+
+  $('#bio_desc').on('blur', function() {
+    $(this).css({'border-color': '', 'box-shadow': ''});
+  })
+
   $('.delete-project').click(function() {
     var username = $(this).attr('data-username');
     var projectName = $(this).attr('data-value');

@@ -17,7 +17,7 @@
   </ul>
   <section class="tab-content">
     <div class="tab-pane active" id="portfolio-tab">
-      <form method="post" action="/new">
+      <form method="post" action="/new" id="info-form">
         <div class="row">
 
           <div class="col-md-6">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group">
-              <label for="email">Profile Pic Url</label>
+              <label for="profile_pic_url">Profile Pic Url</label>
               <div class="input-group">
                 <input required type="url" class="form-control" name="profile_pic_url" id="profile_pic_url" value="{{ loggedInUser.profile_pic_url }}" placeholder="{{ loggedInUser.profile_pic_url }}">
                 <div class="input-group-addon preview-button" data-toggle="modal" data-target="#previewModal"><img id="profile_pic" src="{{ loggedInUser.profile_pic_url }}" alt="P" /></div>
@@ -62,7 +62,7 @@
 
             <div class="form-group">
               <label for="bio_desc">Bio (supports markdown)</label>
-              <textarea required name="bio_desc" id="bio_desc" rows="9" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
+              <textarea name="bio_desc" id="bio_desc" rows="9" class="form-control" placeholder="This will be prominently displayed on your main portfolio page" value="loggedInUser.bio_desc">{{ loggedInUser.bio_desc }}</textarea>
             </div>
 
           </div>

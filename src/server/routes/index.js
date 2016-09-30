@@ -16,8 +16,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/:username', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => {
-    return loggedInUser(req, data)})
+  .then((data) => loggedInUser(req, data))
   .then((data) => data.length ? res.status(202).render(`themes/${data[0].theme_name}/home`, data[0]) :  res.status(404).render('error', {message: 'No User Found', status: 404}))
   .catch((error) => console.log(error));
 });
@@ -25,14 +24,14 @@ router.get('/:username', function (req, res, next) {
 router.get('/:username/projects', function (req, res, next) {
   userInDb(req.params)
   .then(getProjects)
-  .then((data) => {return loggedInUser(req, data)})
+  .then((data) => loggedInUser(req, data))
   .then((data) => data ? res.status(202).render(`themes/${data[0].theme_name}/projects`, data[0]) : res.status(404).render('error'))
   .catch((error) => console.log(error));
 });
 
 router.get('/:username/contact', function (req, res, next) {
   userInDb(req.params)
-  .then((data) => {return loggedInUser(req, data)})
+  .then((data) => loggedInUser(req, data))
   .then((user) => res.status(202).render(`themes/${user[0].theme_name}/contact`, user[0]))
   .catch((error) => console.log(error));
 });
@@ -56,12 +55,12 @@ router.post('/new', function (req, res, next) {
 
 router.post('/editPro', authHelpers.authRequired, function (req, res, next) {
   updatePro(req.body)
-  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects`))
+  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects-tab`))
 })
 
 router.post('/newPro', authHelpers.authRequired, function (req, res, next) {
   addNewPro(req.body)
-  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects`))
+  .then(() => res.redirect(`/${req.user.username}/dashboard/#projects-tab`))
 })
 
 router.post('/importing', authHelpers.authRequired, function (req, res, next) {
@@ -82,7 +81,7 @@ router.delete('/:username', authHelpers.authRequired, function (req, res, next) 
   var user1 = req.params.username.toLowerCase()
   var user2 = req.user.username.toLowerCase()
   req.logout()
-  removeUser(req.params.username)
+  removeUser(user1)
   .then(() => compareUser(user1, user2) ? res.send('winning') : res.render('error', {message: 'You aren\'t authorized '}))
 })
 
