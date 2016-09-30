@@ -38,3 +38,11 @@ h1 {
   overflow-y: scroll;
   height: 300px;
 }
+
+#success-message {
+  display: none;
+}
+
+#fail-message {
+  display: none;
+}

@@ -71,3 +71,11 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+#success-message {
+  display: none;
+}
+
+#fail-message {
+  display: none;
+}

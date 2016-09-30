@@ -10,6 +10,14 @@
   }
 }
 
+#success-message {
+  display: none;
+}
+
+#fail-message {
+  display: none;
+}
+
 .navbar-brand {
   color: #fcfcfc !important;
 }
