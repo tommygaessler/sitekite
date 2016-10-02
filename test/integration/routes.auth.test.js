@@ -21,7 +21,7 @@ describe('routes : auth', () => {
   afterEach(() => {
     return knex.migrate.rollback();
   });
-
+  
   describe('GET /logout', () => {
     it('should log out and redirect to log in page', (done) => {
       return knex('users')

@@ -19,7 +19,7 @@
 
   // *** load environment variables *** //
   // uncomment the line below to be able to develop locally
-  // require('dotenv').config();
+  require('dotenv').config();
 
   appConfig.init = function(app, express) {
 
