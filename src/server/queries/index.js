@@ -22,11 +22,15 @@ function addUser(body) {
   });
 }
 function validateurl(str) {
-  if (str.substr(0, 7) == 'http://' || str.substr(0, 8) == 'https://') {
-    return str;
+  if (str.length) {
+    if (str.substr(0, 7) == 'http://' || str.substr(0, 8) == 'https://') {
+      return str;
+    } else {
+      return 'http://' + str;
+    }
   }
-  return 'http://' + str;
 }
+
 // test - :COMPLETED
 function removeUser (username) {
   var userPromiseArr = [
