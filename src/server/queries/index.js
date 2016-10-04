@@ -22,7 +22,7 @@ function addUser(body) {
   });
 }
 function validateurl(str) {
-  if (str.length) {
+  if (str) {
     if (str.substr(0, 7) == 'http://' || str.substr(0, 8) == 'https://') {
       return str;
     } else {
