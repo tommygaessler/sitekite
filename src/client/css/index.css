@@ -8,6 +8,41 @@
   flex-direction: column;
 }
 
+.domains img {
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
+.name {
+  margin-top: 50px!important;
+}
+
+.google {
+  margin-top: 30px!important;
+}
+
+.domains {
+  background-color: #FFC09F;
+  color: white;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .navbar .navbar-toggle:hover .icon-bar {
   background-color: white;
 }
