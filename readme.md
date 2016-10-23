@@ -1,7 +1,5 @@
 # ![My image](./README_logo.png) Welcome to the *SiteKite.co* Github Repository! ![My image](./README_logo.png)
 
-[![Coverage Status](https://coveralls.io/repos/isaacjcollier/galvanize-q2-group-project/badge.svg?branch=master)](https://coveralls.io/r/isaacjcollier/galvanize-q2-group-project?branch=master)
-
 [Here is the Deployed Website](http://sitekite.co/)
 
 ## What is SiteKite?
