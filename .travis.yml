@@ -5,3 +5,4 @@ node_js:
 env:
   global:
   - NODE_ENV=test
+after_success: 'npm run coveralls'
