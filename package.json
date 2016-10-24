@@ -1,11 +1,12 @@
 {
-  "name": "update-me",
+  "name": "sitekite",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./src/server/server",
     "test": "./node_modules/mocha/bin/_mocha",
-    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/*.js"
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/*.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "coveralls": "^2.11.14",
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.1",
     "gulp-nodemon": "^2.1.0",
@@ -39,6 +41,7 @@
     "mocha": "~2.5.3",
     "mocha-jscs": "^5.0.1",
     "mocha-jshint": "^2.3.1",
+    "mocha-lcov-reporter": "^1.2.0",
     "passport-stub": "^1.1.1",
     "run-sequence": "^1.2.2",
     "tiny-lr": "^0.2.1"

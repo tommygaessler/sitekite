@@ -125,7 +125,7 @@ describe('routes : index', () => {
       chai.request(server)
       .post('/new')
       .end((err, res) => {
-        console.log(res);
+        // console.log(res);
         done()
       })
     })
