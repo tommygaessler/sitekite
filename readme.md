@@ -1,5 +1,7 @@
 # ![My image](./README_logo.png) Welcome to the *SiteKite.co* Github Repository! ![My image](./README_logo.png)
 
+[![Coverage Status](https://coveralls.io/repos/github/tommygaessler/sitekite/badge.svg?branch=master)](https://coveralls.io/github/tommygaessler/sitekite?branch=master)
+
 [Here is the Deployed Website](http://sitekite.co/)
 
 ## What is SiteKite?
