@@ -1,8 +1,8 @@
-# ![My image](./README_logo.png) Welcome to the [*SiteKite.co*](http://sitekite.co/) Github Repository! ![My image](./README_logo.png)
+# ![My image](./README_logo.png) Welcome to the [*SiteKite*](https://site-kite.herokuapp.com/) Github Repository! ![My image](./README_logo.png)
 
 [![Coverage Status](https://coveralls.io/repos/github/tommygaessler/sitekite/badge.svg?branch=master)](https://coveralls.io/github/tommygaessler/sitekite?branch=master)
 
-[Here is the Deployed Website](http://sitekite.co/)
+[Here is the Deployed Website](https://site-kite.herokuapp.com/)
 
 ## What is SiteKite?
 SiteKite is an application developed and designed by 5 Galvanize students for the Unit 2 Project. This website is designed to make creating a personal portfolio website fast, easy, and fun. It will also make it easy for a company to view your portfolio, and if they like what they see, they can contact you directly from your personal portfolio!
