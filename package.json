@@ -23,7 +23,7 @@
     "nunjucks": "^2.4.2",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
-    "pg": "6.1.0",
+    "pg": "7.18.1",
     "request": "^2.75.0",
     "sendgrid": "^4.3.0"
   },
